@@ -42,10 +42,6 @@ a {
     text-decoration: none;
 }
 
-.top-header-social-icon{
-
-}
-
 #top-header .top-header-social-icon a {
     border: 2px solid rgb(85, 82, 82);
     color: var(--white);
