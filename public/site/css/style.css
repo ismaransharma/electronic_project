@@ -1,8 +1,65 @@
 @import url('https://fonts.googleapis.com/css2?family=Mukta&display=swap');
 
-*{
+* {
     margin: 0px;
     padding: 0px;
     box-sizing: border-box;
     font-family: 'Mukta', sans-serif;
+}
+
+:root {
+    --bodybg: #d1d1d1;
+    --top-header-bg: #b520b5;
+    --gray: gray;
+    --white: white;
+}
+
+body {
+    background-color: var(--bodybg);
+    height: 100vh;
+}
+
+
+/* Top header Css */
+
+#top-header {
+    background-color: var(--top-header-bg);
+    height: 45px;
+    line-height: 45px;
+    display: flex;
+
+}
+
+.row{
+    display: flex;
+}
+
+.top-header-text {
+    font-weight: 600;
+}
+
+a {
+    text-decoration: none;
+}
+
+.top-header-social-icon{
+
+}
+
+#top-header .top-header-social-icon a {
+    border: 2px solid rgb(85, 82, 82);
+    color: var(--white);
+    margin: 0 10px;
+    padding: 5px;
+    line-height: 10px;
+    border-radius: 10px;
+    text-align: center;
+    font-weight: bold;
+    transition: 1s;
+}
+
+#top-header .top-header-social-icon a:hover{
+    border: 2px solid var(--white);
+    color: var(--top-header-bg);
+    background-color: var(--white);
 }
