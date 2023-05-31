@@ -9,9 +9,13 @@
 
 :root {
     --bodybg: #d1d1d1;
-    --top-header-bg: #b520b5;
+    --top-header-bg: #500094;
     --gray: gray;
     --white: white;
+    --font: #66fcf1;
+    --nav-bg: #0c0f14;
+    --dec-color: #ff6700;
+    --slider-bg: #354343;
 }
 
 body {
@@ -27,15 +31,15 @@ body {
     height: 45px;
     line-height: 45px;
     display: flex;
-
 }
 
 .row{
     display: flex;
+    color: var(--white);
 }
 
 .top-header-text {
-    font-weight: 600;
+    font-weight: 500;
 }
 
 a {
@@ -43,7 +47,7 @@ a {
 }
 
 #top-header .top-header-social-icon a {
-    border: 2px solid rgb(85, 82, 82);
+    border: 2px solid var(--white);
     color: var(--white);
     margin: 0 10px;
     padding: 5px;
@@ -55,7 +59,169 @@ a {
 }
 
 #top-header .top-header-social-icon a:hover{
-    border: 2px solid var(--white);
+    border: 2px solid var(--top-header-bg);
     color: var(--top-header-bg);
     background-color: var(--white);
 }
+
+/* Top Header Ends Here */
+
+
+
+/* Nav Css Starts From Here */
+
+#header-navbar{
+    background-color: var(--white);
+    height: 64px;
+}
+
+.navbar{
+    padding: 0;
+}
+
+.nav-title{
+    color: var(--top-header-bg);
+    margin: 0;
+    padding: 0;
+    padding-bottom: 25px;
+    font-size: 30px;
+}
+
+.nav-title:hover{
+    color: var(--top-header-bg);
+}
+
+.nav-buttons{
+    padding: 0 105px;
+    margin: 0;
+}
+
+.nav-item{
+    padding: 0;
+    margin: 0;
+    padding-bottom: 25px;
+}
+
+#header-navbar .navbar .container .nav-buttons a{
+    padding: 15px 25px;
+}
+
+.nav-link{
+    /* border: 1px solid var(--nav-border); */
+    color: var(--top-header-bg);
+    font-size: 20px;
+    font-weight: bold;
+    transition: 0.8s;
+}
+
+.nav-link:hover{
+    color: var(--white);
+    background-color: var(--top-header-bg);
+    font-weight: 600;
+    border-bottom: 5px solid var(--dec-color);
+}
+
+.active-nav{
+    background-color: var(--top-header-bg);
+    border-bottom: 5px solid var(--dec-color);
+    color: var(--white);
+}
+
+#header-navbar .navbar .container .nav-buttons .navbar-nav .dropdown-toggle .dropdown-item{
+    background-color: cyan;
+}
+
+/* Nav Bar Ends Here  */
+
+
+/* Slider Css starts here */
+
+#slider{
+    background-color: var(--slider-bg);
+    height: 83vh;
+}
+
+#slider .container #carouselExampleCaptions{
+    height: 83vh;
+}
+
+#slider .container #carouselExampleCaptions .carousel-inner .slider-button .carousel-control-prev{
+    width: 55px;
+}
+
+#slider .container #carouselExampleCaptions .carousel-inner .slider-button .carousel-control-prev-icon{
+    height: 50px;
+    width: 50px;
+    outline: black;
+    /* background-color: rgba(0, 0, 0, 0.3); */
+}
+
+#slider .container #carouselExampleCaptions .carousel-inner .slider-button .carousel-control-next-icon{
+    height: 50px;
+    width: 50px;
+}
+
+#slider .container #carouselExampleCaptions .carousel-inner .slider-button .carousel-control-next{
+    width: 55px;
+}
+
+#slider .container .carousel-inner .row .col-md-4{
+    padding-left: 150px;
+}
+
+#slider .container .carousel-inner .slider-center{
+    text-align: justify;
+}
+
+#slider .container .carousel-inner .slider-center .slider-content{
+    /* background-color: #66fcf1; */
+    height: 240px;
+    width: 400px;
+    left: 25px;
+    margin: 150px 0px;
+}
+
+#slider .container .carousel-inner .carousel-item .row .col-md-4{
+    width: 455px;
+}
+
+#slider .container .carousel-inner .carousel-item .row .col-md-4 .slider-content .slider-image .sliders{
+    height: 240px;
+    width: 450px;
+    margin: 85px 0;
+}
+
+#slider .container .carousel-inner .carousel-item .row .col-md-4 .slider-content .slider-image .sliders3{
+    height: 233px;
+    width: 407px;
+    margin: 85px 0;
+}
+
+#slider .container .carousel-inner .slider-center .slider-image{
+    width: 440px;
+    padding-top: 55px;
+}
+
+#slider .container .carousel-inner .slider-center .slider-content h1 span{
+    color: var(--dec-color);
+}
+
+#slider .container .carousel-inner .slider-center .slider-content p{
+    color: var(--white);
+    opacity: 0.8;
+    text-align: justify;
+}
+
+#slider .container .carousel-inner .slider-center .slider-content .button a{
+    background-color: var(--dec-color);
+    color: var(--white);
+    font-size: 18px;
+    font-weight: 500;
+}
+
+#slider .container .carousel-inner .slider-center .slider-content .button a:hover{
+    background-color: var(--top-header-bg);
+    color: var(--white);
+}
+
+/* Slider Css ends here */

@@ -15,3 +15,5 @@ use App\Http\Controllers\SiteController;
 */
 
 Route::get('/', [SiteController::class, 'getHome']);
+
+Route::get('/home', [SiteController::class, 'homePage']);
