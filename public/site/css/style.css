@@ -16,11 +16,19 @@
     --nav-bg: #0c0f14;
     --dec-color: #ff6700;
     --slider-bg: #354343;
+    --product-bg: #d9d4d4;
 }
-
 body {
     background-color: var(--bodybg);
     height: 100vh;
+}
+
+
+/* Nav Bar Sticky */
+.upperhead-and-nav-bar{
+    position: fixed;
+    width: 100%;
+    z-index: 1;
 }
 
 
@@ -36,6 +44,10 @@ body {
 .row{
     display: flex;
     color: var(--white);
+}
+
+.top-header-location-padding{
+    width: 200px;
 }
 
 .top-header-text {
@@ -62,6 +74,11 @@ a {
     border: 2px solid var(--top-header-bg);
     color: var(--top-header-bg);
     background-color: var(--white);
+}
+
+.number-padding{
+    padding-left: 0;
+    width: 165px;
 }
 
 /* Top Header Ends Here */
@@ -99,7 +116,7 @@ a {
 .nav-item{
     padding: 0;
     margin: 0;
-    padding-bottom: 25px;
+    padding-bottom: 0px;
 }
 
 #header-navbar .navbar .container .nav-buttons a{
@@ -112,6 +129,9 @@ a {
     font-size: 20px;
     font-weight: bold;
     transition: 0.8s;
+    height: 65px;
+    padding: 15px 30px;
+
 }
 
 .nav-link:hover{
@@ -125,10 +145,6 @@ a {
     background-color: var(--top-header-bg);
     border-bottom: 5px solid var(--dec-color);
     color: var(--white);
-}
-
-#header-navbar .navbar .container .nav-buttons .navbar-nav .dropdown-toggle .dropdown-item{
-    background-color: cyan;
 }
 
 /* Nav Bar Ends Here  */
@@ -225,3 +241,148 @@ a {
 }
 
 /* Slider Css ends here */
+
+/* About Css Starts Here */
+#about{
+    background-color: #747272;
+    height: 95vh;
+}
+
+#about .container .row{
+    text-align: center;
+}
+ 
+#about .container .row .section-title h6{
+    color: var(--dec-color);
+    font-size: 25px;
+    margin: 15px 0;
+}
+
+#about .container .row .section-title h2{
+    font-size: 28px;
+    margin: 25px 0;
+}
+
+#about .container .row .section-title h2 span{
+    color: var(--dec-color);
+}
+
+#about .container .row .about-image{
+    height: 80vh;
+    width: 600px;
+}
+
+#about .container .row .about-image .about-wala-image{
+    height: 464px;
+    width: 528px;
+}
+
+
+.about-button{
+    background-color: var(--dec-color);
+    color: var(--white); 
+}
+
+.about-button:hover{
+    background-color: var(--white);
+    color: var(--dec-color);
+}
+
+
+@media only screen and (max-width: 600px) {
+    
+    #about{
+        min-height: 110vh;
+    }
+
+    #slider{
+        height: 418px;
+    }
+
+    .carousel-indicators{
+        bottom: 34%;
+    }
+
+    .slide{
+        height: 210px;
+    }
+
+    #slider .container .carousel-inner .row .col-md-4{
+        height: 350px;
+        padding: 0;
+        margin: 0;
+        padding-left: 22px;
+        /* background-color: red; */
+    }
+
+    #slider .container .carousel-inner .slider-center .slider-content{
+        padding: 0;
+        margin: 0;
+        padding-top: 115px;
+    }
+
+    .sm-hide{
+        display: none;
+    }
+    
+    .slider-image{
+        display: none;
+    }
+
+    #about .container .row .about-image{
+        width: 100%;
+        height: 235px;
+    }
+
+    #about .container .row .about-image .about-wala-image{
+        width: 100%;
+        height: 220px;
+    }
+
+}
+
+/* About Css Ends Here */
+
+
+/* Products Css Starts Here */
+#product{
+    min-height: 110vh;
+}
+
+#product .top-sale h4{
+    background-color: var(--dec-color);
+    width: 160px;
+    margin: 20px 0;
+    color: var(--white);
+    text-align: center;
+}
+
+
+#product .product-box{
+    height: 330px;
+    width: 200px;
+    border: 1px solid gray;
+    /* background-color: cyan; */
+
+}
+
+#product .product-box .product-image{
+    height: 135px;
+    width: 100%;
+    background-color: var(--product-bg);
+    text-align: center;
+    
+}
+
+#product .product-box .product-image:hover{
+    opacity: 0.5;
+}
+
+
+#product .product-box .product-image img{
+    height: 150px;
+    width: 100%;
+    padding-bottom: 25px;
+}
+
+/* Products Css Ends Here */
