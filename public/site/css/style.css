@@ -318,7 +318,7 @@ a {
     #slider .container .carousel-inner .slider-center .slider-content{
         padding: 0;
         margin: 0;
-        padding-top: 115px;
+        padding-top: 102px;
     }
 
     .sm-hide{
@@ -345,6 +345,7 @@ a {
 
 
 /* Products Css Starts Here */
+
 #product{
     min-height: 110vh;
 }
@@ -357,17 +358,25 @@ a {
     text-align: center;
 }
 
+.col-md-3{
+    display: flex;
+}
+
+#product .product-box-padding{
+    display: flex;
+    width: 100%;
+}
 
 #product .product-box{
     height: 330px;
-    width: 200px;
-    border: 1px solid gray;
-    /* background-color: cyan; */
+    width: 215px;
+    box-shadow: 1px 1px 15px #917f7f;
+    margin: 45px;
 
 }
 
 #product .product-box .product-image{
-    height: 135px;
+    height: 170px;
     width: 100%;
     background-color: var(--product-bg);
     text-align: center;
@@ -378,11 +387,82 @@ a {
     opacity: 0.5;
 }
 
+#product .product-box .product-image .product-main-image{
+    padding-top: 25px;
+}
+
 
 #product .product-box .product-image img{
     height: 150px;
     width: 100%;
     padding-bottom: 25px;
+}
+
+#product .product-box .product-details{
+    padding-left: 6px;
+    padding-top: 10px;
+}
+
+#product .product-box .product-name .product-name-title{
+    color: #000;
+    font-size: 18px;
+
+}
+
+#product .product-box .product-name .product-price{
+    font-size: 17px;
+    /* color: var(--dec-color); */
+    font-weight: 600;
+    padding-left: 29px;
+}
+
+#product .product-box .product-description{
+    font-size: 14px;
+}
+
+#product .product-box .product-rating .rating{
+    color: var(--dec-color);
+}
+
+#product .product-box .product-rating .rating-in-percent{
+    font-weight: bold;
+    font-size: 15px;
+    padding-left: 5px;
+}
+
+#product .product-box .product-details .product-add-to-cart{
+    display: block;
+    text-align: center;
+    padding-top: 15px;
+}
+
+#product .product-box .product-details .product-add-to-cart span{
+    height: 38px;
+    width: 150px;
+    border: 1px solid gray;
+    border-radius: 19px;
+}
+
+#product .product-box .product-details .product-add-to-cart span:hover{
+    background-color: var(--dec-color);
+    color: var(--white);
+}
+
+@media only screen and (max-width: 600px){
+    .top-sale{
+        padding-left: 123px;
+    }
+
+    .col-md-3{
+        display: block;
+    }
+
+    .product-box-padding{
+        padding-left: 45px;
+        
+    }
+
+
 }
 
 /* Products Css Ends Here */

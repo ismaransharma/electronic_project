@@ -282,6 +282,55 @@
     <!-- About Section Ends Here -->
 
 
+    <!-- Product item starts here -->
+    <section id="product">
+        <div class="container">
+            <div class="top-sale">
+                <h4>Latest Products</h4>
+            </div>
+            <div class="product-row">
+                @for ($i = 0; $i < 4; $i++) <div class="col-md-3">
+                    <div class="box-divider">
+                        <div class="product-box-padding">
+                            <div class="product-box">
+                                <div class="product-image">
+                                    <div class="product-main-image">
+                                        <img src="{{ asset('site/images/earbuds.png')}}" alt="">
+                                    </div>
+                                    <!-- <div class="heart-and-cart">
+                                        <span><i class="fa-regular fa-heart"></i></span>
+                                        <span><i class="fa-solid fa-cart-shopping"></i></span>
+                                    </div> -->
+                                </div>
+                                <div class="product-details">
+                                    <div class="product-name">
+                                        <span class="product-name-title">Wireless Earbuds</span>
+                                        <span class="product-price">$10.56</span>
+                                    </div>
+                                    <div class="product-description">
+                                        Lorem ipsum dolor sit amet.
+                                    </div>
+                                    <div class="product-rating">
+                                        <span><i class="fa-solid fa-star rating"></i></span>
+                                        <span><i class="fa-solid fa-star rating"></i></span>
+                                        <span><i class="fa-solid fa-star rating"></i></span>
+                                        <span><i class="fa-solid fa-star rating"></i></span>
+                                        <span><i class="fa-regular fa-star-half-stroke rating"></i></span>
+                                        <span class="rating-in-percent">4.5%</span>
+                                    </div>
+                                    <div class="product-add-to-cart">
+                                        <span class="btn">Add to Cart</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    @endfor
+            </div>
+        </div>
+        </div>
+    </section>
+    <!-- Product item ends here -->
 
 
 
