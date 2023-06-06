@@ -1,0 +1,117 @@
+/* Services Css Starts Here*/
+
+#top-header-navbar .container .home{
+    background-color: rgb(248, 249, 250);
+    color: var(--top-header-bg);
+    border: none;
+}
+
+.our-services{
+    background-color: var(--top-header-bg);
+    color: var(--white);
+    border-bottom: 5px solid var(--dec-color);
+}
+
+
+:root{
+    --services-bg: #c8e7df;
+    --font: #358f7a;
+
+}
+
+
+#container{
+    height: 83.5vh;
+    background-color: var(--services-bg);
+    color: var(--font);
+
+}
+
+#container .services-title{
+    font-size: 30px;
+    text-align: center;
+    font-weight: bold;
+    cursor: default;
+}
+
+.box-padding{
+    display: flex;
+    margin: 30px 100px;
+}
+
+.box{
+    height: 408px;
+    width: 290px;
+    /* border: 1px solid gray; */
+    border-radius: 15px;
+    background-color: var(--white);
+    margin: 0 40px;
+    box-shadow: 1px 1px 15px #917f7f;
+    transition: 1s;
+    cursor: default;
+}
+
+.box:hover{
+    box-shadow: 1px 1px 30px #0ea781;
+}
+
+#container .box-padding .images{
+    text-align: center;
+    
+}
+
+#container .box-padding .images img{
+    height: 190px;
+    width: 180px;
+    border: none;
+}
+
+#container .box-padding .communication-description .title{
+    font-weight: bold;
+    text-align: center;
+    font-size: 20px;
+}
+
+#container .box-padding .main-description{
+    margin: 5px 0;
+    padding-left: 2px;
+    text-align: justify;
+}
+
+#container .box-padding .more-button{
+    text-align: center;
+    margin: 25px 0;
+}
+
+#container .box-padding .more-button button{
+    background-color: var(--font);
+    height: 35px;
+    width: 150px;
+    color: var(--white);
+}
+
+#container .box-padding .more-button button:hover{
+    box-shadow: 1px 1px 10px #0ea781;
+}
+
+
+@media only screen and (max-width: 600px){
+
+    #container{
+        height: 1400px;
+        background-color: var(--services-bg);
+    }
+
+    .box-padding{
+        display: block;
+        margin: 0 25px;
+    }
+
+    .box{
+        margin: 30px 40px;
+    }
+
+
+}
+
+/* Services Css Ends Here*/

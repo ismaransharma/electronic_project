@@ -17,3 +17,13 @@ use App\Http\Controllers\SiteController;
 Route::get('/', [SiteController::class, 'getHome']);
 
 Route::get('/home', [SiteController::class, 'homePage']);
+
+Route::get('/services', [SiteController::class, 'getServices']);
+
+Route::get('/laptop-category', [SiteController::class, 'getLaptopCategory']);
+
+Route::get('/categroy-gaming-laptop', [SiteController::class, 'getGamingLaptopCategory']);
+
+Route::get('/category-budget-laptop', [SiteController::class, 'getBudgetLaptopCategory']);
+
+Route::get('/contact-us', [SiteController::class, 'getContactUs']);

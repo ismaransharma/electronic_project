@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Electronic | E-Commerce</title>
+    <title>Gada Electronic | Home </title>
 
     <!-- bootstrap ko css link gareko -->
     <link rel="stylesheet" href="{{ asset('site/bootstrap/bootstrap.css') }}">
@@ -63,8 +63,8 @@
     <section id="top-header-navbar">
         <nav class="navbar navbar-expand-lg bg-light">
             <div class="container">
-                <a class="navbar-brand" href="#">
-                    <h4>Gada Electronic</h4>
+                <a class="navbar-brand" href="{{ url('/home')}}">
+                    <h4 style="color: var(--top-header-bg); font-weight: 600;">Gada Electronic</h4>
                 </a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                     data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
@@ -74,13 +74,13 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav ms-auto text-center">
                         <li class="nav-item">
-                            <a class="nav-link   active-nav" aria-current="page" href="#">Home</a>
+                            <a class="nav-link active-nav" aria-current="page" href="#">Home</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="#">About Us</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">Our Services</a>
+                            <a class="nav-link" href="{{ url('/services')}}">Our Services</a>
                         </li>
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
@@ -88,13 +88,13 @@
                                 Category
                             </a>
                             <ul class="dropdown-menu">
-                                <li><a class="dropdown-item" href="#">Laptop</a></li>
+                                <li><a class="dropdown-item" href="{{ url('/laptop-category')}}">Laptop</a></li>
                                 <li><a class="dropdown-item" href="#">Mobile</a></li>
                                 <li><a class="dropdown-item" href="#">Watch</a></li>
                             </ul>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" aria-current="page" href="#">Contact Us</a>
+                            <a class="nav-link contact-us" aria-current="page" href="{{ url('/contact-us')}}">Contact Us</a>
                         </li>
                     </ul>
                 </div>
@@ -109,7 +109,7 @@
 
     <section id="slider">
         <div class="container">
-            <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="false">
+            <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel">
                 <div class="carousel-indicators">
                     <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active"
                         aria-current="true" aria-label="Slide 1"></button>
@@ -119,7 +119,7 @@
                         aria-label="Slide 3"></button>
                 </div>
                 <div class="carousel-inner">
-                    <div class="carousel-item active">
+                    <div class="carousel-item active" data-bs-interval="200">
                         <div class="row">
                             <div class="col-md-4">
                                 <div class="slider-center">
@@ -216,18 +216,16 @@
                         </div>
                     </div>
 
-                    <!-- <div class="slider-button">
-                        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions"
-                            data-bs-slide="prev">
-                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                            <span class="visually-hidden">Previous</span>
-                        </button>
-                        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions"
-                            data-bs-slide="next">
-                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                            <span class="visually-hidden">Next</span>
-                        </button>
-                    </div> -->
+                    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions"
+                        data-bs-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Previous</span>
+                    </button>
+                    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions"
+                        data-bs-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Next</span>
+                    </button>
                 </div>
             </div>
         </div>
@@ -281,6 +279,23 @@
 
     <!-- About Section Ends Here -->
 
+    <!-- Services Section Starts Here -->
+    <section id="services">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4 service-box">
+                    <span><i class="fa-solid fa-truck-fast"></i> Free Shipping</span>
+                </div>
+                <div class="col-md-4 service-box">
+                    <span><i class="fa-regular fa-credit-card"></i> Secure Checkout</span>
+                </div>
+                <div class="col-md-4 service-box">
+                    <span><i class="fa-solid fa-headphones"></i> 24/7 Customer Support</span>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Services Section Ends Here -->
 
     <!-- Product item starts here -->
     <section id="product">
@@ -319,13 +334,13 @@
                                         <span class="rating-in-percent">4.5%</span>
                                     </div>
                                     <div class="product-add-to-cart">
-                                        <span class="btn">Add to Cart</span>
+                                        <span class="btn">Add to Cart 🛒</span>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    @endfor
+                @endfor
             </div>
         </div>
         </div>

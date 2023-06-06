@@ -17,6 +17,7 @@
     --dec-color: #ff6700;
     --slider-bg: #354343;
     --product-bg: #d9d4d4;
+    --contact-us-bg: #0f373c;
 }
 body {
     background-color: var(--bodybg);
@@ -94,6 +95,7 @@ a {
 
 .navbar{
     padding: 0;
+    cursor: default;
 }
 
 .nav-title{
@@ -141,7 +143,7 @@ a {
     border-bottom: 5px solid var(--dec-color);
 }
 
-.active-nav{
+#top-header-navbar .container .home{
     background-color: var(--top-header-bg);
     border-bottom: 5px solid var(--dec-color);
     color: var(--white);
@@ -312,7 +314,6 @@ a {
         padding: 0;
         margin: 0;
         padding-left: 22px;
-        /* background-color: red; */
     }
 
     #slider .container .carousel-inner .slider-center .slider-content{
@@ -343,11 +344,48 @@ a {
 
 /* About Css Ends Here */
 
+/* Our Services Css Starts Here */
+
+#services{
+    min-height: 5vh;
+    padding-left: 165px;
+}
+
+#services .container .row .service-box{
+    height: 45px;
+    width: 33%;
+    /* border: 1px solid gray; */
+    margin: 10px 0;
+}
+
+#services .container .row .service-box span{
+    text-align: center;
+    display: block;
+    height: 40px;
+    width: 215px;
+    border: 1px solid gray;
+    padding-top: 9px;
+    border-radius: 25px;
+    background-color: var(--slider-bg);
+    cursor: pointer;
+}
+
+#services .container .row .service-box span:hover{
+    background-color: var(--dec-color);
+    color: var(--white);
+    border: none;
+    box-shadow: 1px 1px 5px var(--nav-bg);
+}
+/* Our Services Css Ends Here */
 
 /* Products Css Starts Here */
 
 #product{
-    min-height: 110vh;
+    min-height: 80vh;
+}
+
+#product .top-sale{
+    padding-left: 47px;
 }
 
 #product .top-sale h4{
@@ -371,7 +409,7 @@ a {
     height: 330px;
     width: 215px;
     box-shadow: 1px 1px 15px #917f7f;
-    margin: 45px;
+    margin: 0 45px;
 
 }
 
@@ -384,7 +422,7 @@ a {
 }
 
 #product .product-box .product-image:hover{
-    opacity: 0.5;
+    opacity: 0.7;
 }
 
 #product .product-box .product-image .product-main-image{
@@ -401,12 +439,13 @@ a {
 #product .product-box .product-details{
     padding-left: 6px;
     padding-top: 10px;
+    cursor: default;
 }
 
 #product .product-box .product-name .product-name-title{
     color: #000;
     font-size: 18px;
-
+    cursor: pointer;
 }
 
 #product .product-box .product-name .product-price{
@@ -433,7 +472,7 @@ a {
 #product .product-box .product-details .product-add-to-cart{
     display: block;
     text-align: center;
-    padding-top: 15px;
+    padding-top: 18px;
 }
 
 #product .product-box .product-details .product-add-to-cart span{
@@ -453,6 +492,17 @@ a {
         padding-left: 123px;
     }
 
+    #product .product-box-padding{
+        display: block;
+        width: 100%;
+        padding: 0;
+    }
+
+    #product .product-box{
+        width: 100%;
+        margin: 15px 0;
+    }
+
     .col-md-3{
         display: block;
     }
@@ -462,7 +512,28 @@ a {
         
     }
 
+    #services .container .row{
+        display: block;
+        padding-left: 95px;
+    }
+
+    #product .product-box .product-image{
+        width: 100%;
+        padding-left: 70px;
+    }
+
+    #product .product-box .product-main-image{
+        width: 75%;
+    }
+
+    #product .product-box .product-image img{
+        width: auto;
+    }
+
+    #product .top-sale{
+        padding: 0;
+    }
+    
 
 }
-
 /* Products Css Ends Here */

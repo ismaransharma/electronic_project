@@ -1,0 +1,128 @@
+
+/* Laptop Category Css Starts Here */
+
+#product .container .top-header-laptop-category{
+    display: flex;
+}
+
+#product .container .top-header-laptop-category .top-header-category{
+    margin: 5px 120px;
+}
+
+#product .container .top-sale h4{
+    margin: 20px 50px;
+}
+
+#product .container .latop-category{
+    text-align: center;
+    height: 32px;
+    width: 140px;
+    border: 1px solid gray;
+    border-radius: 25px;
+    background-color: var(--white);
+    color: var(--top-header-bg);
+    cursor: pointer;
+    padding-top: 3px;
+
+}
+
+#product .container .active{
+    background-color: var(--top-header-bg);
+    color: var(--white);
+}
+
+#product .container .latop-category:hover{
+    background-color: var(--top-header-bg);
+    color: var(--white);
+    box-shadow: 1px 1px 15px var(--top-header-bg);
+}
+
+#product .product-box .product-name .product-price{
+    padding-left: 20px;
+}
+
+.box-divider{
+    display: flex;
+}
+
+#top-header-navbar .container .home{
+    background-color: rgb(248, 249, 250);
+    color: var(--top-header-bg);
+    border: none;
+}
+
+.dropdown-toggle{
+    background-color: var(--top-header-bg);
+    color: rgb(248, 249, 250);
+    border-bottom: 5px solid var(--dec-color);
+}
+
+.laptop{
+    background-color: var(--top-header-bg);
+    color: rgb(248, 249, 250);
+
+}
+
+#product .container .top-sale{
+    padding: 0;
+}
+/* Laptop Category Css Ends Here */
+
+/* Gaming Laptop Category Css Starts Here */
+
+#product .container .top-sale h4{
+    width: 190px;
+}
+
+#product .container .product-row .product-box-padding .product-box{
+    height: 350px;
+}
+
+#product .container .product-row .product-box-padding .product-box .product-details .product-name-title{
+    font-size: 16px;
+}
+
+#product .container .product-row .product-box-padding .product-box .product-details .product-price{
+    padding-left: 143px;
+}
+
+/* Gaming Laptop Category Css Ends Here */
+
+
+
+/* Media Query */
+
+@media only screen and (max-width: 600px){
+    #product .container .top-header-laptop-category{
+        display: block;
+    }
+
+    #product .container .top-sale{
+        padding: 0;
+    }
+
+    #product .container .top-sale h4{
+        margin: 0;
+    }
+
+    #product .container .top-header-laptop-category .top-header-category{
+        margin: 15px 120px;
+    }
+
+    .box-divider{
+        display: block;
+    }
+
+}
+
+
+/* Budget Laptop */
+
+#product .container .product-row .product-box-padding .product-box{
+    height: 330px;
+}
+
+
+#product .container .product-row .product-box-padding .product-box .product-details .product-price{
+    padding-left: 25px;
+}
