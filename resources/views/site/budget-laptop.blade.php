@@ -7,7 +7,7 @@
 </head>
 
 <section id="product">
-    <div id="gaming-laptop" class="container">
+    <div id="budget-laptop" class="container">
         <div class="top-header-laptop-category-padding">
             <div class="top-header-laptop-category">
                 <div class="laptop-category-all-in-one top-header-category">

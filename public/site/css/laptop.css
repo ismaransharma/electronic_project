@@ -11,6 +11,7 @@
 
 #product .container .top-sale h4{
     margin: 20px 50px;
+    width: 200px;
 }
 
 #product .container .latop-category{
@@ -70,25 +71,31 @@
 
 /* Gaming Laptop Category Css Starts Here */
 
-#product .container .top-sale h4{
-    width: 190px;
+.gaming-laptop-product .container .top-sale h4{
+    width: 300px;
 }
 
-#product .container .product-row .product-box-padding .product-box{
-    height: 350px;
-}
-
-#product .container .product-row .product-box-padding .product-box .product-details .product-name-title{
+#gaming-laptop .product-row .product-box-padding .product-box .product-details .product-name-title{
     font-size: 16px;
 }
 
-#product .container .product-row .product-box-padding .product-box .product-details .product-price{
-    padding-left: 143px;
+.gaming-laptop-product #gaming-laptop .product-row .product-box-padding .product-box .product-details .product-name .product-price{
+    padding-left: 140px;
 }
 
 /* Gaming Laptop Category Css Ends Here */
 
 
+
+/* Budget Laptop */
+
+#product .container .product-row .product-box-padding .product-box{
+    height: 345px;
+}
+
+#product .container .product-row .product-box-padding .product-box .product-details .product-price{
+    padding-left: 15px;
+}
 
 /* Media Query */
 
@@ -113,16 +120,12 @@
         display: block;
     }
 
-}
+    .gaming-laptop-product #gaming-laptop .product-row .product-box-padding .product-box .product-details .product-name .product-price{
+        padding-left: 72px;
+    }
 
-
-/* Budget Laptop */
-
-#product .container .product-row .product-box-padding .product-box{
-    height: 330px;
-}
-
-
-#product .container .product-row .product-box-padding .product-box .product-details .product-price{
-    padding-left: 25px;
+    #product .container .product-row .product-box-padding .product-box .product-details .product-price{
+        padding: 0;
+        padding-left: 165px;
+    }
 }

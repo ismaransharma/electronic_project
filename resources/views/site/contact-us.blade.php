@@ -35,13 +35,32 @@
                         </div>
                     </div>
                 </div>
-                <div class="img-box">
-                    <img src="{{ asset('site/images/contact-us-bg.jpg') }}" alt="contact-us-background-image">
-                    <div class="inner-box-padding">
-                        <div class="innerbox">
-                            
+                <div class="image-box">
+                    <div class="img-box">
+                        <img class="second-box-bg" src="{{ asset('site/images/contact-us-bg.jpg') }}" alt="contact-us-background-image">
+                        <div class="inner-box-padding">
+                            <div class="inner-box">
+                                <div class="small-pic-padding">
+                                    <div class="small-img">
+                                        <img src="{{ asset('site/images/robot-avatar.png') }}" alt="">
+                                    </div>
+                                    <div class="first-box-padding">
+                                        <div class="first-box">
+                                            <h4>Product and account support</h4>
+                                        </div>
+                                        <div class="first-box-description">
+                                            <p>Our help center is fresh and always open for business. If you can't find the answer you're looking for, we're here to lend a hand.
+                                            </p>
+                                        </div>
+                                    </div>
+                                    <div class="contact-sales-button">
+                                        <button class="contact-sales">Go to help center</button>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
+
                 </div>
             </div>
         </div>

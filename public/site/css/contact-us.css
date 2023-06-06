@@ -1,41 +1,50 @@
 /* Contact Us Css Starts Here */
 
-#top-header-navbar .container .home{
+
+.contact-us {
+    background-color: var(--top-header-bg);
+    color: rgb(248, 249, 250);
+    border-bottom: 5px solid var(--dec-color);
+
+}
+
+
+#top-header-navbar .container .home {
     background-color: rgb(248, 249, 250);
     color: var(--top-header-bg);
     border: none;
 }
 
-#contact-us .container .box-padding{
+#contact-us .container .box-padding {
     padding-left: 20px;
     padding-top: 50px;
     color: var(--top-header-bg);
 
 }
 
-#contact-us .container .box-padding .box{
+#contact-us .container .box-padding .box {
     display: flex;
 }
 
-#contact-us .container .box-padding .box .white-box{
+#contact-us .container .box-padding .box .white-box {
     height: 72vh;
     width: 850px;
     background-color: var(--white);
 }
 
-#contact-us .container .box-padding .box .white-box .contact-us-title h4{
+#contact-us .container .box-padding .box .white-box .contact-us-title h4 {
     text-align: center;
     font-weight: bold;
 }
 
-#contact-us .container .box-padding .box .white-box .inner-box-padding{
+#contact-us .container .box-padding .box .white-box .inner-box-padding {
     min-height: 70vh;
     display: flex;
     align-items: center;
     justify-content: center;
 }
 
-#contact-us .container .box-padding .box .white-box .inner-box{
+#contact-us .container .box-padding .box .white-box .inner-box {
     height: 280px;
     width: 300px;
     /* background-color: red; */
@@ -43,33 +52,33 @@
 
 }
 
-#contact-us .container .box-padding .box .white-box .inner-box .small-pic-padding{
+#contact-us .container .box-padding .box .white-box .inner-box .small-pic-padding {
     height: 250px;
     width: 100%;
     text-align: center;
     margin: 10px 0;
 }
 
-#contact-us .container .box-padding .box .white-box .inner-box .small-pic img{
+#contact-us .container .box-padding .box .white-box .inner-box .small-pic img {
     height: 80px;
     width: 80px;
     border: 1px solid gray;
-    border-radius: 50%;      
+    border-radius: 50%;
 }
 
-#contact-us .container .box-padding .box .white-box .inner-box .first-box h4{
+#contact-us .container .box-padding .box .white-box .inner-box .first-box h4 {
     font-size: 20px;
     font-weight: bold;
     margin: 15px 0;
 }
 
-#contact-us .container .box-padding .box .white-box .inner-box .first-box-description{
+#contact-us .container .box-padding .box .white-box .inner-box .first-box-description {
     font-size: 15px;
     font-weight: bold;
     margin: 15px 0;
 }
 
-#contact-us .container .box-padding .box .white-box .inner-box .contact-sales-button .contact-sales{
+#contact-us .container .box-padding .box .white-box .inner-box .contact-sales-button .contact-sales {
     background-color: var(--top-header-bg);
     color: var(--white);
     text-align: center;
@@ -80,33 +89,136 @@
     border-radius: 5px;
 }
 
-#contact-us .container .box-padding .box .white-box .inner-box .contact-sales-button .contact-sales:hover{
+#contact-us .container .box-padding .box .white-box .inner-box .contact-sales-button .contact-sales:hover {
     box-shadow: 1px 1px 15px var(--top-header-bg);
 }
 
-#contact-us .container .box-padding .box .img-box{
+#contact-us .container .box-padding .box .img-box {
     height: 72vh;
     width: 520px;
+    display: flex;
 }
 
-#contact-us .container .box-padding .box .img-box img{
+#contact-us .container .box-padding .box .image-box .img-box img {
     width: 580px;
     padding-right: 25px;
     height: 100%;
+    position: relative;
 }
 
-.contact-us{
+#contact-us .container .box-padding .box .image-box .img-box .inner-box-padding {
+    position: absolute;
+    min-height: 70vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-left: 50px;
+    padding-top: 73px;
+}
+
+#contact-us .container .box-padding .box .image-box .img-box .inner-box-padding .inner-box {
+    height: 280px;
+    width: 300px;
+    box-shadow: 1px 1px 8px rgb(111, 106, 106);
+    position: absolute;
+    background-color: #fff;
+}
+
+
+
+#contact-us .container .box-padding .box .image-box .img-box .inner-box-padding .inner-box .small-pic-padding {
+    height: 250px;
+    width: 100%;
+    text-align: center;
+    margin: 10px 0;
+}
+
+#contact-us .container .box-padding .box .image-box .img-box .inner-box-padding .inner-box .small-pic-padding .small-img img {
+    height: 80px;
+    width: 80px;
+    border: 1px solid gray;
+    border-radius: 50%;
+    padding: 0;
+}
+
+#contact-us .container .box-padding .box .image-box .img-box .inner-box-padding .inner-box .first-box h4 {
+    font-size: 20px;
+    font-weight: bold;
+    margin: 15px 0;
+}
+
+#contact-us .container .box-padding .box .image-box .img-box .inner-box-padding .inner-box .first-box-description {
+    font-size: 15px;
+    font-weight: bold;
+    margin: 15px 0;
+}
+
+#contact-us .container .box-padding .box .image-box .img-box .inner-box-padding .inner-box .contact-sales-button .contact-sales {
     background-color: var(--top-header-bg);
-    color: rgb(248, 249, 250);
-    border-bottom: 5px solid var(--dec-color);
+    color: var(--white);
+    text-align: center;
+    border: none;
+    outline: none;
+    height: 30px;
+    width: 150px;
+    border-radius: 5px;
+}
 
+#contact-us .container .box-padding .box .image-box .img-box .inner-box-padding .inner-box .contact-sales-button .contact-sales:hover {
+    box-shadow: 1px 1px 15px var(--top-header-bg);
 }
 
 
-#contact-us .container .box-padding .box .img-box .inner-box-padding .box-padding{
-    height: 72vh;
-    width: 850px;
-    background-color: var(--white);
+
+@media only screen and (max-width:600px) {
+
+    #contact-us .container .box-padding {
+        padding: 0;
+    }
+
+
+    #contact-us .container .box-padding {
+        padding-left: 38px;
+        padding-top: 10px;
+    }
+
+    #contact-us .container .box-padding .box .white-box .inner-box-padding {
+        display: -webkit-box;
+        margin: 20px 0;
+    }
+
+    #contact-us .container .box-padding .box .white-box {
+        background-color: var(--body-bg);
+    }
+
+    #contact-us .container .box-padding .box .image-box {
+        display: contents;
+    }
+
+    #contact-us .container .box-padding .box .image-box .img-box {
+        display: contents;
+    }
+
+    #contact-us .container .box-padding .box .image-box .img-box .inner-box-padding {
+        position: unset;
+        margin: 250px -198px;
+        margin-right: 250px;
+    }
+
+    #contact-us .container .box-padding .box .image-box .img-box .inner-box-padding .inner-box {
+        background-color: var(--body-bg);
+    }
+
+    #contact-us .container .box-padding .box .white-box .inner-box-padding {
+        min-height: 20vh;
+    }
+
+
+
+    .img-box .second-box-bg {
+        display: none;
+    }
 }
+
 
 /* Contact Us Css Ends Here */

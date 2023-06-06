@@ -6,7 +6,7 @@
     <link rel="stylesheet" href="{{ asset('site/css/laptop.css')}}">
 </head>
 
-<section id="product">
+<section id="product" class="gaming-laptop-product">
     <div id="gaming-laptop" class="container">
         <div class="top-header-laptop-category-padding">
             <div class="top-header-laptop-category">

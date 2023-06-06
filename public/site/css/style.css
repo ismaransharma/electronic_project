@@ -512,9 +512,12 @@ a {
         
     }
 
+    #services{
+        padding-left: 75px;
+    }
+
     #services .container .row{
         display: block;
-        padding-left: 95px;
     }
 
     #product .product-box .product-image{
