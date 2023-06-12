@@ -77,7 +77,7 @@
                                     href="{{ url('/')}} ">Home</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link {{ $activePage == 'aboutpage' ? 'activePage' : '' }}" href="#">About Us</a>
+                                <a class="nav-link {{ $activePage == 'aboutpage' ? 'activePage' : '' }}" href="{{ url('/about-us') }}">About Us</a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link {{ $activePage == 'servicepage' ? 'activePage' : '' }}" href="{{ url('/services')}}">Our Services</a>

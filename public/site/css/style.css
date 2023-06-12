@@ -28,6 +28,20 @@ body {
     height: 100vh;
 }
 
+.section-title h6 {
+    color: var(--dec-color);
+    font-size: 25px;
+    margin: 15px 0;
+}
+
+.section-title h2 {
+    font-size: 28px;
+}
+
+.section-title h2 span {
+    color: var(--dec-color);
+}
+
 /* Nav Bar Sticky */
 
 .upper-main-header-and-nav {
@@ -262,21 +276,6 @@ a {
     text-align: center;
 }
 
-#about .container .row .section-title h6 {
-    color: var(--dec-color);
-    font-size: 25px;
-    margin: 15px 0;
-}
-
-#about .container .row .section-title h2 {
-    font-size: 28px;
-    margin: 25px 0;
-}
-
-#about .container .row .section-title h2 span {
-    color: var(--dec-color);
-}
-
 #about .container .row .about-image {
     height: 80vh;
     width: 600px;
@@ -403,10 +402,10 @@ a {
 /* Products Css Starts Here */
 
 #product {
-    min-height: 100vh;
+    min-height: 75vh;
 }
 
-#product .top-header-laptop-category{
+#product .top-header-laptop-category {
     padding-top: 250px;
 }
 
@@ -576,7 +575,64 @@ a {
 /* Products Css Ends Here */
 
 
-/* Services Css Starts Here*/
+/* Category Css Starts Here */
+
+#category .container .section-title {
+    text-align: center;
+}
+
+#category .row .box-padding {
+    margin: 50px 0;
+    padding-left: 100px;
+}
+
+#category .row .box {
+    height: 100px;
+    width: 100px;
+    border: 1px solid red;
+    border-radius: 50%;
+}
+
+
+
+
+/* Category Css Ends Here */
+
+
+
+
+/* About Us Css Starts Here */
+
+#about-us {
+    padding-top: 70px;
+    margin: 30px 0;
+}
+
+#about-us .about-us-header-padding {
+    padding-top: 25px;
+    padding-left: 250px;
+    padding-right: 250px;
+}
+
+
+#about-us .about-us-header {
+    height: 200px;
+    width: 100%;
+    background-color: #eee;
+    text-align: center;
+    padding-top: 7%;
+}
+
+#about-us .about-us-header a span {
+    text-decoration: underline;
+
+}
+
+/* About Us Css Ends Here */
+
+
+
+/* Our Services Css Starts Here*/
 .services-bg {
     padding-left: 55px;
     height: 105vh;
@@ -592,12 +648,12 @@ a {
     padding-top: 115px;
 }
 
-.box-padding {
+.services-bg .services-main-content .box-padding {
     display: flex;
     margin: 30px 60px;
 }
 
-.box {
+.services-bg .services-main-content .box-padding .box {
     height: 408px;
     width: 290px;
     /* border: 1px solid gray; */
@@ -608,6 +664,11 @@ a {
     transition: 1s;
     cursor: default;
 }
+
+.services-bg .services-main-content .box-padding .box:hover {
+    box-shadow: 1px 1px 20px #0ea781;
+}
+
 
 #container .box-padding .images {
     text-align: center;
@@ -669,26 +730,26 @@ a {
 
 }
 
-/* Services Css Ends Here*/
+/* Our Services Css Ends Here*/
 
 
 /* Laptop Category Css Starts Here */
 
-#product .container .top-header-laptop-category{
+#product .container .top-header-laptop-category {
     display: flex;
     padding-top: 140px;
 }
 
-#product .container .top-header-laptop-category .top-header-category{
+#product .container .top-header-laptop-category .top-header-category {
     margin: 5px 120px;
 }
 
-#product .container .top-sale h4{
+#product .container .top-sale h4 {
     margin: 20px 50px;
     width: 200px;
 }
 
-#product .container .latop-category{
+#product .container .latop-category {
     text-align: center;
     height: 32px;
     width: 140px;
@@ -701,54 +762,55 @@ a {
 
 }
 
-#product .container .active{
+#product .container .active {
     background-color: var(--top-header-bg);
     color: var(--white);
 }
 
-#product .container .latop-category:hover{
+#product .container .latop-category:hover {
     background-color: var(--top-header-bg);
     color: var(--white);
     box-shadow: 1px 1px 15px var(--top-header-bg);
 }
 
-#product .product-box .product-name .product-price{
+#product .product-box .product-name .product-price {
     padding-left: 20px;
 }
 
-.box-divider{
+.box-divider {
     display: flex;
 }
 
-#top-header-navbar .container .home{
+#top-header-navbar .container .home {
     background-color: rgb(248, 249, 250);
     color: var(--top-header-bg);
     border: none;
 }
 
 
-.laptop{
+.laptop {
     background-color: var(--top-header-bg);
     color: rgb(248, 249, 250);
 
 }
 
-#product .container .top-sale{
+#product .container .top-sale {
     padding: 0;
 }
+
 /* Laptop Category Css Ends Here */
 
 /* Gaming Laptop Category Css Starts Here */
 
-.gaming-laptop-product .container .top-sale h4{
+.gaming-laptop-product .container .top-sale h4 {
     width: 300px;
 }
 
-#gaming-laptop .product-row .product-box-padding .product-box .product-details .product-name-title{
+#gaming-laptop .product-row .product-box-padding .product-box .product-details .product-name-title {
     font-size: 16px;
 }
 
-.gaming-laptop-product #gaming-laptop .product-row .product-box-padding .product-box .product-details .product-name .product-price{
+.gaming-laptop-product #gaming-laptop .product-row .product-box-padding .product-box .product-details .product-name .product-price {
     padding-left: 140px;
 }
 
@@ -758,42 +820,42 @@ a {
 
 /* Budget Laptop */
 
-#product .container .product-row .product-box-padding .product-box{
+#product .container .product-row .product-box-padding .product-box {
     height: 345px;
 }
 
-#product .container .product-row .product-box-padding .product-box .product-details .product-price{
+#product .container .product-row .product-box-padding .product-box .product-details .product-price {
     padding-left: 15px;
 }
 
 /* Media Query */
 
-@media only screen and (max-width: 600px){
-    #product .container .top-header-laptop-category{
+@media only screen and (max-width: 600px) {
+    #product .container .top-header-laptop-category {
         display: block;
     }
 
-    #product .container .top-sale{
+    #product .container .top-sale {
         padding: 0;
     }
 
-    #product .container .top-sale h4{
+    #product .container .top-sale h4 {
         margin: 0;
     }
 
-    #product .container .top-header-laptop-category .top-header-category{
+    #product .container .top-header-laptop-category .top-header-category {
         margin: 15px 120px;
     }
 
-    .box-divider{
+    .box-divider {
         display: block;
     }
 
-    .gaming-laptop-product #gaming-laptop .product-row .product-box-padding .product-box .product-details .product-name .product-price{
+    .gaming-laptop-product #gaming-laptop .product-row .product-box-padding .product-box .product-details .product-name .product-price {
         padding-left: 72px;
     }
 
-    #product .container .product-row .product-box-padding .product-box .product-details .product-price{
+    #product .container .product-row .product-box-padding .product-box .product-details .product-price {
         padding: 0;
         padding-left: 165px;
     }
@@ -1042,6 +1104,11 @@ a {
 
 /* Footer Css Starts Here */
 
+#footer {
+    padding-top: 111px;
+}
+
+
 #footer .footer-box-padding .footer-box {
     background-color: var(--footer-bg);
     color: var(--white);
@@ -1145,9 +1212,135 @@ h4 {
 
 
 
-.activePage{
+.activePage {
     color: #fff;
     background-color: var(--top-header-bg);
     border-bottom: 5px solid var(--dec-color);
 }
+
 /* Footer Css Ends Here */
+
+
+
+
+
+
+
+
+
+
+/* New Footer */
+
+
+#new-footer .new-footer-box {
+    height: 400px;
+    width: 100%;
+    background-color: #b3b0b0;
+}
+
+#new-footer .new-footer-box .col-md-3 {
+    width: 245px;
+    display: block;
+}
+
+#new-footer .new-footer-box .col-md-3 h5 {
+    color: var(--dec-color);
+    font-size: 25px;
+    font-weight: normal;
+}
+
+#new-footer .new-footer-box .col-md-3 h6 {
+    padding-top: 5px;
+    color: #000;
+    font-size: 16px;
+    font: 600;
+}
+
+#new-footer .new-footer-box .col-md-3 .icon-and-address span h5 {
+    color: #000;
+    margin: 15px 0;
+    font-weight: 600;
+    font-size: 16px;
+}
+
+
+/* Footer and other media queries */
+
+@media only screen and (max-width: 600px) {
+    
+    #about-us .about-us-header-padding{
+        padding-left: 170px;
+        padding-right: 160px;
+    }
+
+    #about-us .about-us-header{
+        height: 100px;
+    }
+    
+    #footer {
+        width: 100%;
+    }
+
+    #footer .footer-box {
+        min-height: 100vh;
+    }
+
+    #footer .footer-box-padding .footer-box .footer-content {
+        display: block;
+        text-align: center;
+        padding-left: 68px;
+        padding-top: 8px;
+    }
+
+    #footer .footer-box-padding .footer-box .footer-content h3 {
+        width: 270px;
+
+    }
+
+    #footer .second-footer-padding {
+        min-height: 50vh;
+    }
+
+    #footer .second-footer-padding .second-footer {
+        display: block;
+        padding-left: 8%;
+    }
+
+    #footer .second-footer-padding .second-footer .shop-name h2 {
+        padding-left: 110px;
+
+    }
+
+    #footer .second-footer-padding .second-footer .second-box-width {
+        margin: 0;
+        padding: 0;
+        padding-left: 75px;
+    }
+
+    #footer .second-footer-padding .second-footer .second-box-width .store-location {
+        margin: 0;
+        padding-left: 60px;
+    }
+
+    .follow-vans {
+        padding-left: 48px;
+    }
+
+    #footer .second-footer-padding .second-footer .small-offer-padding {
+        padding: 0;
+        padding-left: 10px;
+    }
+
+    #footer .second-footer-padding .second-footer .small-offer-padding form{
+        padding-left: 90px;
+    }
+
+    #footer .second-footer-padding .second-footer .small-offer-padding .small-offer form .email {
+        margin: 10px 25px;
+
+    }
+
+
+
+
+}

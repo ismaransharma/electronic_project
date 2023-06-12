@@ -10,8 +10,8 @@ class SiteController extends Controller
         return view('site.home');
     }
     
-    public function homePage(){
-        return view('layouts.template');
+    public function getAbout(){
+        return view('site.about-us');
     }
     
     public function getServices(){

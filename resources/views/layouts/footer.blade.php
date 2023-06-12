@@ -74,7 +74,7 @@
                     <div class="store-location">
                         <h3>Store Location</h3>
                         <h5>Andheri Mumbai</h5>
-                        
+
                     </div>
                 </div>
                 <div class="follow-vans-padding second-box-width">
@@ -87,7 +87,7 @@
                         </h5>
                     </div>
                 </div>
-                <div class="small-offer-padding second-box-width">
+                <div class="small-offer-padding second-box-width ">
                     <div class="small-offer">
                         <h4>Sign Up to get 10% off in your first product</h4>
                         <form>
@@ -110,18 +110,59 @@
 
 
 
+    <section id="new-footer">
+        <div class="new-footer-box-padding">
+            <div class="new-footer-box">
+                <div class="row">
+                    <div class="col-md-3">
+                        <div class="about-info">
+                            <h5>ABOUT INFO</h5>
+                            <h6>Lorem ipsum dolor sit amet consectetur adipisicing elit. Harum, excepturi!</h6>
+                        </div>
+                        <div class="icon-and-address">
+                            <i></i><span>
+                                <h5>Address: Ashok Nagar</h5>
+                            </span>
+                            <i></i><span>
+                                <h5>Email: abc@gmail.com</h5>
+                            </span>
+                            <i></i><span>
+                                <h5>Phone: 9876543210</h5>
+                            </span>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="footer-information">
+                            <h5>INFORMATION</h5>
+                            <h6><i></i><span>Sign in</span></h6>
+                            <h6><i></i><span>View Cart</span></h6>
+                            <h6><i></i><span>My Wishlist</span></h6>
+                            <h6><i></i><span>My Orders</span></h6>
+                            <h6><i></i><span>Help</span></h6>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <h5>INFO LINKS</h5>
+                        <h6><i></i>Home</h6>
+                        <h6><i></i>About Us</h6>
+                        <h6><i></i>Shop</h6>
+                        <h6><i></i>Blog</h6>
+                        <h6><i></i>Contact Us</h6>
+                    </div>
+                    <div class="col-md-3">
+                        <h5>SUPPORTED AREA</h5>
+                        <h6><i></i>Hello &amp; Contact</h6>
+                        <h6><i></i>Shipping &amp; Taxes</h6>
+                        <h6><i></i>Return Policy</h6>
+                        <h6><i></i>Affliates</h6>
+                        <h6><i></i>Legal Notice</h6>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
 </body>
 
 </html>
-
-
-
-
-
-
-
-
-
-
-
-

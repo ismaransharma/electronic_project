@@ -16,7 +16,7 @@ use App\Http\Controllers\SiteController;
 
 Route::get('/', [SiteController::class, 'getHome']);
 
-Route::get('/home', [SiteController::class, 'homePage']);
+Route::get('/about-us', [SiteController::class, 'getAbout']);
 
 Route::get('/services', [SiteController::class, 'getServices']);
 
