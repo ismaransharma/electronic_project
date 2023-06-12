@@ -4,16 +4,6 @@
 
 
 
-<head>
-    <link rel="stylesheet" href="{{ asset('site/css/services.css')}}">
-    <title>@yield('title', 'Gada Electronic | Our Services')</title>
-
-
-
-</head>
-
-
-
 <div id="container">
     <div class="services-title">
         <span>Our Services</span>

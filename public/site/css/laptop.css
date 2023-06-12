@@ -3,6 +3,7 @@
 
 #product .container .top-header-laptop-category{
     display: flex;
+    padding-top: 140px;
 }
 
 #product .container .top-header-laptop-category .top-header-category{
@@ -23,7 +24,7 @@
     background-color: var(--white);
     color: var(--top-header-bg);
     cursor: pointer;
-    padding-top: 3px;
+    padding-top: 4px;
 
 }
 

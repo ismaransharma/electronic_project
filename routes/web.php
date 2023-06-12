@@ -27,3 +27,5 @@ Route::get('/categroy-gaming-laptop', [SiteController::class, 'getGamingLaptopCa
 Route::get('/category-budget-laptop', [SiteController::class, 'getBudgetLaptopCategory']);
 
 Route::get('/contact-us', [SiteController::class, 'getContactUs']);
+
+Route::get('/footer', [SiteController::class, 'getfooter']);

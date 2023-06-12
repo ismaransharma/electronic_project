@@ -2,10 +2,6 @@
 
 @section('navbar')
 
-<head>
-    <link rel="stylesheet" href="{{ asset('site/css/laptop.css')}}">
-</head>
-
 <section id="product">
     <div class="container">
         <div class="top-header-laptop-category-padding">
