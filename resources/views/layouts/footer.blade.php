@@ -74,7 +74,7 @@
                     <div class="store-location">
                         <h3>Store Location</h3>
                         <h5>Andheri Mumbai</h5>
-                        <h5><button class="open-in-map">Open In Map</button></h5>
+                        
                     </div>
                 </div>
                 <div class="follow-vans-padding second-box-width">

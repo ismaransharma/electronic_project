@@ -1,6 +1,11 @@
-@extends('layouts.navbar')
+@extends('layouts.template', ['activePage' => 'laptoppage'])
 
 @section('navbar')
+
+<head>
+    <link rel="stylesheet" href="{{ asset('site/css/laptop.css')}}">
+</head>
+
 
 <section id="product">
     <div class="container">

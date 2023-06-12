@@ -28,7 +28,6 @@ body {
     height: 100vh;
 }
 
-
 /* Nav Bar Sticky */
 
 .upper-main-header-and-nav {
@@ -137,20 +136,18 @@ a {
 }
 
 .nav-link {
-    /* border: 1px solid var(--nav-border); */
-    color: var(--top-header-bg);
     font-size: 20px;
     font-weight: 100;
     transition: 0.8s;
     height: 65px;
     padding: 15px 30px;
+    color: var(--top-header-bg);
 
 }
 
 .nav-link:hover {
     color: var(--white);
     background-color: var(--top-header-bg);
-    font-weight: 600;
     border-bottom: 5px solid var(--dec-color);
 }
 
@@ -409,6 +406,11 @@ a {
     min-height: 100vh;
 }
 
+#product .top-header-laptop-category{
+    padding-top: 250px;
+}
+
+
 #product .top-sale {
     padding-left: 38px;
     padding-top: 20px;
@@ -573,45 +575,13 @@ a {
 
 /* Products Css Ends Here */
 
-/* Categories Css starts here */
-
-#categories .box {
-    height: 50px;
-    width: 50px;
-    border-radius: 50%;
-}
-
-#categories .box .image h6 {
-    padding-left: 25px;
-}
-
-#categories .box .image img {
-    height: 100px;
-    width: 100px;
-    border: 1px solid var(--top-header-bg);
-    border-radius: 50%;
-}
-
-#categories .box .image:hover img {
-    background-color: var(--top-header-bg);
-}
-
-/* Categories Css ends here */
-
 
 /* Services Css Starts Here*/
-
-#top-header-navbar .container .home {
-    background-color: rgb(248, 249, 250);
-    color: var(--top-header-bg);
-    border: none;
-}
-
-#container {
+.services-bg {
+    padding-left: 55px;
     height: 105vh;
     background-color: var(--services-bg);
     color: var(--font);
-
 }
 
 #container .services-title {
@@ -624,7 +594,7 @@ a {
 
 .box-padding {
     display: flex;
-    margin: 30px 100px;
+    margin: 30px 60px;
 }
 
 .box {
@@ -702,6 +672,135 @@ a {
 /* Services Css Ends Here*/
 
 
+/* Laptop Category Css Starts Here */
+
+#product .container .top-header-laptop-category{
+    display: flex;
+    padding-top: 140px;
+}
+
+#product .container .top-header-laptop-category .top-header-category{
+    margin: 5px 120px;
+}
+
+#product .container .top-sale h4{
+    margin: 20px 50px;
+    width: 200px;
+}
+
+#product .container .latop-category{
+    text-align: center;
+    height: 32px;
+    width: 140px;
+    border: 1px solid gray;
+    border-radius: 25px;
+    background-color: var(--white);
+    color: var(--top-header-bg);
+    cursor: pointer;
+    padding-top: 4px;
+
+}
+
+#product .container .active{
+    background-color: var(--top-header-bg);
+    color: var(--white);
+}
+
+#product .container .latop-category:hover{
+    background-color: var(--top-header-bg);
+    color: var(--white);
+    box-shadow: 1px 1px 15px var(--top-header-bg);
+}
+
+#product .product-box .product-name .product-price{
+    padding-left: 20px;
+}
+
+.box-divider{
+    display: flex;
+}
+
+#top-header-navbar .container .home{
+    background-color: rgb(248, 249, 250);
+    color: var(--top-header-bg);
+    border: none;
+}
+
+
+.laptop{
+    background-color: var(--top-header-bg);
+    color: rgb(248, 249, 250);
+
+}
+
+#product .container .top-sale{
+    padding: 0;
+}
+/* Laptop Category Css Ends Here */
+
+/* Gaming Laptop Category Css Starts Here */
+
+.gaming-laptop-product .container .top-sale h4{
+    width: 300px;
+}
+
+#gaming-laptop .product-row .product-box-padding .product-box .product-details .product-name-title{
+    font-size: 16px;
+}
+
+.gaming-laptop-product #gaming-laptop .product-row .product-box-padding .product-box .product-details .product-name .product-price{
+    padding-left: 140px;
+}
+
+/* Gaming Laptop Category Css Ends Here */
+
+
+
+/* Budget Laptop */
+
+#product .container .product-row .product-box-padding .product-box{
+    height: 345px;
+}
+
+#product .container .product-row .product-box-padding .product-box .product-details .product-price{
+    padding-left: 15px;
+}
+
+/* Media Query */
+
+@media only screen and (max-width: 600px){
+    #product .container .top-header-laptop-category{
+        display: block;
+    }
+
+    #product .container .top-sale{
+        padding: 0;
+    }
+
+    #product .container .top-sale h4{
+        margin: 0;
+    }
+
+    #product .container .top-header-laptop-category .top-header-category{
+        margin: 15px 120px;
+    }
+
+    .box-divider{
+        display: block;
+    }
+
+    .gaming-laptop-product #gaming-laptop .product-row .product-box-padding .product-box .product-details .product-name .product-price{
+        padding-left: 72px;
+    }
+
+    #product .container .product-row .product-box-padding .product-box .product-details .product-price{
+        padding: 0;
+        padding-left: 165px;
+    }
+}
+
+
+
 /* Contact Us Css Starts Here */
 
 #contact-us {
@@ -709,14 +808,7 @@ a {
     padding-top: 90px;
 }
 
-#top-header-navbar .container .home {
-    background-color: rgb(248, 249, 250);
-    color: var(--top-header-bg);
-    border: none;
-}
-
 #contact-us .container .box-padding {
-    padding-left: 20px;
     padding-top: 50px;
     color: var(--top-header-bg);
 
@@ -735,6 +827,7 @@ a {
 #contact-us .container .box-padding .box .white-box .contact-us-title h4 {
     text-align: center;
     font-weight: bold;
+    padding-top: 5px;
 }
 
 #contact-us .container .box-padding .box .white-box .inner-box-padding {
@@ -751,10 +844,6 @@ a {
     border-radius: 5px;
     box-shadow: 1px 1px 8px rgb(111, 106, 106);
 
-}
-
-#contact-us .container .box-padding .box .inner-box-padding .inner-box:hover{
-    box-shadow: 1px 1px 18px #0ea781;
 }
 
 #contact-us .container .box-padding .box .white-box .inner-box .small-pic-padding {
@@ -802,6 +891,7 @@ a {
     height: 72vh;
     width: 520px;
     display: flex;
+    padding-top: 5px;
 }
 
 #contact-us .container .box-padding .box .image-box .img-box img {
@@ -826,6 +916,7 @@ a {
     width: 300px;
     position: absolute;
     background-color: #fff;
+    box-shadow: 1px 1px 8px rgb(111, 106, 106);
     border-radius: 5px;
 }
 
@@ -951,10 +1042,6 @@ a {
 
 /* Footer Css Starts Here */
 
-/* #footer{
-    padding-top: 150px;
-} */
-
 #footer .footer-box-padding .footer-box {
     background-color: var(--footer-bg);
     color: var(--white);
@@ -1056,4 +1143,11 @@ h4 {
 
 }
 
+
+
+.activePage{
+    color: #fff;
+    background-color: var(--top-header-bg);
+    border-bottom: 5px solid var(--dec-color);
+}
 /* Footer Css Ends Here */

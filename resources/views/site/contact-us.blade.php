@@ -1,4 +1,5 @@
-@extends('layouts.navbar')
+@extends('layouts.template', ['activePage' => 'contactpage'])
+
 
 @section('navbar')
 

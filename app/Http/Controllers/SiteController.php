@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 class SiteController extends Controller
 {
     public function getHome(){
-        return view('layouts.template');
+        return view('site.home');
     }
     
     public function homePage(){
