@@ -577,8 +577,14 @@ a {
 
 /* Category Css Starts Here */
 
+#category{
+    background-color: #747272;
+    min-height: 25vh;
+}
+
 #category .container .section-title {
     text-align: center;
+    padding: 5px 0;
 }
 
 #category .row .box-padding {
@@ -589,11 +595,25 @@ a {
 #category .row .box {
     height: 100px;
     width: 100px;
-    border: 1px solid red;
+    border: 1px solid var(--footer-bg);
     border-radius: 50%;
+    cursor: pointer;
 }
 
+#category .row .box .category-icon{
+    height: 55px;
+    width: 98px;
+    padding-top: 18px;
+    color: var(--footer-bg);
+}
 
+#category .row .box:hover{
+    background-color: var(--footer-bg);
+}
+
+#category .row .box:hover .category-icon{
+    color: var(--white);
+}
 
 
 /* Category Css Ends Here */
@@ -610,8 +630,6 @@ a {
 
 #about-us .about-us-header-padding {
     padding-top: 25px;
-    padding-left: 250px;
-    padding-right: 250px;
 }
 
 
@@ -620,7 +638,7 @@ a {
     width: 100%;
     background-color: #eee;
     text-align: center;
-    padding-top: 7%;
+    padding-top: 5%;
 }
 
 #about-us .about-us-header a span {
@@ -1095,13 +1113,6 @@ a {
 
 
 
-
-
-
-
-
-
-
 /* Footer Css Starts Here */
 
 #footer {
@@ -1339,8 +1350,5 @@ h4 {
         margin: 10px 25px;
 
     }
-
-
-
 
 }

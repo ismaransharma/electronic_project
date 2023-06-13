@@ -269,41 +269,27 @@
     <div class="container">
         <div class="section-title">
             <h6>Our Category</h6>
-            <h2>Shop By <span>Category  </span></h2>
+            <h2>Shop By <span>Category </span></h2>
         </div>
         <div class="row">
-            <div class="col-md-2">
+            <div class="col-md-4">
                 <div class="box-padding">
                     <div class="box">
-
+                        <a href="{{ url('/laptop-category') }}"><i class="fa-solid fa-laptop category-icon"></i></a>
                     </div>
                 </div>
             </div>
-            <div class="col-md-2">
+            <div class="col-md-4">
                 <div class="box-padding">
                     <div class="box">
-
+                        <a href="#"><i class="fa-solid fa-mobile-screen category-icon"></i></a>
                     </div>
                 </div>
             </div>
-            <div class="col-md-2">
+            <div class="col-md-4">
                 <div class="box-padding">
                     <div class="box">
-
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-2">
-                <div class="box-padding">
-                    <div class="box">
-
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-2">
-                <div class="box-padding">
-                    <div class="box">
-
+                        <a href="#"><i class="fa-solid fa-clock category-icon"></i></a>
                     </div>
                 </div>
             </div>

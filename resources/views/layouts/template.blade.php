@@ -113,7 +113,7 @@
 
 
     <!-- Footer Sectin Starts Here -->
-    <div id="footer" class="footer-container">
+    <!-- <div id="footer" class="footer-container">
         <div class="footer-box-padding">
             <div class="footer-box">
                 <div class="footer-content">
@@ -207,7 +207,7 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div> -->
     <!-- Footer Sectin Ends Here -->
 
 

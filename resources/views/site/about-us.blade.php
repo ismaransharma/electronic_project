@@ -6,7 +6,7 @@
     <div class="about-us-header-padding">
         <div class="about-us-header">
             <h6>About Us</h6>
-            <a href="{{ url('/')}}"><span>Home</span></a> / <a href="{{ url('/about-us') }}"><span>About Us</span></a>
+            <h6><a href="{{ url('/')}}"><span>Home</span></a> / <a href="{{ url('/about-us') }}"><span>About Us</span></a></h6>
         </div>
     </div>
 </section>
