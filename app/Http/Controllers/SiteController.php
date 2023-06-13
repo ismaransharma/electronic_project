@@ -34,6 +34,10 @@ class SiteController extends Controller
         return view('site.contact-us');
     }
     
+    public function test(){
+        return view('site.test');
+    }
+    
     public function getfooter(){
         return view('layouts.footer');
     }

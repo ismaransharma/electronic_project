@@ -28,4 +28,6 @@ Route::get('/category-budget-laptop', [SiteController::class, 'getBudgetLaptopCa
 
 Route::get('/contact-us', [SiteController::class, 'getContactUs']);
 
+Route::get('/test', [SiteController::class, 'test']);
+
 Route::get('/footer', [SiteController::class, 'getfooter']);
