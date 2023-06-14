@@ -62,7 +62,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-md-4">
+                <div class="col-md-4 cl-lg-3">
                     <div class="box-padding">
                         <div class="box">
                             <i class="fa-solid fa-message"></i>

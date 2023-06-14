@@ -1359,8 +1359,6 @@ h4 {
 
 
 
-
-
 /* Test */
 
 #upper-header {
@@ -1422,7 +1420,7 @@ h4 {
 
 
 #second-contact-us .row {
-    min-height: 50vh;
+    min-height: 25vh;
 }
 
 #second-contact-us .row .col-md-4 .box-padding {
@@ -1472,7 +1470,7 @@ h4 {
     margin: 5px 0;
     width: 350px;
     border: 1px solid var(--top-header-bg);
-    border-radius: 25px;
+    border-radius: 15px;
     outline: none;
 }
 
@@ -1495,7 +1493,7 @@ h4 {
 }
 
 #contact-form form .submit-form {
-    padding-left: 310px;
+    padding: 16px 310px;
 }
 
 #contact-form form .submit-form button {

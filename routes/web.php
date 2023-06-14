@@ -14,7 +14,7 @@ use App\Http\Controllers\SiteController;
 |
 */
 
-Route::get('/', [SiteController::class, 'getHome']);
+Route::get('/home', [SiteController::class, 'getHome']);
 
 Route::get('/about-us', [SiteController::class, 'getAbout']);
 
@@ -34,4 +34,4 @@ Route::get('/footer', [SiteController::class, 'getfooter']);
 
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+// Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
