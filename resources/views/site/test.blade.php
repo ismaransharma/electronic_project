@@ -102,7 +102,7 @@
 
 
 
-    <!-- <script>
+    <script>
     const submitButton = document.getElementById('submit-button');
 
     function moveButtonRandomly() {
@@ -112,7 +112,7 @@
     }
 
     submitButton.addEventListener('mouseover', moveButtonRandomly);
-    </script> -->
+    </script>
 
     </body>
 

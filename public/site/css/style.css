@@ -1514,6 +1514,6 @@ h4 {
     color: var(--white);
 }
 
-/* .button {
+.button {
     transition: transform 0.01s;
-} */
+}

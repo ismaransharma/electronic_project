@@ -31,3 +31,7 @@ Route::get('/contact-us', [SiteController::class, 'getContactUs']);
 Route::get('/test', [SiteController::class, 'test']);
 
 Route::get('/footer', [SiteController::class, 'getfooter']);
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
