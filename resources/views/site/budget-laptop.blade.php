@@ -1,4 +1,4 @@
-@extends('layouts.template', ['activePage' => ''])
+@extends('layouts.template', ['activePage' => 'laptoppage'])
 
 
 @section('navbar')

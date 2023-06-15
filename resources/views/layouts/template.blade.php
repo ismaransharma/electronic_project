@@ -23,7 +23,7 @@
         <section id="top-header">
             <div class="container">
                 <div class="row">
-                    <div class="col-md-8 col-lg-8 col-xl-12 col-sm-12 col-12 text-sm-center">
+                    <div class="col-md-8 col-lg-8 col-xl-8 col-sm-12 col-12 text-sm-center">
                         <div class="top-header-content">
                             <div class="row">
                                 <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4 col-4 top-header-location-padding">
@@ -39,7 +39,7 @@
                         </div>
                     </div>
 
-                    <div class="col-md-4 col-lg-4 col-xl-4 col-sm-12 col-12 text-end d-none d-md-block icons">
+                    <div class="col-md-4 col-lg-4 col-xl-4 col-sm-12 col-12 text-end icons">
                         <div class="top-header-social-icon">
                             <a href="">
                                 <i class="fa-brands fa-facebook-f"></i>
@@ -83,7 +83,7 @@
                                 <a class="nav-link {{ $activePage == 'servicepage' ? 'activePage' : '' }}" href="{{ url('/services')}}">Our Services</a>
                             </li>
                             <li class="nav-item dropdown">
-                                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                                <a class="nav-link dropdown-toggle {{ $activePage == 'laptoppage' ? 'activePage' : '' }}" href="#" role="button" data-bs-toggle="dropdown"
                                     aria-expanded="false">
                                     Category
                                 </a>

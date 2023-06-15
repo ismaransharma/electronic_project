@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.app',  ['activePage' => 'loginHomePage'])
 
 @section('content')
 <div class="container">
@@ -14,7 +14,7 @@
                         </div>
                     @endif
 
-                    {{ __('You are logged in!') }}
+                    <h5>You are logged in as {{ Auth::user()->name}}</h5>
                 </div>
             </div>
         </div>
