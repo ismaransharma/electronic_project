@@ -20,15 +20,92 @@
     @vite(['resources/sass/app.scss', 'resources/js/app.js'])
 
     <style>
+    body {
+        background-color: #5d5dff;
+    }
+
+    .bg-white {
+        background-color: #001234 !important;
+        color: #fff;
+    }
+
+    .navbar-brand{
+        color: #fff;
+    }
+
+    .navbar-brand:hover{
+        color: #b5a5a5;
+    }
+
+    .nav-link {
+        color: #fff;
+    }
+
     .activePage {
         background-color: #500094;
         color: #fff;
         border-bottom: 5px solid #ff6700;
+        opacity: 1;
     }
 
     .activePage:hover {
         color: #fff;
+        opacity: 1;
     }
+
+    .nav-link:hover {
+        color: #fff;
+        opacity: 0.5;
+
+    }
+
+
+    .card {
+        background: transparent;
+        color: #fff;
+        border: 1px solid #fff;
+    }
+
+    .card-header{
+        border: none;
+    }
+
+    .card-body {
+        border-top: 1px solid #fff;
+    }
+
+    .table{
+        --bs-table-bg: none;
+    }
+
+    .table tr th{
+        color: #001234;
+    }
+
+    .modal-content{
+        background-color: #6565b1;
+    }
+
+    .form-control{
+        background-color: #e3e3f3;
+    }
+
+    .form-group label{
+        color: #00091a;
+    }
+
+    .modal-title b{
+        color: #e3e3f3;
+    }
+
+    .card-body tr th{
+        color: #eee;
+    }
+
+    .card-body tr td{
+        color: #eee;
+    }
+
     </style>
 </head>
 
@@ -70,44 +147,52 @@
                         @else
 
                         <li class="nav-item">
-                            <a class="nav-link {{ $activePage == 'adminDashboard' ? 'activePage' : '' }}" href="{{ route('home')}}">{{ __('Dashboard') }}
+                            <a class="nav-link {{ $activePage == 'adminDashboard' ? 'activePage' : '' }}"
+                                href="{{ route('home')}}">{{ __('Dashboard') }}
                             </a>
                         </li>
 
                         <li class="nav-item">
-                            <a class="nav-link {{ $activePage == 'Category' ? 'activePage' : '' }}" href="{{ route('getAdminCategoryManage')}}">{{ __('Category') }}
+                            <a class="nav-link {{ $activePage == 'Category' ? 'activePage' : '' }}"
+                                href="{{ route('getAdminCategoryManage')}}">{{ __('Category') }}
                             </a>
                         </li>
 
                         <li class="nav-item">
-                            <a class="nav-link {{ $activePage == 'Product' ? 'activePage' : '' }}" href="{{ route('getAdminProductManage')}}">{{ __('Products') }}
+                            <a class="nav-link {{ $activePage == 'Product' ? 'activePage' : '' }}"
+                                href="{{ route('getAdminProductManage')}}">{{ __('Products') }}
                             </a>
                         </li>
 
                         <li class="nav-item">
-                            <a class="nav-link {{ $activePage == '' ? 'activePage' : '' }}" href="{{ route('home')}}">{{ __('Services') }}
+                            <a class="nav-link {{ $activePage == 'Services' ? 'activePage' : '' }}"
+                                href="{{ route('getAdminServicesManage')}}">{{ __('Services') }}
                             </a>
                         </li>
 
                         <li class="nav-item">
-                            <a class="nav-link {{ $activePage == '' ? 'activePage' : '' }}" href="{{ route('home')}}">{{ __('Slider') }}
+                            <a class="nav-link {{ $activePage == 'Slider' ? 'activePage' : '' }}"
+                                href="{{ route('getAdminSliderManage')}}">{{ __('Slider') }}
                             </a>
                         </li>
 
                         <li class="nav-item">
-                            <a class="nav-link {{ $activePage == '' ? 'activePage' : '' }}" href="{{ route('home')}}">{{ __('About Us') }}
+                            <a class="nav-link {{ $activePage == '' ? 'activePage' : '' }}"
+                                href="{{ route('getAdminAboutUsManage')}}">{{ __('About Us') }}
                             </a>
                         </li>
 
                         <li class="nav-item">
-                            <a class="nav-link {{ $activePage == '' ? 'activePage' : '' }}" href="{{ route('home')}}">{{ __('Order') }}
+                            <a class="nav-link {{ $activePage == '' ? 'activePage' : '' }}"
+                                href="{{ route('getAdminOrderManage')}}">{{ __('Order  ') }}
                             </a>
                         </li>
 
                         <li class="nav-item dropdown">
                             <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"
                                 data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                {{ Auth::user()->name }}
+                                {{ Auth::user()->name }} <i style="padding-left: 5px;"
+                                    class="fa-solid fa-user-secret adminIcon"></i>
                             </a>
 
                             <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
