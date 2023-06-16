@@ -41,7 +41,6 @@ Route::get('/home', [HomeController::class, 'index'])->name('home');
 Route::middleware('auth')->group (function (){
     Route::prefix('admin')->group(function () {
 
-        Route::get('dashboard',  [HomeController::class, 'getAdminDashboard'])->name('getAdminDashboard');
 
         Route::prefix('product')->group (function (){
             Route::get('manage', [HomeController::class, 'getAdminProductManage'])->name('getAdminProductManage');

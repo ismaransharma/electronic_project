@@ -36,7 +36,7 @@
     <div id="app">
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
             <div class="container">
-                <a class="navbar-brand" href="{{ url('/') }}">
+                <a class="navbar-brand" href="{{ route('home') }}">
                     {{ config('app.name', 'Laravel') }}
                 </a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
@@ -68,8 +68,39 @@
                                 </li>
                             @endif -->
                         @else
+
                         <li class="nav-item">
-                            <a class="nav-link {{ $activePage == 'adminDashboard' ? 'activePage' : '' }}" href="{{ route('getAdminDashboard')}}">{{ __('Dashboard') }}
+                            <a class="nav-link {{ $activePage == 'adminDashboard' ? 'activePage' : '' }}" href="{{ route('home')}}">{{ __('Dashboard') }}
+                            </a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link {{ $activePage == 'Category' ? 'activePage' : '' }}" href="{{ route('getAdminCategoryManage')}}">{{ __('Category') }}
+                            </a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link {{ $activePage == 'Product' ? 'activePage' : '' }}" href="{{ route('getAdminProductManage')}}">{{ __('Products') }}
+                            </a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link {{ $activePage == '' ? 'activePage' : '' }}" href="{{ route('home')}}">{{ __('Services') }}
+                            </a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link {{ $activePage == '' ? 'activePage' : '' }}" href="{{ route('home')}}">{{ __('Slider') }}
+                            </a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link {{ $activePage == '' ? 'activePage' : '' }}" href="{{ route('home')}}">{{ __('About Us') }}
+                            </a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link {{ $activePage == '' ? 'activePage' : '' }}" href="{{ route('home')}}">{{ __('Order') }}
                             </a>
                         </li>
 
