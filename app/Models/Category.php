@@ -9,7 +9,7 @@ class Category extends Model
 {
     use HasFactory;
 
-    // database field ma add huna sakne kura haru:-
+    //  kun kun field database ma add huna sakxan
     protected $fillable = [
         'category_title',
         'slug',
@@ -21,12 +21,8 @@ class Category extends Model
         'updated_at',
     ];
 
-
-    // database bata aauni value 
-
+    // database bata aauni value yesto vyera aaija
     protected $casts = [
         'deleted_at' => 'datetime',
     ];
-
-
 }
