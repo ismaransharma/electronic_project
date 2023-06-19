@@ -19,12 +19,17 @@
                     <div class="row">
                         <div class="col-md-6">Category</div>
                         <div class="col-md-6 text-end">
-                        <button class="btn btn-sm btn-primary" data-bs-toggle="modal"
-                                    data-bs-target="#addCategoryModal">Add Category</button>
+                            <button class="btn btn-sm btn-primary" data-bs-toggle="modal"
+                                data-bs-target="#addCategoryModal">Add Category</button>
                         </div>
                     </div>
                 </div>
                 <div class="card-body">
+                    @if (session('success'))
+                    <div class="alert alert-success" role="alert">
+                        {{ session('success') }}
+                    </div>
+                    @endif
                     <table class="table table-stripped">
                         <thead>
                             <tr>
@@ -76,28 +81,56 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <form action="">
+                <form action="{{ route('postManageProduct') }}" method="POST" enctype="multipart/form-data">
+                    <!-- Yo csrf le chai token generate garne kam garna which is tooo muchhh useful -->
+                    @csrf
                     <div class="form-group mb-2">
                         <label for="title">Category Title*</label>
-                        <input type="text" class="form-control" id="title" name="category_title"
-                            placeholder="Enter Category Title" required>
+                        <input type="text" class="form-control @error('category_title') is-invalid @enderror"
+                            value="{{ old('category_title') }}" id="title" name="category_title"
+                            placeholder="Enter Category Title" required />
+
+                        @error('category_title')
+                        <span class="invalid-feedback" role="alert">
+                            <strong>{{ $message }}</strong>
+                        </span>
+                        @enderror
                     </div>
                     <div class="form-group mb-2">
                         <label for="image">Category Image*</label>
-                        <input type="file" class="form-control" id="image" name="category_image"
-                            placeholder="Enter Category Title" required>
+
+                        <input type="file" class="form-control @error('category_image') is-invalid @enderror" id="image"
+                            name="category_image" placeholder="Enter Category Title" value="{{ old('category_image') }}" required />
+
+                        @error('category_image')
+                        <span class="invalid-feedback" role="alert">
+                            <strong>{{ $message }}</strong>
+                        </span>
+                        @enderror
                     </div>
                     <div class="form-group mb-2">
                         <label for="status">Status*</label>
-                        <select name="status" id="status" class="form-control" required>
+                        <select name="status" id="status" class="form-control @error('status') is-invalid @enderror"
+                            required>
                             <option value="active">Active</option>
                             <option value="hidden">Hidden</option>
                         </select>
+
+                        @error('status')
+                        <span class="invalid-feedback" role="alert">
+                            <strong>{{ $message }}</strong>
+                        </span>
+                        @enderror
                     </div>
                     <div class="form-group mb-2">
                         <label for="category_description">Description</label>
-                        <textarea name="category_description" id="category_description" cols="30" rows="10"
-                            class="form-control"></textarea>
+                        <textarea name="category_description" id="category_description" cols=" 30" rows="10"
+                            class="form-control @error('category_description') is-invalid @enderror">{{ old('category_description') }}</textarea>
+                        @error('category_description')
+                        <span class="invalid-feedback" role="alert">
+                            <strong>{{ $message }}</strong>
+                        </span>
+                        @enderror
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>

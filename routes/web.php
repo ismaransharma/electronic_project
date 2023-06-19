@@ -74,8 +74,9 @@ Route::middleware('auth')->group (function (){
             Route::get('about-us', [HomeController::class, 'getAdminAboutUsManage'])->name('getAdminAboutUsManage');
         });
 
+        // admin products routes
+            Route::post('manage', [HomeController::class, 'postManageProduct'])->name('postManageProduct');
 
     
     });
 });
-
