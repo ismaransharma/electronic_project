@@ -1,5 +1,4 @@
 @extends('layouts.app', ['activePage' => 'Product'])
-
 @section('content')
 
 <head>
@@ -13,7 +12,7 @@
 
 <div class="container">
     <div class="row">
-        <div class="com-md-12">
+        <div class="col-md-12">
             <div class="card">
                 <div class="card-header">
                     <div class="row">
@@ -27,6 +26,11 @@
                     </div>
                 </div>
                 <div class="card-body">
+                    @if (session('success'))
+                    <div class="alert alert-success" role="alert">
+                        {{ session('success') }}
+                    </div>
+                    @endif
                     <table class="table">
                         <thead>
                             <tr>
@@ -81,62 +85,120 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <form action="">
+                <form action="{{ route('postAddProduct') }}" method="POST" enctype="multipart/form-data">
                     <div class="row">
+                        @csrf
                         <div class="col-md-6">
                             <div class="form-group mb-2">
                                 <label for="">Product Title*</label>
-                                <input type="text" name="product_title" class="form-control" id="product_title"
-                                    placeholder="Enter Product Title" required>
+                                <input type="text" name="product_title"
+                                    class="form-control @error('product_title') is-invalid @enderror"
+                                    value="{{ old('product_title') }}" id="product_title"
+                                    placeholder="Enter Product Title" required />
+                                @error('product_title')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                                @enderror
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="form-group mb-2">
                                 <label for="">Select Category*</label>
-                                <select name="select_category" class="form-control" id="select_category" required>
+                                <select name="select_category"
+                                    class="form-control @error('category_id') is-invalid @enderror" id="select_category"
+                                    required>
                                     <option value=""> ------ Select Category ------ </option>
                                     <option value="1">Laptop</option>
                                     <option value="2">Mobile</option>
                                 </select>
+                                @error('category_id')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                                @enderror
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="form-group mb-2">
                                 <label for="">Product Image*</label>
-                                <input type="file" class="form-control" id="select_image" name="select_image" required>
+                                <input type="file" class="form-control @error('product_image') is-invalid @enderror"
+                                    value="{{ old('product_image') }}" id="product_image" name="product_image"
+                                    required />
+                                @error('product_image')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                                @enderror
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="form-group mb-2">
                                 <label for="status">Status*</label>
-                                <select name="status" id="status" class="form-control" required>
+                                <select name="status" id="status"
+                                    class="form-control @error('status') is-invalid @enderror"
+                                    value="{{ old('status') }}" required>
                                     <option value="active">Active</option>
                                     <option value="hidden">Hidden</option>
                                 </select>
+                                @error('status')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                                @enderror
                             </div>
                         </div>
                         <div class="col-md-4">
                             <div class="form-group mb-2">
                                 <label for="">Stock*</label>
-                                <input type="number" class="form-control" id="stock" name="stock" required>
+                                <input type="number" class="form-control @error('stock') is-invalid @enderror"
+                                    value="{{ old('stock') }}" id="stock" name="stock" required />
+
+                                @error('stock')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                                @enderror
                             </div>
                         </div>
                         <div class="col-md-4">
                             <div class="form-group mb-2">
                                 <label for="">Original Cost*</label>
-                                <input type="number" class="form-control" id="original_cost" name="original_cost" required>
+                                <input type="number" class="form-control @error('original_cost') is-invalid @enderror"
+                                    value="{{ old('original_cost') }}" id="original_cost" name="original_cost"
+                                    required />
+                                @error('original_cost')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                                @enderror
                             </div>
                         </div>
                         <div class="col-md-4">
                             <div class="form-group mb-2">
                                 <label for="">Discounted Cost*</label>
-                                <input type="number" class="form-control" id="discounted_cost" name="discounted_cost" required>
+                                <input type="number" class="form-control @error('discounted_cost') is-invalid @enderror"
+                                    value="{{ old('discounted_cost') }}" id="discounted_cost" name="discounted_cost"
+                                    required />
+                                @error('discounted_cost')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                                @enderror
                             </div>
                         </div>
                         <div class="col-md-12">
                             <div class="form-group mb-2">
                                 <label for="">Product Description*</label>
-                                <textarea name="product_description" class="form-control" id="product_description" cols="30" rows="10" required></textarea>
+                                <textarea name="product_description"
+                                    class="form-control @error('discounted_cost') is-invalid @enderror"
+                                    id="product_description" cols="30" rows="10"
+                                    required>{{ old('product_description') }}</textarea>
+                                @error('discounted_cost')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                                @enderror
                             </div>
                         </div>
 

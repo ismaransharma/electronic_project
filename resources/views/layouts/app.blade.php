@@ -20,20 +20,36 @@
     @vite(['resources/sass/app.scss', 'resources/js/app.js'])
 
     <style>
-    body {
+    body #app {
         background-color: #5d5dff;
+        min-height: 100vh;
+    }
+
+    .card-width{
+        width: 550px;
+    }
+
+    .test {
+        min-height: 80vh;
+        align-items: center;
+        justify-content: center;
+        display: flex;
+        width: 400px;
     }
 
     .bg-white {
         background-color: #001234 !important;
         color: #fff;
+        position: fixed;
+        z-index: 1;
+        width: 100%;
     }
 
-    .navbar-brand{
+    .navbar-brand {
         color: #fff;
     }
 
-    .navbar-brand:hover{
+    .navbar-brand:hover {
         color: #b5a5a5;
     }
 
@@ -66,7 +82,7 @@
         border: 1px solid #fff;
     }
 
-    .card-header{
+    .card-header {
         border: none;
     }
 
@@ -74,38 +90,41 @@
         border-top: 1px solid #fff;
     }
 
-    .table{
+    .table {
         --bs-table-bg: none;
     }
 
-    .table tr th{
+    .table tr th {
         color: #001234;
     }
 
-    .modal-content{
+    .modal-content {
         background-color: #6565b1;
     }
 
-    .form-control{
+    .form-control {
         background-color: #e3e3f3;
     }
 
-    .form-group label{
+    .form-group label {
         color: #00091a;
     }
 
-    .modal-title b{
+    .modal-title b {
         color: #e3e3f3;
     }
 
-    .card-body tr th{
+    .card-body tr th {
         color: #eee;
     }
 
-    .card-body tr td{
+    .card-body tr td {
         color: #eee;
     }
 
+    .py-4 .container .row .col-md-12 {
+        padding-top: 55px;
+    }
     </style>
 </head>
 
@@ -177,7 +196,7 @@
                         </li>
 
                         <li class="nav-item">
-                            <a class="nav-link {{ $activePage == '' ? 'activePage' : '' }}"
+                            <a class="nav-link {{ $activePage == 'aboutUsPage' ? 'activePage' : '' }}"
                                 href="{{ route('getAdminAboutUsManage')}}">{{ __('About Us') }}
                             </a>
                         </li>

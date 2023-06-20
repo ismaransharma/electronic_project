@@ -44,10 +44,14 @@ Route::middleware('auth')->group (function (){
 
         Route::prefix('product')->group (function (){
             Route::get('manage', [HomeController::class, 'getAdminProductManage'])->name('getAdminProductManage');
+            // admin Product routes
+            Route::post('add', [HomeController::class, 'postAddProduct'])->name('postAddProduct');
         });
-
+        
         Route::prefix('category')->group (function (){
             Route::get('manage', [HomeController::class, 'getAdminCategoryManage'])->name('getAdminCategoryManage');
+            // admin Category routes
+            Route::post('add', [HomeController::class, 'postAddCategory'])->name('postAddCategory');
         });
 
         Route::prefix('carts')->group (function (){
@@ -73,10 +77,10 @@ Route::middleware('auth')->group (function (){
         Route::prefix('about-us')->group (function (){
             Route::get('about-us', [HomeController::class, 'getAdminAboutUsManage'])->name('getAdminAboutUsManage');
         });
-
-        // admin products routes
-            Route::post('manage', [HomeController::class, 'postManageProduct'])->name('postManageProduct');
-
+        
+        
+        
+        
     
     });
 });

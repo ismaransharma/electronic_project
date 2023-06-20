@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Category;
+use App\Models\Product;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 
@@ -76,8 +77,32 @@ class HomeController extends Controller
 
 
 
+
+
+
+    // Category manage Garne Function
+    public function getManageCategory()
+    {
+        $data = [
+            'categories' => Category::where('deleted_at', null)->orderby('id', 'asc')->get(),
+        ];
+
+        return view('admin.category.category-manage', $data);
+    }
+
+    // Product manage garni function
+    public function getManageProduct()
+    {
+        $data = [
+            'categories' => Category::where('deleted_at', null)->orderby('category_title', 'asc')->get(),
+        ];
+        return view('admin.product.product-manage', $data);
+    }
+
+
+
     // Category add garni function
-    public function postManageProduct(Request $request)
+    public function postAddCategory(Request $request)
     {
         $request->validate([
             'category_title' => 'required|unique:categories,category_title',
@@ -85,68 +110,170 @@ class HomeController extends Controller
             'status' => 'required|in:active,hidden'
         ]);
 
-        // dd($request->all());
+        dd($request->all());
 
         // $function_ko_variable = $request->input('form_ko_name_ma_vayeko_value');
 
-        $category_title = $request->input('category_title');
+        // $category_title = $request->input('category_title');
+        
+        // // SLug Generate Garna
+        // $slug = Str::slug($category_title);
+
+        // $status = $request->input('status');
+        // $category_description = $request->input('category_description');
+        // $image = $request->file('category_image');
+
+        // // dd($category_title,$slug,$status,$category_description,$image);
+
+        // // Eadi Form ma image xa vane
+
+        // if('$image'){
+        //     // aaba image ko lagi saddhai unique name hunu parxa
+        //     // unique name generate garne 2 ta tarika xa 
+        //       // md5()
+        //       // sha1()
+            
+        //     // Yo tala lekheko cmd chai pailai laravel le provide gareko ho (fix code)...
+
+        //     $unique_name = sha1(time());
+
+        //     // dd($category_title,$slug,$status,$category_description,$unique_name);
+
+        //     // mathi ko cmd le unique name generate garepaxi aaba image ko extension patta launu paryo..
+        //     // Image ko extension patta launa pani pailai bata jo laravel le code deko hunxa...
+        //     $extension = $image->getClientOriginalExtension();
+        //     // dd($extension);
+
+        //     // aaba unique name sanga file ko extension lagaunu paryo (uniqename.extension)
+        //     $category_image = $unique_name . '.' . $extension;
+
+        //     // dd($category_image);
+
+        //     // Yo chai image hmro project ma save gareko..
+
+        //     $image->move('uploads/category/', $category_image);
+        //     // dd($category_image,$image);
+            
+        // }
+        
+        // // Sabbai data lai database ma save garne
+
+        // $category = new Category;
+        // // model_access_gareko_variable->database_ko_column_ko_field = database_ko_column_ko_field_ko_data_rakehko_variable;
+        // $category->category_title=$category_title;
+        // $category->status=$status;
+        // $category->slug=$slug;
+        // $category->category_description=$category_description;
+
+        // if($image){
+        //     $category->category_image=$category_image;
+        // }
+
+        // $category->save();
+        // return redirect()->back()->with('success', 'Category Added Successfully...');
+
+    }
+
+
+
+
+    // Product add garni function
+    public function postAddProduct(Request $request)
+    {
+        $request->validate([
+            'product_title' => 'required|unique:products,product_title',
+            // 'category_id' => 'required|integer|exists:categories,id',
+            'product_image' => 'required|image|mimes:jpeg,jpg,png,gif',
+            'status' => 'required|in:active,hidden',
+            'stock'=>'required| integer',
+            'original_cost'=>'required|numeric',
+            'discounted_cost'=>'numeric',
+            'product_description'=>'required',
+        ]);
+        
+        // dd($request->all());
+        
+        $function_ko_variable = $request->input('form_ko_name_ma_vayeko_value');
+        
+        $product_title = $request->input('product_title');
+        
+        // $category_id = $request->input('category_id');
+        
+        // dd($product_title);
         
         // SLug Generate Garna
-        $slug = Str::slug($category_title);
-
-        $status = $request->input('status');
-        $category_description = $request->input('category_description');
-        $image = $request->file('category_image');
-
-        // dd($category_title,$slug,$status,$category_description,$image);
-
-        // Eadi Form ma image xa vane
-
-        if('$image'){
-            // aaba image ko lagi saddhai unique name hunu parxa
-            // unique name generate garne 2 ta tarika xa 
-              // md5()
-              // sha1()
-            
-            // Yo tala lekheko cmd chai pailai laravel le provide gareko ho (fix code)...
-
-            $unique_name = sha1(time());
-
-            // dd($category_title,$slug,$status,$category_description,$unique_name);
-
-            // mathi ko cmd le unique name generate garepaxi aaba image ko extension patta launu paryo..
-            // Image ko extension patta launa pani pailai bata jo laravel le code deko hunxa...
-            $extension = $image->getClientOriginalExtension();
-            // dd($extension);
-
-            // aaba unique name sanga file ko extension lagaunu paryo (uniqename.extension)
-            $category_image = $unique_name . '.' . $extension;
-
-            // dd($category_image);
-
-            // Yo chai image hmro project ma save gareko..
-
-            // $image->move('uploads/category/', $category_image);
-            // dd($category_image,$image);
-            
-        }
+        $slug = Str::slug($product_title);
         
-        // Sabbai data lai database ma save garne
+        $status = $request->input('status');
+        $product_description = $request->input('product_description');
+        
+        // $category_id = $request->input('category_id');
+        // $category = Category::where('id', $category_id)->where('deleted_at', null)->limit(1)->first();
 
-        $category = new Category;
-        // model_access_gareko_variable->database_ko_column_ko_field = database_ko_column_ko_field_ko_data_rakehko_variable;
-        $category->category_title=$category_title;
-        $category->status=$status;
-        $category->slug=$slug;
-        $category->category_description=$category_description;
+        // if (is_null($category)) {
+        //     return redirect()->back()->with('error', 'Category Not Found');
+        // }
 
-        if($image){
-            $category->category_image=$category_image;
-        }
+        $image = $request->file('product_image');
+        $stock = $request->input('stock');
+        $original_cost = $request->input('original_cost');
+        $discounted_cost = $request->input('discounted_cost');
+        
+        dd($request->all());
 
-        $category->save();
-        return redirect()->back()->with('success', 'Category Added Successfully...');
+        // // dd($product_title,$slug,$status,$product_description,$image);
 
+        // // Eadi Form ma image xa vane
+
+        // if('$image'){
+        //     // aaba image ko lagi saddhai unique name hunu parxa
+        //     // unique name generate garne 2 ta tarika xa 
+        //       // md5()
+        //       // sha1()
+            
+        //     // Yo tala lekheko cmd chai pailai laravel le provide gareko ho (fix code)...
+
+        //     $unique_name = sha1(time());
+
+        //     // dd($category_title,$slug,$status,$category_description,$unique_name);
+
+        //     // mathi ko cmd le unique name generate garepaxi aaba image ko extension patta launu paryo..
+        //     // Image ko extension patta launa pani pailai bata jo laravel le code deko hunxa...
+        //     $extension = $image->getClientOriginalExtension();
+        //     // dd($extension);
+
+        //     // aaba unique name sanga file ko extension lagaunu paryo (uniqename.extension)
+        //     $product_image = $unique_name . '.' . $extension;
+
+        //     // dd($category_image);
+
+        //     // Yo chai image hmro project ma save gareko..
+
+        //     $image->move('uploads/product/', $product_image);
+        //     // dd($category_image,$image);
+            
+        // }
+        
+        // // Sabbai data lai database ma save garne
+
+        // $product = new Product;
+        // // model_access_gareko_variable->database_ko_column_ko_field = database_ko_column_ko_field_ko_data_rakehko_variable;
+        // $product->category_title=$product_title;
+        // $product->category_id=$category_id;
+        // $product->status=$status;
+        // $product->slug=$slug;
+        // $product->category_description=$product_description;
+        // $product->stock=$stock;
+        // $product->original_cost=$original_cost;
+        // $product->discounted_cost=$discounted_cost;
+
+        // if($image){
+        //     $product->product_image=$product_image;
+        // }
+
+        // $product->save();
+        // return redirect()->back()->with('success', 'Product Added Successfully...');
+    
     }
 
 

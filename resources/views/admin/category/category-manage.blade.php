@@ -10,14 +10,15 @@
     </style>
 </head>
 
-
 <div class="container">
     <div class="row">
         <div class="col-md-12">
             <div class="card">
                 <div class="card-header">
                     <div class="row">
-                        <div class="col-md-6">Category</div>
+                        <div class="col-md-6">
+                            <h5>Category</h5>
+                        </div>
                         <div class="col-md-6 text-end">
                             <button class="btn btn-sm btn-primary" data-bs-toggle="modal"
                                 data-bs-target="#addCategoryModal">Add Category</button>
@@ -53,17 +54,6 @@
                                     <button class="btn btn-danger btn-sm">Delete</button>
                                 </td>
                             </tr>
-                            <tr>
-                                <td>2</td>
-                                <td>Mobile</td>
-                                <td><img src="{{ asset('site/images/admin/mobile-img.png')}}" alt="mobile-img.png"></td>
-                                <td><span style="padding-left: 10px;">🔴</span></td>
-                                <td>15 June 2023</td>
-                                <td>
-                                    <button class="btn btn-success btn-sm">Edit</button>
-                                    <button class="btn btn-danger btn-sm">Delete</button>
-                                </td>
-                            </tr>
                         </tbody>
                     </table>
                 </div>
@@ -81,7 +71,7 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <form action="{{ route('postManageProduct') }}" method="POST" enctype="multipart/form-data">
+                <form action="{{ route('postAddCategory') }}" method="POST" enctype="multipart/form-data">
                     <!-- Yo csrf le chai token generate garne kam garna which is tooo muchhh useful -->
                     @csrf
                     <div class="form-group mb-2">
@@ -100,7 +90,8 @@
                         <label for="image">Category Image*</label>
 
                         <input type="file" class="form-control @error('category_image') is-invalid @enderror" id="image"
-                            name="category_image" placeholder="Enter Category Title" value="{{ old('category_image') }}" required />
+                            name="category_image" placeholder="Enter Category Title" value="{{ old('category_image') }}"
+                            required />
 
                         @error('category_image')
                         <span class="invalid-feedback" role="alert">

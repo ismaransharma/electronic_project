@@ -1,4 +1,4 @@
-@extends('layouts.app', ['activePage' => 'Prodct'])
+@extends('layouts.app', ['activePage' => 'aboutUsPage'])
 
 @section('content')
 
@@ -13,7 +13,7 @@
 
 <div class="container">
     <div class="row">
-        <div class="com-md-12">
+        <div class="col-md-12">
             <div class="card">
                 <div class="card-header">
                     <h5>About Us</h5>

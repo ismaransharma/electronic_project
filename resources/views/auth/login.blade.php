@@ -1,11 +1,26 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container">
+
+<head>
+    <style>
+    form {
+        width: 550px;
+    }
+
+    .modal-dialog{
+        padding-top: 200px;
+        width: 235px;
+    }
+    </style>
+</head>
+
+
+<div class="container test">
     <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">{{ __('Login') }}</div>
+        <div class="col-md-12">
+            <div class="card card-width">
+                <div class="card-header">{{ __('Admin Login') }}</div>
 
                 <div class="card-body">
                     <form method="POST" action="{{ route('login') }}">
@@ -68,10 +83,35 @@
                                     {{ __('Forgot Your Password?') }}
                                 </a>
                                 @endif
+
+                                <!-- This is for fun -->
+                                <!-- @if (Route::has('password.request'))
+                                <a class="btn btn-link" href="" data-bs-toggle="modal"
+                                    data-bs-target="#forgetPasswordModal">
+                                    {{ __('Forgot Your Password?') }}
+                                </a>
+                                @endif -->
                             </div>
                         </div>
                     </form>
                 </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- Modal -->
+<div class="modal fade" id="forgetPasswordModal" tabindex="-1" aria-labelledby="forgetPasswordModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="addProductModalLabel"><b>Forget Password?</b></h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <h6 class="text-light">Relax And Try to Remember</h6>
             </div>
         </div>
     </div>

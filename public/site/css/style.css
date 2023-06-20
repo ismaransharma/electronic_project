@@ -44,12 +44,12 @@ body {
 
 /* Nav Bar Sticky */
 
-/* .upper-main-header-and-nav {
+.upper-main-header-and-nav {
     position: fixed;
     z-index: 10;
     top: 0;
     width: 100%;
-} */
+}
 
 
 /* Top header Css */
@@ -876,7 +876,8 @@ a {
 /* Contact Us Css Starts Here */
 
 #upper-header {
-    height: 120px;
+    padding-top: 90px;
+    height: 250px;
     width: 100%;
     background-color: #eee;
     text-align: center;
@@ -991,7 +992,6 @@ a {
 #contact-form form .form-contact-message {
     padding-left: 25px;
 }
-
 #contact-form form .form-contact-message textarea {
     height: 150px;
     width: 450px;

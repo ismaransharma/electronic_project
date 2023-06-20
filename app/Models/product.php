@@ -11,8 +11,8 @@ class Product extends Model
 
     //  kun kun field database ma add huna sakxan
     protected $fillable = [
-        'category_id',
         'product_title',
+        'category_id',
         'slug',
         'product_image',
         'product_description',
