@@ -47,26 +47,41 @@
                             </tr>
                         </thead>
                         <tbody>
+                            @foreach($products as $item)
                             <tr>
-                                <td>1</td>
-                                <td>Gaming Laptop</td>
+                                <td>{{ $item->id }}</td>
+                                <td>{{ $item->product_title }}</td>
                                 <td>
-                                    <img src="{{ asset('site/images/category-images/asus-rog-strix-g15-gaming-laptop.png')}}"
-                                        alt="gaming Laptop Image">
+                                    @if ($item->product_image != null)
+                                    <img src="{{ asset('uploads/product/' . $item->product_image) }}"
+                                        class="img-responsive img-fluid" />
+                                    @else
+                                    <span class="text-danger">Image not available</span>
+                                    @endif
                                 </td>
-                                <td>Laptop</td>
-                                <td>20</td>
+                                <td>{{ $item->category->category_title }}</td>
+                                <td>{{ $item->product_stock }}</td>
                                 <!-- Yo chai original Cost -->
-                                <td>$915</td>
+                                <td>Rs {{ $item->original_cost }}</td>
                                 <!-- Yo chai discounted cost -->
-                                <td>$905.47</td>
-                                <td><span style="padding-left: 10px;">🟢</span></td>
+                                <td>Rs {{ $item->discounted_cost }}</td>
+                                <td>
+
+                                    @if ($item->status == 'active')
+                                    <span class="text-success" style="padding-left: 8px;">🟢</span>
+                                    
+                                    @else
+                                    <span class="text-danger" style="padding-left: 8px;">🔴</span>
+                                    @endif
+
+                                </td>
                                 <td>15 June 2023</td>
                                 <td>
                                     <button class="btn btn-success btn-sm">Edit</button>
                                     <button class="btn btn-danger btn-sm">Delete</button>
                                 </td>
                             </tr>
+                            @endforeach
                         </tbody>
                     </table>
                 </div>
@@ -104,19 +119,13 @@
                         </div>
                         <div class="col-md-6">
                             <div class="form-group mb-2">
-                                <label for="">Select Category*</label>
-                                <select name="select_category"
-                                    class="form-control @error('category_id') is-invalid @enderror" id="select_category"
-                                    required>
-                                    <option value=""> ------ Select Category ------ </option>
-                                    <option value="1">Laptop</option>
-                                    <option value="2">Mobile</option>
+                                <label for="category_id">Category*</label>
+                                <select name="category_id" id="category_id" class="form-control" required>
+                                    <option value="">-----------Choose Category-----------</option>
+                                    @foreach ($categories as $category)
+                                    <option value="{{ $category->id }}">{{ $category->category_title }}</option>
+                                    @endforeach
                                 </select>
-                                @error('category_id')
-                                <span class="invalid-feedback" role="alert">
-                                    <strong>{{ $message }}</strong>
-                                </span>
-                                @enderror
                             </div>
                         </div>
                         <div class="col-md-6">

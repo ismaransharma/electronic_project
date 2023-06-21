@@ -173,7 +173,7 @@
 
                         <li class="nav-item">
                             <a class="nav-link {{ $activePage == 'Category' ? 'activePage' : '' }}"
-                                href="{{ route('getAdminCategoryManage')}}">{{ __('Category') }}
+                                href="{{ route('getAdminCategoryManage') }}">{{ __('Category') }}
                             </a>
                         </li>
 
@@ -219,7 +219,6 @@
                                                      document.getElementById('logout-form').submit();">
                                     {{ __('Logout') }}
                                 </a>
-
                                 <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
                                     @csrf
                                 </form>

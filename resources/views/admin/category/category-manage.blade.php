@@ -43,17 +43,35 @@
                             </tr>
                         </thead>
                         <tbody>
+                            @foreach($categories as $item)
                             <tr>
-                                <td>1</td>
-                                <td>Laptop</td>
-                                <td><img src="{{ asset('site/images/admin/laptop-img.png')}}" alt="laptop-img.png"></td>
-                                <td><span style="padding-left: 10px;">🟢</span></td>
+                                <td>{{ $item->id }}</td>
+                                <td>{{ $item->category_title }}</td>
+                                <td>
+                                    @if ($item->category_image != null)
+                                    <img src="{{ asset('uploads/category/' . $item->category_image) }}"
+                                        class="img-responsive img-fluid" />
+                                    @else
+                                    <span class="text-danger">Image not available</span>
+                                    @endif
+                                </td>
+
+                                <td>
+
+                                @if ($item->status == 'active')
+                                <span class="text-success" style="padding-left: 8px;">🟢</span>
+                                @else
+                                <span class="text-danger" style="padding-left: 8px;">🔴</span>
+                                @endif
+
+                                </td>
                                 <td>15 June 2023</td>
                                 <td>
                                     <button class="btn btn-success btn-sm">Edit</button>
                                     <button class="btn btn-danger btn-sm">Delete</button>
                                 </td>
                             </tr>
+                            @endforeach
                         </tbody>
                     </table>
                 </div>
