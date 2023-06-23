@@ -2,10 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Category;
 use App\Models\Product;
+use App\Models\Category;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
+use Illuminate\Support\Carbon;
 
 class HomeController extends Controller
 {
@@ -80,26 +81,13 @@ class HomeController extends Controller
         return view('admin.category.category-manage', $data);
     }
 
-    // Product manage garni function
-    public function getAdminProductManage()
-    {
-        $data = [
-            'categories' => Category::where('deleted_at', null)->orderby('category_title', 'asc')->get(),
-
-            'products' => Product::where('deleted_at', null)->orderby('id', 'asc')->get(),
-        ];
-        return view('admin.product.product-manage', $data);
-    }
-
-
-
     // Category add garni function
     public function postAddCategory(Request $request)
     {
         $request->validate([
             'category_title' => 'required|unique:categories,category_title',
             'category_image' => 'required|image|mimes:jpeg,jpg,png,gif',
-            'status' => 'required|in:active,hidden'
+            'status' => 'required|in:active,inactive'
         ]);
 
         // dd($request->all());
@@ -169,6 +157,146 @@ class HomeController extends Controller
 
 
 
+    
+
+
+
+    // Category edit delete garene sabbai logic
+    // Category Delete Garne Command/Logic
+
+    public function getDeleteCategory($slug){
+        $category = Category::where('slug', $slug)->where('deleted_at', null)->limit(1)->first();
+        if (is_null ($category)) {
+            return redirect()->back()->with('error', 'Category not found');
+        }
+
+        // dd($category);
+
+        $category->deleted_at = Carbon::now();
+        $category->save();
+
+        return redirect()->back()->with('success', 'Category Deleted Successfully');
+    }
+
+    // Category Edit Garne Page ma jani
+    public function getEditCategory($slug)
+    {
+        $category = Category::where('slug', $slug)->where('deleted_at', null)->limit(1)->first();
+        if (is_null ($category)) {
+            return redirect()->back()->with('error', 'Category not found');
+        }
+
+        
+        $data = [
+            'category' => $category
+        ];
+
+        return view('admin.category.edit', $data);
+    }
+
+
+    //Category Edit Garne Command/Logic
+    public function postEditCategory(Request $request, $slug){
+        {
+
+            $category = Category::where('slug', $slug)->where('deleted_at', null)->limit(1)->first();
+            if (is_null ($category)) {
+                return redirect()->back()->with('error', 'Category not found');
+            
+            }   
+            $request->validate([
+                'category_title' => 'required|unique:categories,category_title,' . $category->id,
+                'category_image' => 'image|mimes:jpeg,jpg,png,gif',
+                'status' => 'required|in:active,inactive'
+            ]);
+    
+            // dd($request->all());
+    
+    
+            $category_title = $request->input('category_title');
+
+            // SLug generate gareko
+            $slug = Str::slug($category_title);
+
+            $status = $request->input('status');
+            $category_description = $request->input('category_description');
+            $image = $request->file('category_image');
+    
+            // dd($category_title,$slug,$status,$category_description,$image);
+    
+            // Eadi Form ma image xa vane
+    
+            if($image){
+                // aaba image ko lagi saddhai unique name hunu parxa
+                // unique name generate garne 2 ta tarika xa 
+                  // md5()
+                  // sha1()
+                
+                // Yo tala lekheko cmd chai pailai laravel le provide gareko ho (fix code)...
+    
+                $unique_name = sha1(time());
+                
+                
+                // dd($category_title,$slug,$status,$category_description,$unique_name);
+    
+                // Image ko extension patta launa pani pailai bata jo laravel le code deko hunxa...
+                $extension = $image->getClientOriginalExtension();
+                // dd($extension);
+    
+                // aaba unique name sanga file ko extension lagaunu paryo (uniqename.extension)
+                $category_image = $unique_name . '.' . $extension;
+    
+                // dd($request->all());
+
+    
+                // Yo chai image hmro project ma save gareko..
+                $image->move('uploads/category/', $category_image);
+                // dd($category_image,$image);
+
+                // New image choose garesi purano image faldine
+                if ($category->category_image !=null){
+                    unlink('uploads/category/'. $category->category_image);
+                }
+                
+            }
+
+
+            
+            // Sabbai data lai database ma save garne
+            // model_access_gareko_variable->database_ko_column_ko_field = database_ko_column_ko_field_ko_data_rakehko_variable;
+            $category->category_title=$category_title;
+            $category->status=$status;
+            $category->slug=$slug;
+            $category->category_description=$category_description;
+    
+            if($image){
+                $category->category_image = $category_image; 
+            }
+            
+            // dd($image);
+    
+            $category->save();
+            return redirect()->route('getAdminCategoryManage')->with('success', 'Category Added Successfully...');
+    
+        }
+    
+    }
+
+
+
+    // Product edit delete garene sabbai logic
+    
+    // Product manage garni function
+    public function getAdminProductManage()
+    {
+        $data = [
+            'categories' => Category::where('deleted_at', null)->orderby('category_title', 'asc')->get(),
+
+            'products' => Product::where('deleted_at', null)->orderby('id', 'asc')->get(),
+        ];
+        return view('admin.product.product-manage', $data);
+    }
+    
     // Product add garni function
     public function postAddProduct(Request $request)
     {
@@ -177,7 +305,7 @@ class HomeController extends Controller
             'product_title' => 'required|unique:products,product_title',
             'category_id' => 'required|integer|exists:categories,id',
             'product_image' => 'required|image|mimes:jpeg,jpg,png,gif',
-            'status' => 'required|in:active,hidden',
+            'status' => 'required|in:active,inactive',
             'stock'=>'required| integer',
             'original_cost'=>'required|numeric',
             'discounted_cost'=>'numeric',
@@ -213,16 +341,16 @@ class HomeController extends Controller
         $discounted_cost = $request->input('discounted_cost');
         
         // dd($request->all());
-
+        
         // // dd($product_title,$slug,$status,$product_description,$image);
 
         // // Eadi Form ma image xa vane
-
+        
         if('$image'){
             // aaba image ko lagi saddhai unique name hunu parxa
             // unique name generate garne 2 ta tarika xa 
-              // md5()
-              // sha1()
+            // md5()
+            // sha1()
             
             // Yo tala lekheko cmd chai pailai laravel le provide gareko ho (fix code)...
 
@@ -234,21 +362,21 @@ class HomeController extends Controller
             // Image ko extension patta launa pani pailai bata jo laravel le code deko hunxa...
             $extension = $image->getClientOriginalExtension();
             // dd($extension);
-
+            
             // aaba unique name sanga file ko extension lagaunu paryo (uniqename.extension)
             $product_image = $unique_name . '.' . $extension;
 
             // dd($category_image);
 
             // Yo chai image hmro project ma save gareko..
-
+            
             $image->move('uploads/product/', $product_image);
             // dd($category_image,$image);
             
         }
         
         // Sabbai data lai database ma save garne
-
+        
         $product = new Product;
         // model_access_gareko_variable->database_ko_column_ko_field = database_ko_column_ko_field_ko_data_rakehko_variable;
         $product->product_title=$product_title;
@@ -266,9 +394,43 @@ class HomeController extends Controller
 
         $product->save();
         return redirect()->back()->with('success', 'Product Added Successfully...');
+        
+    }
     
+    // Product Delete Garne Command/Logic
+    public function getDeleteProduct($slug){
+        $product = Product::where('slug', $slug)->where('deleted_at', null)->limit(1)->first();
+        if (is_null ($product)) {
+            return redirect()->back()->with('error', 'Product not found');
+        }
+
+        // dd($category);
+
+        $product->deleted_at = Carbon::now();
+        $product->save();
+
+        return redirect()->back()->with('success', 'Product Deleted Successfully');
     }
 
+    // Product Edit page ma jani cmd
+
+    public function getEditProduct($slug)
+    {
+        $product = Product::where('slug', $slug)->where('deleted_at', null)->limit(1)->first();
+
+        if (is_null ($product)) {
+            return redirect()->back()->with('error', 'Product not found');
+        }
+
+        $categories = Category::where('deleted_at', null)->orderby('category_title', 'asc')->get();
+
+        $data = [
+            'product' => $product,
+            'categories' => $categories
+        ];
+
+        return view('admin.product.edit', $data);
+    }
 
     
 }

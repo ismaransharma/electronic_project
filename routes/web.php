@@ -46,12 +46,32 @@ Route::middleware('auth')->group (function (){
             Route::get('manage', [HomeController::class, 'getAdminProductManage'])->name('getAdminProductManage');
             // admin Product routes
             Route::post('add', [HomeController::class, 'postAddProduct'])->name('postAddProduct');
+            
+            // admin Product Delete Garne
+            Route::get('delete/{slug}', [HomeController::class, 'getDeleteProduct'])->name('getDeleteProduct');
+            
+            // admin Product Edit Garne
+            Route::get('edit/{slug}', [HomeController::class, 'getEditProduct'])->name('getEditProduct');
+            
+            // admin Product Edit Garne POST
+            Route::post('edit/{slug}', [HomeController::class, 'postEditProduct'])->name('postEditProduct');
+
         });
         
         Route::prefix('category')->group (function (){
             Route::get('manage', [HomeController::class, 'getAdminCategoryManage'])->name('getAdminCategoryManage');
+
             // admin Category routes
             Route::post('add', [HomeController::class, 'postAddCategory'])->name('postAddCategory');
+
+            // admin Category Delete Garne
+            Route::get('delete/{slug}', [HomeController::class, 'getDeleteCategory'])->name('getDeleteCategory');
+
+            // admin Category Edit Garne
+            Route::get('edit/{slug}', [HomeController::class, 'getEditCategory'])->name('getEditCategory');
+
+            // admin Category Edit Garne Post
+            Route::post('edit/{slug}', [HomeController::class, 'postEditCategory'])->name('postEditCategory');
         });
 
         Route::prefix('carts')->group (function (){

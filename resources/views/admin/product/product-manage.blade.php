@@ -34,10 +34,11 @@
                     <table class="table">
                         <thead>
                             <tr>
-                                <th>Id</th>
+                                <th>S.N</th>
                                 <th>Product Title</th>
                                 <th>Product Image</th>
-                                <th>Product</th>
+                                <th>Category</th>
+                                <!-- <th>Product Description</th> -->
                                 <th>Stock</th>
                                 <th>Origial Cost</th>
                                 <th>Discounted Cost</th>
@@ -49,7 +50,7 @@
                         <tbody>
                             @foreach($products as $item)
                             <tr>
-                                <td>{{ $item->id }}</td>
+                                <td>{{ $loop->iteration }}</td>
                                 <td>{{ $item->product_title }}</td>
                                 <td>
                                     @if ($item->product_image != null)
@@ -60,6 +61,9 @@
                                     @endif
                                 </td>
                                 <td>{{ $item->category->category_title }}</td>
+
+                                <!-- <td>{{ $item->product_description }}</td> -->
+
                                 <td>{{ $item->product_stock }}</td>
                                 <!-- Yo chai original Cost -->
                                 <td>Rs {{ $item->original_cost }}</td>
@@ -68,17 +72,18 @@
                                 <td>
 
                                     @if ($item->status == 'active')
-                                    <span class="text-success" style="padding-left: 8px;">🟢</span>
-                                    
+                                    <span class="text-success" style="padding-left: 8px; font-weight: 600;;">Active</span>
+
                                     @else
-                                    <span class="text-danger" style="padding-left: 8px;">🔴</span>
+                                    <span class="text-danger" style="padding-left: 8px; font-weight: 600;">Inactive</span>
                                     @endif
 
                                 </td>
                                 <td>15 June 2023</td>
                                 <td>
-                                    <button class="btn btn-success btn-sm">Edit</button>
-                                    <button class="btn btn-danger btn-sm">Delete</button>
+                                    <a href="{{ route('getEditProduct', $item->slug) }}"><button class="btn btn-success btn-sm">Edit</button></a>
+                                    <a href="{{ route('getDeleteProduct', $item->slug) }}"><button
+                                            class="btn btn-danger btn-sm">Delete</button></a>
                                 </td>
                             </tr>
                             @endforeach
@@ -148,7 +153,7 @@
                                     class="form-control @error('status') is-invalid @enderror"
                                     value="{{ old('status') }}" required>
                                     <option value="active">Active</option>
-                                    <option value="hidden">Hidden</option>
+                                    <option value="inactive">Hidden</option>
                                 </select>
                                 @error('status')
                                 <span class="invalid-feedback" role="alert">

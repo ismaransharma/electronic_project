@@ -21,7 +21,7 @@
 
     <style>
     body #app {
-        background-color: #5d5dff;
+        background-color: #eee;
         min-height: 100vh;
     }
 
@@ -58,7 +58,7 @@
     }
 
     .activePage {
-        background-color: #500094;
+        /* background-color: #500094; */
         color: #fff;
         border-bottom: 5px solid #ff6700;
         opacity: 1;
@@ -78,7 +78,7 @@
 
     .card {
         background: transparent;
-        color: #fff;
+        color: #000;
         border: 1px solid #fff;
     }
 
@@ -88,6 +88,7 @@
 
     .card-body {
         border-top: 1px solid #fff;
+        color: #000;
     }
 
     .table {
@@ -99,11 +100,7 @@
     }
 
     .modal-content {
-        background-color: #6565b1;
-    }
-
-    .form-control {
-        background-color: #e3e3f3;
+        /* background-color: #6565b1; */
     }
 
     .form-group label {
@@ -115,11 +112,11 @@
     }
 
     .card-body tr th {
-        color: #eee;
+        color: #ff6700;
     }
 
     .card-body tr td {
-        color: #eee;
+        color: #000;
     }
 
     .py-4 .container .row .col-md-12 {

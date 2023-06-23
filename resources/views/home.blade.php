@@ -23,7 +23,7 @@
     }
 
     .card:hover {
-        background-image: linear-gradient(to right, rgba(210, 0, 0, 1), rgba(254, 0, 0, 0));
+        /* background-image: linear-gradient(to right, rgba(210, 0, 0, 1), rgba(254, 0, 0, 0)); */
         box-shadow: 1px 1px 5px #07076c;
         scale: 1.01;
     }
