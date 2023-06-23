@@ -25,7 +25,7 @@
                     </div>
                     @endif
 
-                    <form action="" method="POST" enctype="multipart/form-data">
+                    <form action="{{ route('postEditCategory', $category->slug) }}" method="POST" enctype="multipart/form-data">
                         <!-- Yo csrf le chai token generate garne kam garna which is tooo muchhh useful -->
                         @csrf
                         <div class="form-group mb-2">

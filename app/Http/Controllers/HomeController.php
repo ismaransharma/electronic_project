@@ -155,12 +155,6 @@ class HomeController extends Controller
     }
 
 
-
-
-    
-
-
-
     // Category edit delete garene sabbai logic
     // Category Delete Garne Command/Logic
 
@@ -276,7 +270,7 @@ class HomeController extends Controller
             // dd($image);
     
             $category->save();
-            return redirect()->route('getAdminCategoryManage')->with('success', 'Category Added Successfully...');
+            return redirect()->route('getAdminCategoryManage')->with('success', 'Category Edited Successfully...');
     
         }
     
@@ -431,6 +425,116 @@ class HomeController extends Controller
 
         return view('admin.product.edit', $data);
     }
+
+    // Product add garni function
+    public function postEditProduct(Request $request, $slug)
+    {
+
+        $product = Product::where('slug', $slug)->where('deleted_at', null)->limit(1)->first();
+
+        if (is_null ($product)) {
+            return redirect()->back()->with('error', 'Product not found');
+        }
+        
+        // dd($request->all());
+        $request->validate([
+            'product_title' => 'required|unique:products,product_title,' . $product->id, 
+            'category_id' => 'integer|exists:categories,id',
+            'product_image' => 'image|mimes:jpeg,jpg,png,gif',
+            'status' => 'in:active,inactive',
+            'stock'=>'integer',
+            'original_cost'=>'required|numeric',
+            'discounted_cost'=>'numeric',
+            'product_description'=>'required',
+        ]);
+        
+        // dd($request->all());
+        
+        $product_title = $request->input('product_title');
+        
+        // dd($product_title);
+        
+        // Slug Generate gareko
+        $slug = Str::slug($product_title);
+        
+        
+        $category_id = $request->input('category_id');
+        $category = Category::where('id', $category_id)->where('deleted_at', null)->limit(1)->first();
+        
+        if (is_null($product)) {
+            return redirect()->back()->with('error', 'Product Not Found');
+        }
+        
+        $status = $request->input('status');
+        $product_description = $request->input('product_description');
+        $image = $request->file('product_image');
+        $stock = $request->input('stock');
+        $original_cost = $request->input('original_cost');
+        $discounted_cost = $request->input('discounted_cost');
+        
+        // dd($request->all());
+        
+        // // dd($product_title,$slug,$status,$product_description,$image);
+
+        // // Eadi Form ma image xa vane
+        
+        if($image){
+            // aaba image ko lagi saddhai unique name hunu parxa
+            // unique name generate garne 2 ta tarika xa 
+            // md5()
+            // sha1()
+            
+            // Yo tala lekheko cmd chai pailai laravel le provide gareko ho (fix code)...
+
+            $unique_name = sha1(time());
+
+            // dd($category_title,$slug,$status,$category_description,$unique_name);
+            
+            // mathi ko cmd le unique name generate garepaxi aaba image ko extension patta launu paryo..
+            // Image ko extension patta launa pani pailai bata jo laravel le code deko hunxa...
+            $extension = $image->getClientOriginalExtension();
+            // dd($extension);
+            
+            // aaba unique name sanga file ko extension lagaunu paryo (uniqename.extension)
+            $product_image = $unique_name . '.' . $extension;
+            
+            // dd($category_image);
+            
+            // Yo chai image hmro project ma save gareko..
+            
+            $image->move('uploads/product/', $product_image);
+
+            if ($category->category_image != null){
+                unlink('uploads/product/' . $product->product_image);
+            }
+            // dd($category_image,$image);
+            
+            // dd($image);
+        }
+        
+        // Sabbai data lai database ma save garne
+        
+        // model_access_gareko_variable->database_ko_column_ko_field = database_ko_column_ko_field_ko_data_rakehko_variable;
+        $product->product_title=$product_title;
+        $product->category_id=$category_id;
+        $product->status=$status;
+        $product->slug=$slug;
+        $product->product_description=$product_description;
+        $product->product_stock=$stock;
+        $product->original_cost=$original_cost;
+        $product->discounted_cost=$discounted_cost;
+
+        // dd($product);
+        if($image){
+            $product->product_image=$product_image;
+            
+        }
+
+        $product->save();
+        return redirect()->route('getAdminProductManage')->with('success', 'Product Edited Successfully...');
+        
+    }
+
 
     
 }

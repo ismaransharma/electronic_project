@@ -63,7 +63,7 @@
             <nav class="navbar navbar-expand-lg bg-light">
                 <div class="container">
                     <a class="navbar-brand" href="{{ url('/')}}">
-                        <h4>Gada Electronic</h4>
+                        <h4>Ismaran Electronic</h4>
                     </a>
                     <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                         data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"

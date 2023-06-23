@@ -1,6 +1,10 @@
 @extends('layouts.app', ['activePage' => 'Edit'])
 @section('content')
 
+
+<?php
+// dd($product);
+?>
 <div class="container">
     <div class="row">
         <div class="col-md-12">
@@ -25,7 +29,8 @@
                     </div>
                     @endif
                     <div class="modal-body">
-                        <form action="{{ route('postAddProduct') }}" method="POST" enctype="multipart/form-data">
+                        <form action="{{ route('postEditProduct', $product->slug) }}" method="POST"
+                            enctype="multipart/form-data">
                             <div class="row">
                                 @csrf
                                 <div class="col-md-6">
@@ -33,8 +38,8 @@
                                         <label for="">Product Title*</label>
                                         <input type="text" name="product_title"
                                             class="form-control @error('product_title') is-invalid @enderror"
-                                            value="{{ old('product_title') }}" id="product_title"
-                                            placeholder="Enter Product Title" required />
+                                            value="{{ $product->product_title }}" id="product_title"
+                                            placeholder="Enter Product Title" />
                                         @error('product_title')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
@@ -45,21 +50,29 @@
                                 <div class="col-md-6">
                                     <div class="form-group mb-2">
                                         <label for="category_id">Category*</label>
-                                        <select name="category_id" id="category_id" class="form-control" required>
+                                        <select name="category_id" id="category_id" class="form-control">
                                             <option value="">-----------Choose Category-----------</option>
                                             @foreach ($categories as $category)
-                                            <option value="{{ $category->id }}" <?php if($product->category_id == $category->id){ echo 'selected'; } ?>>{{ $category->category_title }}</option>
+                                            <option value="{{ $category->id }}"
+                                                <?php if($product->category_id == $category->id){ echo 'selected'; } ?>>
+                                                {{ $category->category_title }}</option>
                                             @endforeach
                                         </select>
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group mb-2">
-                                        <label for="">Product Image*</label>
+                                        <label for="image">Product Image<span class="text-danger">*</span></label>
+
                                         <input type="file"
-                                            class="form-control @error('product_image') is-invalid @enderror"
-                                            value="{{ old('product_image') }}" id="product_image" name="product_image"
-                                            required />
+                                            class="form-control  @error('product_image') is-invalid @enderror"
+                                            id="image" name="product_image" placeholder="Enter Product iImage" value="{{ $product->product_image }}"/>
+                                        @if ($product->product_image != null)
+                                        <img src="{{ asset('uploads/product/' . $product->product_image) }}"
+                                            class="img-responsive img-fluid" width="150" height="150" />
+                                        @else
+                                        <span class="text-danger">Image not available</span>
+                                        @endif
                                         @error('product_image')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
@@ -71,11 +84,15 @@
                                     <div class="form-group mb-2">
                                         <label for="status">Status*</label>
                                         <select name="status" id="status"
-                                            class="form-control @error('status') is-invalid @enderror"
-                                            value="{{ $product->status }}" required>
-                                            <option value="active">Active</option>
-                                            <option value="inactive">Hidden</option>
+                                            class="form-control @error('status') is-invalid @enderror">
+                                            <option value="active"
+                                                <?php if($product->status == 'active') {echo('selected');}?>>
+                                                Active</option>
+                                            <option value="inactive"
+                                                <?php if($product->status == 'inactive') { echo('selected'); } ?>>
+                                                Hidden</option>
                                         </select>
+
                                         @error('status')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
@@ -87,7 +104,7 @@
                                     <div class="form-group mb-2">
                                         <label for="">Stock*</label>
                                         <input type="number" class="form-control @error('stock') is-invalid @enderror"
-                                            value="{{ old('stock') }}" id="stock" name="stock" required />
+                                            value="{{ $product->product_stock }}" id="stock" name="stock" />
 
                                         @error('stock')
                                         <span class="invalid-feedback" role="alert">
@@ -101,8 +118,8 @@
                                         <label for="">Original Cost*</label>
                                         <input type="number"
                                             class="form-control @error('original_cost') is-invalid @enderror"
-                                            value="{{ old('original_cost') }}" id="original_cost" name="original_cost"
-                                            required />
+                                            value="{{ $product->original_cost }}" id="original_cost"
+                                            name="original_cost" />
                                         @error('original_cost')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
@@ -115,8 +132,8 @@
                                         <label for="">Discounted Cost*</label>
                                         <input type="number"
                                             class="form-control @error('discounted_cost') is-invalid @enderror"
-                                            value="{{ old('discounted_cost') }}" id="discounted_cost"
-                                            name="discounted_cost" required />
+                                            value="{{ $product->discounted_cost }}" id="discounted_cost"
+                                            name="discounted_cost" />
                                         @error('discounted_cost')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
@@ -129,8 +146,8 @@
                                         <label for="">Product Description*</label>
                                         <textarea name="product_description"
                                             class="form-control @error('discounted_cost') is-invalid @enderror"
-                                            id="product_description" cols="30" rows="10"
-                                            required>{{ old('product_description') }}</textarea>
+                                            id="product_description" cols="30"
+                                            rows="10">{{ $product->product_description }}</textarea>
                                         @error('discounted_cost')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
@@ -139,8 +156,6 @@
                                     </div>
                                 </div>
                                 <div class="modal-footer">
-                                    <button type="button" class="btn btn-secondary"
-                                        data-bs-dismiss="modal">Close</button>
                                     <input type="submit" class="btn btn-primary" value="Save changes">
                                 </div>
                             </div>

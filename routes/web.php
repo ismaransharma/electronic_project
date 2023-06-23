@@ -57,6 +57,8 @@ Route::middleware('auth')->group (function (){
             Route::post('edit/{slug}', [HomeController::class, 'postEditProduct'])->name('postEditProduct');
 
         });
+
+        
         
         Route::prefix('category')->group (function (){
             Route::get('manage', [HomeController::class, 'getAdminCategoryManage'])->name('getAdminCategoryManage');
@@ -73,6 +75,8 @@ Route::middleware('auth')->group (function (){
             // admin Category Edit Garne Post
             Route::post('edit/{slug}', [HomeController::class, 'postEditCategory'])->name('postEditCategory');
         });
+
+
 
         Route::prefix('carts')->group (function (){
             Route::get('carts', [HomeController::class, 'getAdminCartsManage'])->name('getAdminCartsManage');
