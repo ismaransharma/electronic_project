@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\SiteController;
@@ -21,7 +22,9 @@ Route::get('/about-us', [SiteController::class, 'getAbout']);
 
 Route::get('/services', [SiteController::class, 'getServices']);
 
-Route::get('/laptop-category', [SiteController::class, 'getLaptopCategory']);
+Route::get('/laptop-category', [SiteController::class, 'getLaptopCategory'])->name('getLaptopCategory');
+
+Route::get('products/{slug}', [SiteController::class, 'getProductsByCategory'])->name('getProductsByCategory');
 
 Route::get('/categroy-gaming-laptop', [SiteController::class, 'getGamingLaptopCategory']);
 
@@ -36,6 +39,8 @@ Route::get('/footer', [SiteController::class, 'getfooter']);
 Auth::routes();
 
 Route::get('/home', [HomeController::class, 'index'])->name('home');
+
+Route::get('product/{slug}', [SiteController::class, 'productPage'])->name('productPage');
 
 
 Route::middleware('auth')->group (function (){

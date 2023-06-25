@@ -1,6 +1,10 @@
 @extends('layouts.template', ['activePage' => 'homepage'])
 @section('navbar')
 
+<?php 
+// dd($products);
+?>
+
 <!-- Silder section Starts Here -->
 <section id="slider">
     <div class="container">
@@ -173,6 +177,36 @@
 </section>
 <!-- About Section Ends Here -->
 
+<!-- Category Section Starts Here -->
+<div id="category">
+    <div class="container">
+        <div class="section-title">
+            <h6>Our Category</h6>
+            <h2>Shop By <span>Category </span></h2>
+        </div>
+        <div class="row">
+            @foreach($categories as $category)
+            <div class="col-md-4">
+                <div class="box-padding">
+                    <div class="box">
+                        <img src="{{ asset('uploads/category/' . $category->category_image) }}"
+                            alt="{{ $category->slug }}" title="{{ ($category->category_title) }}" height="95px"
+                            width="95px">
+                        <h5 style="padding-left: 15px; padding-top: 5px; width:118px;">{{ $category->category_title }}
+                        </h5>
+                    </div>
+                    <div class="name">
+                    </div>
+                </div>
+            </div>
+            @endforeach
+
+        </div>
+    </div>
+</div>
+<!-- Category Section Ends Here -->
+
+
 <!-- Services Section Starts Here -->
 <section id="services">
     <div class="container">
@@ -221,82 +255,58 @@
             <h4>Latest Products</h4>
         </div>
         <div class="product-row">
-            @for ($i = 0; $i < 4; $i++) <div class="col-md-3">
+            @foreach($products as $product)
+            <div class="col-md-3">
                 <div class="box-divider">
                     <div class="product-box-padding">
                         <div class="product-box">
-                            <div class="product-image">
-                                <div class="product-main-image">
-                                    <img src="{{ asset('site/images/earbuds.png')}}" alt="">
-                                </div>
-                                <!-- <div class="heart-and-cart">
+                            <a href="{{ route('productPage', $product->slug) }}">
+                                <button class="home-product-button">
+                                    <div class="product-image">
+                                        <div class="product-main-image">
+                                            <img src="{{ asset('uploads/product/'. $product->product_image)}}"
+                                                alt="{{ $product->product_title }}">
+                                        </div>
+                                        <!-- <div class="heart-and-cart">
                                             <span><i class="fa-regular fa-heart"></i></span>
                                             <span><i class="fa-solid fa-cart-shopping"></i></span>
                                         </div> -->
-                            </div>
-                            <div class="product-details">
-                                <div class="product-name">
-                                    <span class="product-name-title">Wireless Earbuds</span>
-                                    <span class="product-price">$10.56</span>
-                                </div>
-                                <div class="product-description">
-                                    Lorem ipsum dolor sit amet.
-                                </div>
-                                <div class="product-rating">
-                                    <span><i class="fa-solid fa-star rating"></i></span>
-                                    <span><i class="fa-solid fa-star rating"></i></span>
-                                    <span><i class="fa-solid fa-star rating"></i></span>
-                                    <span><i class="fa-solid fa-star rating"></i></span>
-                                    <span><i class="fa-regular fa-star-half-stroke rating"></i></span>
-                                    <span class="rating-in-percent">4.5%</span>
-                                </div>
-                                <div class="product-add-to-cart">
-                                    <span class="btn">Add to Cart 🛒</span>
-                                </div>
-                            </div>
+                                    </div>
+                                    <div class="product-details">
+                                        <div class="product-name">
+                                            <span class="product-name-title">{{ $product->product_title }}</span>
+                                            <br>
+                                            <span class="product-price">{{ $product->orginal_cost }}</span>
+                                            <!-- <span class="product-price">RS. {{ $product->discounted_cost }}</span> -->
+                                        </div>
+                                        <div class="product-description mt-2" style="height: 60px;">
+                                            <p>{{ Str::limit($product->product_full_description ?? 'No Title', 50)}}Read More..</p>
+                                            <!-- <p>{{ $product->product_little_description }} Read More..</p> -->
+                                        </div>
+                                        <div class="product-rating">
+                                            <span><i class="fa-solid fa-star rating"></i></span>
+                                            <span><i class="fa-solid fa-star rating"></i></span>
+                                            <span><i class="fa-solid fa-star rating"></i></span>
+                                            <span><i class="fa-solid fa-star rating"></i></span>
+                                            <span><i class="fa-regular fa-star-half-stroke rating"></i></span>
+                                            <span class="rating-in-percent">4.5%</span>
+                                        </div>
+                                        <div class="product-add-to-cart">
+                                            <span class="btn">View Details</span>
+                                        </div>
+                                    </div>
+                                </button>
+                            </a>
                         </div>
                     </div>
                 </div>
-                @endfor
+                @endforeach
+            </div>
         </div>
-    </div>
     </div>
 </section>
 <!-- Product item ends here -->
 
-<!-- Category Section Starts Here -->
-<div id="category">
-    <div class="container">
-        <div class="section-title">
-            <h6>Our Category</h6>
-            <h2>Shop By <span>Category </span></h2>
-        </div>
-        <div class="row">
-            <div class="col-md-4">
-                <div class="box-padding">
-                    <div class="box">
-                        <a href="{{ url('/laptop-category') }}"><i class="fa-solid fa-laptop category-icon"></i></a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="box-padding">
-                    <div class="box">
-                        <a href="#"><i class="fa-solid fa-mobile-screen category-icon"></i></a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="box-padding">
-                    <div class="box">
-                        <a href="#"><i class="fa-solid fa-clock category-icon"></i></a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-<!-- Category Section Ends Here -->
 
 
 @endsection

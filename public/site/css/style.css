@@ -78,7 +78,7 @@ a {
     text-decoration: none;
 }
 
-#top-header .top-header-social-icon a {
+#top-header .top-header-social-icon .box{
     border: 2px solid var(--white);
     color: var(--white);
     margin: 0 10px;
@@ -87,9 +87,10 @@ a {
     border-radius: 10px;
     text-align: center;
     font-weight: bold;
+    transition: 1.2s;
 }
 
-#top-header .top-header-social-icon a:hover {
+#top-header .top-header-social-icon .nav-hover:hover {
     border: 2px solid var(--top-header-bg);
     color: var(--top-header-bg);
     background-color: var(--white);
@@ -100,6 +101,49 @@ a {
 }
 
 /* Top Header Ends Here */
+
+/* Cart Modal Css Starts Here*/
+
+
+.cart-system{
+    border-top: 1px solid gray;
+    border-bottom: 1px solid gray;
+    padding: 8px;
+    width: 100%;
+}
+
+.cart-buttons .col-md-12{
+    text-align: center;
+}
+
+.cart-buttons .col-md-12 .cart-buttons:hover{
+    background-color: var(--footer-bg);
+    color: var(--white);
+
+}
+
+.cart-buttons .go-to-cart-btn{
+    outline: none;
+    width: 95%;
+    padding-top: 5px;
+    border: 1px solid gray;
+    background-color: #fff;
+}
+
+.cart-buttons .proceed-to-checkout-btn{
+    outline: none;
+    width: 95%;
+    padding-top: 5px;
+    border: 1px solid gray;
+    background-color: #fff;
+    
+    
+}
+
+
+/* Cart Modal Css Ends Here*/
+
+
 
 
 
@@ -434,8 +478,16 @@ a {
     /* width: 100%; */
 }
 
+#product .home-product-button {
+    border: none;
+    outline: none;
+    background: none;
+    cursor: pointer;
+
+
+}
 #product .product-box {
-    height: 340px;
+    min-height: 60vh;
     width: 215px;
     border-radius: 5px;
     box-shadow: 1px 1px 15px #917f7f;
@@ -462,14 +514,13 @@ a {
 
 #product .product-box .product-image img {
     height: 150px;
-    width: 100%;
     padding-bottom: 25px;
 }
 
 #product .product-box .product-details {
     padding-left: 6px;
     padding-top: 10px;
-    cursor: default;
+    text-align: left;
 }
 
 #product .product-box .product-name .product-name-title {
@@ -482,7 +533,7 @@ a {
     font-size: 17px;
     /* color: var(--dec-color); */
     font-weight: 600;
-    padding-left: 29px;
+    /* padding-left: 29px; */
 }
 
 #product .product-box .product-description {
@@ -510,10 +561,13 @@ a {
     width: 150px;
     border: 1px solid gray;
     border-radius: 19px;
+    cursor: default;
+    transition: 1s;
+
 }
 
 #product .product-box .product-details .product-add-to-cart span:hover {
-    background-color: var(--dec-color);
+    background-color: var(--top-header-bg);
     color: var(--white);
 }
 
@@ -567,16 +621,14 @@ a {
         padding: 0;
     }
 
-
 }
-
 /* Products Css Ends Here */
 
 
 /* Category Css Starts Here */
 
 #category {
-    background-color: #747272;
+    /* background-color: #fff; */
     min-height: 25vh;
 }
 
@@ -599,19 +651,13 @@ a {
 }
 
 #category .row .box .category-icon {
-    height: 55px;
-    width: 98px;
     padding-top: 18px;
-    color: var(--footer-bg);
 }
 
 #category .row .box:hover {
-    background-color: var(--footer-bg);
+    background-color: #eee;
 }
 
-#category .row .box:hover .category-icon {
-    color: var(--white);
-}
 
 
 /* Category Css Ends Here */
@@ -783,9 +829,9 @@ a {
     box-shadow: 1px 1px 15px var(--top-header-bg);
 }
 
-#product .product-box .product-name .product-price {
+/* #product .product-box .product-name .product-price {
     padding-left: 20px;
-}
+} */
 
 .box-divider {
     display: flex;
@@ -834,9 +880,9 @@ a {
     height: 345px;
 }
 
-#product .container .product-row .product-box-padding .product-box .product-details .product-price {
+/* #product .container .product-row .product-box-padding .product-box .product-details .product-price {
     padding-left: 15px;
-}
+} */
 
 /* Media Query */
 
@@ -889,7 +935,7 @@ a {
 }
 
 #upper-header .box h4 {
-    color: rgb(234, 24, 24);
+    color: var(--top-header-bg);
     font-weight: 600;
     font-size: 25px;
 }
@@ -904,8 +950,8 @@ a {
     color: #008989;
 }
 
-#upper-header .box .contact-us {
-    color: #5b109b;
+#upper-header .box .second {
+    color: #000;
 }
 
 #map-here .map-box-padding {
@@ -1027,15 +1073,6 @@ a {
 }
 
 /* Contact Us Css Ends Here */
-
-
-
-
-
-
-
-
-
 
 
 

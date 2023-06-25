@@ -11,7 +11,7 @@
                 <h4>Get in Touch</h4>
                 <h6><a href="{{ url('/') }}"><span class="home">Home</span>
                     </a> <span class="slash">/</span>
-                    <a href="{{ url('/contact-us') }}"><span class="contact-us">Contact Us</span>
+                    <a href="{{ url('/contact-us') }}"><span class="contact-us second">Contact Us</span>
                     </a>
                 </h6>
             </div>

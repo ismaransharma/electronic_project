@@ -66,7 +66,8 @@
 
                                         <input type="file"
                                             class="form-control  @error('product_image') is-invalid @enderror"
-                                            id="image" name="product_image" placeholder="Enter Product iImage" value="{{ $product->product_image }}"/>
+                                            id="image" name="product_image" placeholder="Enter Product iImage"
+                                            value="{{ $product->product_image }}" />
                                         @if ($product->product_image != null)
                                         <img src="{{ asset('uploads/product/' . $product->product_image) }}"
                                             class="img-responsive img-fluid" width="150" height="150" />
@@ -100,7 +101,7 @@
                                         @enderror
                                     </div>
                                 </div>
-                                <div class="col-md-4">
+                                <div class="col-md-2">
                                     <div class="form-group mb-2">
                                         <label for="">Stock*</label>
                                         <input type="number" class="form-control @error('stock') is-invalid @enderror"
@@ -115,12 +116,12 @@
                                 </div>
                                 <div class="col-md-4">
                                     <div class="form-group mb-2">
-                                        <label for="">Original Cost*</label>
+                                        <label for="">Orginal Cost*</label>
                                         <input type="number"
-                                            class="form-control @error('original_cost') is-invalid @enderror"
-                                            value="{{ $product->original_cost }}" id="original_cost"
-                                            name="original_cost" />
-                                        @error('original_cost')
+                                            class="form-control @error('orginal_cost') is-invalid @enderror"
+                                            value="{{ $product->orginal_cost }}" id="orginal_cost"
+                                            name="orginal_cost" />
+                                        @error('orginal_cost')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
                                         </span>
@@ -141,14 +142,42 @@
                                         @enderror
                                     </div>
                                 </div>
+                                <div class="col-md-2">
+                                    <div class="form-group mb-2">
+                                        <label for="">Brand*</label>
+                                        <input type="text" class="form-control @error('brand') is-invalid @enderror"
+                                            value="{{ $product->brand }}" id="brand" name="brand" required />
+                                        @error('brand')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                        @enderror
+                                    </div>
+                                </div>
+                                <div class="col-md-12">
+                                    <div class="form-group mb-2">
+                                        <label for="">Product Short Description*</label>
+                                        <textarea name="product_little_description"
+                                            class="form-control @error('product_little_description') is-invalid @enderror"
+                                            id="product_little_description" cols="10" rows="5"
+                                            placeholder="Write in 15 Word "
+                                            required>{{ $product->product_little_description }}</textarea>
+                                        @error('product_little_description')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                        @enderror
+                                    </div>
+                                </div>
+
                                 <div class="col-md-12">
                                     <div class="form-group mb-2">
                                         <label for="">Product Description*</label>
-                                        <textarea name="product_description"
-                                            class="form-control @error('discounted_cost') is-invalid @enderror"
-                                            id="product_description" cols="30"
-                                            rows="10">{{ $product->product_description }}</textarea>
-                                        @error('discounted_cost')
+                                        <textarea name="product_full_description"
+                                            class="form-control @error('product_little_description') is-invalid @enderror"
+                                            id="product_full_description" cols="30" rows="10"
+                                            required>{{ $product->product_full_description }}</textarea>
+                                        @error('product_little_description')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
                                         </span>

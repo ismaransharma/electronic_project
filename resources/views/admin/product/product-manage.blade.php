@@ -10,6 +10,7 @@
     </style>
 </head>
 
+
 <div class="container">
     <div class="row">
         <div class="col-md-12">
@@ -38,10 +39,10 @@
                                 <th>Product Title</th>
                                 <th>Product Image</th>
                                 <th>Category</th>
-                                <!-- <th>Product Description</th> -->
                                 <th>Stock</th>
-                                <th>Origial Cost</th>
+                                <th>Orginal Cost</th>
                                 <th>Discounted Cost</th>
+                                <th>Brand</th>
                                 <th>Status</th>
                                 <th>Created At</th>
                                 <th>Action</th>
@@ -65,23 +66,27 @@
                                 <!-- <td>{{ $item->product_description }}</td> -->
 
                                 <td>{{ $item->product_stock }}</td>
-                                <!-- Yo chai original Cost -->
-                                <td>Rs {{ $item->original_cost }}</td>
+                                <!-- Yo chai orginal_cost Cost -->
+                                <td>Rs {{ $item->orginal_cost }}</td>
                                 <!-- Yo chai discounted cost -->
                                 <td>Rs {{ $item->discounted_cost }}</td>
+                                <td>{{ $item->brand }}</td>
                                 <td>
 
                                     @if ($item->status == 'active')
-                                    <span class="text-success" style="padding-left: 8px; font-weight: 600;;">Active</span>
+                                    <span class="text-success"
+                                        style="padding-left: 8px; font-weight: 600;;">Active</span>
 
                                     @else
-                                    <span class="text-danger" style="padding-left: 8px; font-weight: 600;">Inactive</span>
+                                    <span class="text-danger"
+                                        style="padding-left: 8px; font-weight: 600;">Inactive</span>
                                     @endif
 
                                 </td>
                                 <td>15 June 2023</td>
                                 <td>
-                                    <a href="{{ route('getEditProduct', $item->slug) }}"><button class="btn btn-success btn-sm">Edit</button></a>
+                                    <a href="{{ route('getEditProduct', $item->slug) }}"><button
+                                            class="btn btn-success btn-sm">Edit</button></a>
                                     <a href="{{ route('getDeleteProduct', $item->slug) }}"><button
                                             class="btn btn-danger btn-sm">Delete</button></a>
                                 </td>
@@ -162,7 +167,7 @@
                                 @enderror
                             </div>
                         </div>
-                        <div class="col-md-4">
+                        <div class="col-md-2">
                             <div class="form-group mb-2">
                                 <label for="">Stock*</label>
                                 <input type="number" class="form-control @error('stock') is-invalid @enderror"
@@ -177,11 +182,10 @@
                         </div>
                         <div class="col-md-4">
                             <div class="form-group mb-2">
-                                <label for="">Original Cost*</label>
-                                <input type="number" class="form-control @error('original_cost') is-invalid @enderror"
-                                    value="{{ old('original_cost') }}" id="original_cost" name="original_cost"
-                                    required />
-                                @error('original_cost')
+                                <label for="">Orginal Cost*</label>
+                                <input type="number" class="form-control @error('orginal_cost') is-invalid @enderror"
+                                    value="{{ old('orginal_cost') }}" id="orginal_cost" name="orginal_cost" required />
+                                @error('orginal_cost')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
                                 </span>
@@ -192,9 +196,21 @@
                             <div class="form-group mb-2">
                                 <label for="">Discounted Cost*</label>
                                 <input type="number" class="form-control @error('discounted_cost') is-invalid @enderror"
-                                    value="{{ old('discounted_cost') }}" id="discounted_cost" name="discounted_cost"
-                                    required />
+                                    value="{{ old('discounted_cost') }}" id="discounted_cost" name="discounted_cost" required />
                                 @error('discounted_cost')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                                @enderror
+                            </div>
+                        </div>
+                        <div class="col-md-2">
+                            <div class="form-group mb-2">
+                                <label for="">Brand*</label>
+                                <input type="text" class="form-control @error('brand') is-invalid @enderror"
+                                    value="{{ old('brand') }}" id="brand" name="brand" required />
+
+                                @error('brand')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
                                 </span>
@@ -203,11 +219,26 @@
                         </div>
                         <div class="col-md-12">
                             <div class="form-group mb-2">
-                                <label for="">Product Description*</label>
-                                <textarea name="product_description"
+                                <label for="">Product Short Description*</label>
+                                <textarea name="product_little_description"
                                     class="form-control @error('discounted_cost') is-invalid @enderror"
-                                    id="product_description" cols="30" rows="10"
-                                    required>{{ old('product_description') }}</textarea>
+                                    id="product_little_description" cols="10" rows="5" placeholder="Write in 15 Word "
+                                    required>{{ old('product_little_description') }}</textarea>
+                                @error('discounted_cost')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                                @enderror
+                            </div>
+                        </div>
+
+                        <div class="col-md-12">
+                            <div class="form-group mb-2">
+                                <label for="">Product Description*</label>
+                                <textarea name="product_full_description"
+                                    class="form-control @error('discounted_cost') is-invalid @enderror"
+                                    id="product_full_description" cols="30" rows="10"
+                                    required>{{ old('product_full_description') }}</textarea>
                                 @error('discounted_cost')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>

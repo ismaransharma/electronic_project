@@ -107,7 +107,7 @@ class HomeController extends Controller
 
         // Eadi Form ma image xa vane
 
-        if('$image'){
+        if($image){
             // aaba image ko lagi saddhai unique name hunu parxa
             // unique name generate garne 2 ta tarika xa 
               // md5()
@@ -301,9 +301,11 @@ class HomeController extends Controller
             'product_image' => 'required|image|mimes:jpeg,jpg,png,gif',
             'status' => 'required|in:active,inactive',
             'stock'=>'required| integer',
-            'original_cost'=>'required|numeric',
+            'orginal_cost'=>'required|numeric',
             'discounted_cost'=>'numeric',
-            'product_description'=>'required',
+            'brand' => 'required',
+            'product_little_description'=>'required',
+            'product_full_description'=>'required',
         ]);
         
         // dd($request->all());
@@ -320,7 +322,8 @@ class HomeController extends Controller
         $slug = Str::slug($product_title);
         
         $status = $request->input('status');
-        $product_description = $request->input('product_description');
+        $product_little_description = $request->input('product_little_description');
+        $product_full_description = $request->input('product_full_description');
         
         $category_id = $request->input('category_id');
         $category = Category::where('id', $category_id)->where('deleted_at', null)->limit(1)->first();
@@ -331,16 +334,17 @@ class HomeController extends Controller
 
         $image = $request->file('product_image');
         $stock = $request->input('stock');
-        $original_cost = $request->input('original_cost');
+        $orginal_cost = $request->input('orginal_cost');
         $discounted_cost = $request->input('discounted_cost');
+        $brand = $request->input('brand');
         
+
         // dd($request->all());
         
-        // // dd($product_title,$slug,$status,$product_description,$image);
 
         // // Eadi Form ma image xa vane
         
-        if('$image'){
+        if($image){
             // aaba image ko lagi saddhai unique name hunu parxa
             // unique name generate garne 2 ta tarika xa 
             // md5()
@@ -377,14 +381,18 @@ class HomeController extends Controller
         $product->category_id=$category_id;
         $product->status=$status;
         $product->slug=$slug;
-        $product->product_description=$product_description;
+        $product->product_little_description=$product_little_description;
+        $product->product_full_description=$product_full_description;
         $product->product_stock=$stock;
-        $product->original_cost=$original_cost;
+        $product->orginal_cost=$orginal_cost;
         $product->discounted_cost=$discounted_cost;
-
+        $product->brand=$brand;
+        
         if($image){
             $product->product_image=$product_image;
         }
+
+        
 
         $product->save();
         return redirect()->back()->with('success', 'Product Added Successfully...');
@@ -443,9 +451,12 @@ class HomeController extends Controller
             'product_image' => 'image|mimes:jpeg,jpg,png,gif',
             'status' => 'in:active,inactive',
             'stock'=>'integer',
-            'original_cost'=>'required|numeric',
+            'orginal_cost'=>'required|numeric',
             'discounted_cost'=>'numeric',
-            'product_description'=>'required',
+            'brand' => 'required',
+            'product_little_description'=>'required',
+            'product_full_description'=>'required',
+            
         ]);
         
         // dd($request->all());
@@ -466,11 +477,13 @@ class HomeController extends Controller
         }
         
         $status = $request->input('status');
-        $product_description = $request->input('product_description');
+        $product_little_description = $request->input('product_little_description');
+        $product_full_description = $request->input('product_full_description');
         $image = $request->file('product_image');
         $stock = $request->input('stock');
-        $original_cost = $request->input('original_cost');
+        $orginal_cost = $request->input('orginal_cost');
         $discounted_cost = $request->input('discounted_cost');
+        $brand = $request->input('brand');
         
         // dd($request->all());
         
@@ -519,16 +532,19 @@ class HomeController extends Controller
         $product->category_id=$category_id;
         $product->status=$status;
         $product->slug=$slug;
-        $product->product_description=$product_description;
+        $product->product_little_description=$product_little_description;
+        $product->product_full_description=$product_full_description;
         $product->product_stock=$stock;
-        $product->original_cost=$original_cost;
+        $product->orginal_cost=$orginal_cost;
         $product->discounted_cost=$discounted_cost;
+        $product->brand=$brand;
 
         // dd($product);
         if($image){
             $product->product_image=$product_image;
             
         }
+        
 
         $product->save();
         return redirect()->route('getAdminProductManage')->with('success', 'Product Edited Successfully...');

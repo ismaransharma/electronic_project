@@ -30,4 +30,9 @@ class Category extends Model
     {
         return $this->hasMany(Product::class, 'category_id', 'id');
     }
+
+    public function activeProducts()
+    {
+        return $this->hasMany(Product::class, 'category_id', 'id')->where('deleted_at', null)->where('status', 'active');
+    }
 }

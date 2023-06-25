@@ -14,7 +14,15 @@
 
     <!-- Css link gareko -->
     <link rel="stylesheet" href="{{ asset('site/css/style.css') }}">
+
+    <style>
+    .login-btn:hover {
+        background: none;
+    }
+    </style>
 </head>
+
+
 
 <body>
 
@@ -41,16 +49,27 @@
 
                     <div class="col-md-4 col-lg-4 col-xl-4 col-sm-12 col-12 text-end icons">
                         <div class="top-header-social-icon">
-                            <a href="">
-                                <i class="fa-brands fa-facebook-f"></i>
-                            </a>
-                            <a href="">
-                                <i class="fa-brands fa-twitter"></i>
-                            </a>
-                            <a href="">
-                                <i class="fa-regular fa-envelope"></i>
+                            <button class="box btn nav-hover" data-bs-toggle="modal" data-bs-target="#checkCartModal">
+                                <i class="fa-solid fa-cart-shopping"></i>
+                            </button>
+                            <a href="{{ route('login') }}">
+                                <button class="btn login-btn"
+                                    style="outline: none; border: none; background: none; color: blue;"><i
+                                        class="fa-solid fa-user"></i></button>
                             </a>
                         </div>
+                        <!-- <div class="col-md-4 col-lg-4 col-xl-4 col-sm-12 col-12 text-end icons">
+                        <div class="top-header-social-icon">
+                            <a class="nav-icon-hover" href="">
+                                <i class="fa-brands fa-facebook-f"></i>
+                            </a>
+                            <a class="nav-icon-hover" href="">
+                                <i class="fa-brands fa-twitter"></i>
+                            </a>
+                            <a class="nav-icon-hover" href="">
+                                <i class="fa-regular fa-envelope"></i>
+                            </a>
+                        </div> -->
                     </div>
                 </div>
             </div>
@@ -58,12 +77,18 @@
 
         <!-- Top Header Ends Here -->
 
+        <?php
+        $navbar_categories = \App\Models\Category::where('deleted_at', null)
+            ->where('status', 'active')
+            ->get();
+        ?>
+
         <!-- navbar section starts here -->
         <section id="top-header-navbar">
             <nav class="navbar navbar-expand-lg bg-light">
                 <div class="container">
                     <a class="navbar-brand" href="{{ url('/')}}">
-                        <h4>Ismaran Electronic</h4>
+                        <h4>Gada Electronic</h4>
                     </a>
                     <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                         data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
@@ -73,28 +98,36 @@
                     <div class="collapse navbar-collapse" id="navbarSupportedContent">
                         <ul class="navbar-nav ms-auto text-center">
                             <li class="nav-item">
-                                <a class="nav-link {{ $activePage == 'homepage' ? 'activePage' : '' }}" aria-current="page"
-                                    href="{{ url('/')}} ">Home</a>
+                                <a class="nav-link {{ $activePage == 'homepage' ? 'activePage' : '' }}"
+                                    aria-current="page" href="{{ url('/')}} ">Home</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link {{ $activePage == 'aboutpage' ? 'activePage' : '' }}" href="{{ url('/about-us') }}">About Us</a>
+                                <a class="nav-link {{ $activePage == 'aboutpage' ? 'activePage' : '' }}"
+                                    href="{{ url('/about-us') }}">About Us</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link {{ $activePage == 'servicepage' ? 'activePage' : '' }}" href="{{ url('/services')}}">Our Services</a>
+                                <a class="nav-link {{ $activePage == 'servicepage' ? 'activePage' : '' }}"
+                                    href="{{ url('/services')}}">Our Services</a>
                             </li>
                             <li class="nav-item dropdown">
-                                <a class="nav-link dropdown-toggle {{ $activePage == 'laptoppage' ? 'activePage' : '' }}" href="#" role="button" data-bs-toggle="dropdown"
-                                    aria-expanded="false">
-                                    Category
+                                <a class="nav-link dropdown-toggle {{ $activePage == 'productwithcategory' ? 'activePage' : '' }}"
+                                    href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                    Products
                                 </a>
                                 <ul class="dropdown-menu">
-                                    <li><a class="dropdown-item {{ $activePage == 'page' ? 'activePage' : '' }}" href="{{ url('/laptop-category')}}">Laptop</a></li>
-                                    <li><a class="dropdown-item" href="#">Mobile</a></li>
-                                    <li><a class="dropdown-item" href="#">Watch</a></li>
+                                    @foreach ($navbar_categories as $navbar_category)
+                                    <li>
+                                        <a class="dropdown-item {{ $activePage == '' ? 'activePage' : ''}}"
+                                            href="{{ route('getProductsByCategory', $navbar_category->slug) }}">
+                                            {{ $navbar_category->category_title }}
+                                        </a>
+                                    </li>
+                                    @endforeach
                                 </ul>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link {{ $activePage == 'contactpage' ? 'activePage' : '' }}" aria-current="page" href="{{ url('/contact-us')}}">Contact Us</a>
+                                <a class="nav-link {{ $activePage == 'contactpage' ? 'activePage' : '' }}"
+                                    aria-current="page" href="{{ url('/contact-us')}}">Contact Us</a>
                             </li>
                         </ul>
                     </div>
@@ -209,6 +242,55 @@
         </div>
     </div> -->
     <!-- Footer Sectin Ends Here -->
+
+    <!-- Modal -->
+    <div class="modal fade" id="checkCartModal" tabindex="-1" aria-labelledby="checkCartModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="checkCartModalLabel"><b>Shopping Cart</b></h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form action="" method="POST" enctype="multipart/form-data">
+                        <!-- Yo csrf le chai token generate garne kam garna which is tooo muchhh useful -->
+                        @csrf
+
+                        <div class="cart-system">
+                            <div class="row">
+                                <div class="col-md-6 text-dark">
+                                    <h5>Total</h5>
+                                </div>
+                                <div class="col-md-6 text-dark text-end">
+                                    <h5>Rs.0</h5>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="cart-buttons mt-2">
+                            <div class="row">
+                                <div class="col-md-12 mb-2">
+                                    <button class="go-to-cart-btn cart-buttons">
+                                        <h5>Go To Cart</h5>
+                                    </button>
+                                </div>
+                                <div class="col-md-12 ">
+                                    <button class="proceed-to-checkout-btn cart-buttons">
+                                        <h5>Proceed To Checkout</h5>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <input type="submit" class="btn btn-primary" value="Save changes">
+                </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    </div>
 
 
 

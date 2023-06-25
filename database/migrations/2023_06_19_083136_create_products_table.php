@@ -17,11 +17,13 @@ return new class extends Migration
             $table->unsignedBigInteger('category_id');
             $table->string('slug')->unique();
             $table->string('product_image')->unique();
-            $table->longText('product_description')->nullable();
+            $table->longText('product_little_description')->nullable();
+            $table->longText('product_full_description')->nullable();
             $table->enum('status', ['active', 'inactive'])->default('active');
             $table->unsignedInteger('product_stock');
-            $table->decimal('original_cost');
-            $table->decimal('discounted_cost')->nullable();
+            $table->decimal('orginal_cost');
+            $table->decimal('discounted_cost')->nullable(); 
+            $table->string('brand'); 
             $table->timestamp('deleted_at')->nullable();
             $table->timestamps();
 
