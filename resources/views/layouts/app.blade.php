@@ -15,6 +15,10 @@
     <link href="https://fonts.bunny.net/css?family=Nunito" rel="stylesheet">
 
 
+    <!-- fontawesome ko css link gareko -->
+    <link rel="stylesheet" href="{{ asset('site/fontawesome/all.css') }}">
+
+
 
     <!-- Scripts -->
     @vite(['resources/sass/app.scss', 'resources/js/app.js'])
@@ -25,7 +29,7 @@
         min-height: 100vh;
     }
 
-    .card-width{
+    .card-width {
         width: 550px;
     }
 
@@ -231,6 +235,10 @@
             @yield('content')
         </main>
     </div>
+
+
+    <!-- fontawesome ko js link gareko -->
+    <script src="{{ asset('site/fontawesome/all.js')}}"></script>
 </body>
 
 </html>

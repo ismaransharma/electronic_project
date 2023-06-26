@@ -2,7 +2,7 @@
 @section('navbar')
 
 <?php 
-// dd($products);
+// dd($services);
 ?>
 
 <!-- Silder section Starts Here -->
@@ -188,13 +188,16 @@
             @foreach($categories as $category)
             <div class="col-md-4">
                 <div class="box-padding">
-                    <div class="box">
-                        <img src="{{ asset('uploads/category/' . $category->category_image) }}"
-                            alt="{{ $category->slug }}" title="{{ ($category->category_title) }}" height="95px"
-                            width="95px">
-                        <h5 style="padding-left: 15px; padding-top: 5px; width:118px;">{{ $category->category_title }}
-                        </h5>
-                    </div>
+                    <a href="{{ route('getProductsByCategory', $category->slug) }}">
+                        <div class="box">
+                            <img src="{{ asset('uploads/category/' . $category->category_image) }}"
+                                alt="{{ $category->slug }}" title="{{ ($category->category_title) }}" height="95px"
+                                width="95px">
+                            <h5 style="padding-left: 15px; padding-top: 5px; width:118px;">
+                                {{ $category->category_title }}
+                            </h5>
+                        </div>
+                    </a>
                     <div class="name">
                     </div>
                 </div>
@@ -213,34 +216,15 @@
         <div class="row">
             <div class="service-bg">
                 <div class="row">
+                    @foreach ($services as $service)
                     <div class="col-md-3">
                         <div class="services-box">
-                            <i class="fa-solid fa-truck-fast icon"></i>
-                            <h3>Free Shipping</h3>
-                            <p>Order Over $100</p>
+                            {!! $service->service_icon !!}
+                            <h3>{{ $service->service_title }}</h3>
+                            <p>{{ $service->service_description }}</p>
                         </div>
                     </div>
-                    <div class="col-md-3">
-                        <div class="services-box">
-                            <i class="fa-solid fa-shield icon"></i>
-                            <h3>Secure Payment</h3>
-                            <p>100% Secure Payment</p>
-                        </div>
-                    </div>
-                    <div class="col-md-3">
-                        <div class="services-box">
-                            <i class="fa-solid fa-anchor icon"></i>
-                            <h3>Best Price</h3>
-                            <p>Guaranteed Low Cost</p>
-                        </div>
-                    </div>
-                    <div class="col-md-3">
-                        <div class="services-box">
-                            <i class="fa-solid fa-right-left icon"></i>
-                            <h3>Easy Return</h3>
-                            <p>Within 30 Days returns</p>
-                        </div>
-                    </div>
+                    @endforeach
                 </div>
             </div>
         </div>
@@ -280,7 +264,8 @@
                                             <!-- <span class="product-price">RS. {{ $product->discounted_cost }}</span> -->
                                         </div>
                                         <div class="product-description mt-2" style="height: 60px;">
-                                            <p>{{ Str::limit($product->product_full_description ?? 'No Title', 50)}}Read More..</p>
+                                            <p>{{ Str::limit($product->product_full_description ?? 'No Title', 50)}}Read
+                                                More..</p>
                                             <!-- <p>{{ $product->product_little_description }} Read More..</p> -->
                                         </div>
                                         <div class="product-rating">

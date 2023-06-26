@@ -242,6 +242,7 @@
         </div>
     </div> -->
     <!-- Footer Sectin Ends Here -->
+    
 
     <!-- Modal -->
     <div class="modal fade" id="checkCartModal" tabindex="-1" aria-labelledby="checkCartModalLabel" aria-hidden="true">

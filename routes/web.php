@@ -43,6 +43,8 @@ Route::get('/home', [HomeController::class, 'index'])->name('home');
 Route::get('product/{slug}', [SiteController::class, 'productPage'])->name('productPage');
 
 
+
+
 Route::middleware('auth')->group (function (){
     Route::prefix('admin')->group(function () {
 
@@ -58,9 +60,9 @@ Route::middleware('auth')->group (function (){
             // admin Product Edit Garne
             Route::get('edit/{slug}', [HomeController::class, 'getEditProduct'])->name('getEditProduct');
             
-            // admin Product Edit Garne POST
             Route::post('edit/{slug}', [HomeController::class, 'postEditProduct'])->name('postEditProduct');
 
+            
         });
 
         
@@ -73,10 +75,10 @@ Route::middleware('auth')->group (function (){
 
             // admin Category Delete Garne
             Route::get('delete/{slug}', [HomeController::class, 'getDeleteCategory'])->name('getDeleteCategory');
-
+            
             // admin Category Edit Garne
             Route::get('edit/{slug}', [HomeController::class, 'getEditCategory'])->name('getEditCategory');
-
+            
             // admin Category Edit Garne Post
             Route::post('edit/{slug}', [HomeController::class, 'postEditCategory'])->name('postEditCategory');
         });
@@ -86,17 +88,28 @@ Route::middleware('auth')->group (function (){
         Route::prefix('carts')->group (function (){
             Route::get('carts', [HomeController::class, 'getAdminCartsManage'])->name('getAdminCartsManage');
         });
-
+        
         Route::prefix('order')->group (function (){
             Route::get('order', [HomeController::class, 'getAdminOrderManage'])->name('getAdminOrderManage');
         });
-
+        
         Route::prefix('payment')->group (function (){
             Route::get('payment', [HomeController::class, 'getAdminPaymentManage'])->name('getAdminPaymentManage');
         });
-
+        
         Route::prefix('services')->group (function (){
             Route::get('services', [HomeController::class, 'getAdminServicesManage'])->name('getAdminServicesManage');
+            
+            Route::post('add', [HomeController::class, 'postAddService'])->name('postAddService');
+            
+            Route::get('delete/{slug}', [HomeController::class, 'getDeleteService'])->name('getDeleteService');
+            
+            Route::get('edit/{slug}', [HomeController::class, 'getEditService'])->name('getEditService');
+            
+            Route::post('edit/{slug}', [HomeController::class, 'postEditService'])->name('postEditService');
+
+            
+            
         });
 
         Route::prefix('slider')->group (function (){

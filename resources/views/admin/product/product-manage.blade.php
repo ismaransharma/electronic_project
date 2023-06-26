@@ -10,6 +10,11 @@
     </style>
 </head>
 
+<?php
+
+// dd($products);
+
+?>
 
 <div class="container">
     <div class="row">
@@ -72,7 +77,6 @@
                                 <td>Rs {{ $item->discounted_cost }}</td>
                                 <td>{{ $item->brand }}</td>
                                 <td>
-
                                     @if ($item->status == 'active')
                                     <span class="text-success"
                                         style="padding-left: 8px; font-weight: 600;;">Active</span>
@@ -81,7 +85,6 @@
                                     <span class="text-danger"
                                         style="padding-left: 8px; font-weight: 600;">Inactive</span>
                                     @endif
-
                                 </td>
                                 <td>15 June 2023</td>
                                 <td>

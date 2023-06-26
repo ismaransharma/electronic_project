@@ -3,22 +3,26 @@
 namespace App\Http\Controllers;
 
 use App\Models\Product;
+use App\Models\Service;
 use App\Models\Category;
-use Illuminate\Http\Request;
 use Illuminate\Support\Str;
+use Illuminate\Http\Request;
 
 class SiteController extends Controller
 {
     public function getHome(){
 
-        $data = [
-        // jati ota categories ko status active xan tyo sabbai dekhaunxa
-        //   'categories' => Category::where('deleted_at', null)->where('status', 'active')->orderby('category_title', 'asc')->get()  
-
-        // eauta certain amount samma category dekhauni cmd   
-        'categories' => Category::where('deleted_at', null)->where('status', 'active')->orderby('category_title', 'asc')->limit(3)->get(), 
         
-        'products' => Product::where('deleted_at', null)->where('status', 'active')->orderby('product_title', 'asc')->limit(3)->get()  
+        $data = [
+            // jati ota categories ko status active xan tyo sabbai dekhaunxa
+            //   'categories' => Category::where('deleted_at', null)->where('status', 'active')->orderby('category_title', 'asc')->get()  
+            
+            // eauta certain amount samma category dekhauni cmd   
+            'categories' => Category::where('deleted_at', null)->where('status', 'active')->orderby('category_title', 'asc')->limit(3)->get(), 
+            
+            'products' => Product::where('deleted_at', null)->where('status', 'active')->orderby('product_title', 'asc')->limit(3)->get(),
+            
+            'services' => Service::where('deleted_at', null)->where('status', 'active')->get(),
         
         
         ];

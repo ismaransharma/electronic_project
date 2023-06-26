@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Product;
+use App\Models\Service;
 use App\Models\Category;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
@@ -51,10 +52,7 @@ class HomeController extends Controller
         return view('admin.payment.payment-manage');
     }
 
-    public function getAdminServicesManage()
-    {
-        return view('admin.services.services-manage');
-    }
+    
 
     public function getAdminSliderManage()
     {
@@ -92,7 +90,7 @@ class HomeController extends Controller
 
         // dd($request->all());
 
-        $function_ko_variable = $request->input('form_ko_name_ma_vayeko_value');
+        // $function_ko_variable = $request->input('form_ko_name_ma_vayeko_value');
 
         $category_title = $request->input('category_title');
         
@@ -310,7 +308,7 @@ class HomeController extends Controller
         
         // dd($request->all());
         
-        $function_ko_variable = $request->input('form_ko_name_ma_vayeko_value');
+        // $function_ko_variable = $request->input('form_ko_name_ma_vayeko_value');
         
         $product_title = $request->input('product_title');
         
@@ -413,7 +411,7 @@ class HomeController extends Controller
 
         return redirect()->back()->with('success', 'Product Deleted Successfully');
     }
-
+    
     // Product Edit page ma jani cmd
 
     public function getEditProduct($slug)
@@ -551,6 +549,138 @@ class HomeController extends Controller
         
     }
 
+
+    public function getAdminServicesManage()
+    {
+        $data = [
+            'services' => Service::where('deleted_at', null)->get(),
+        ];
+
+        return view('admin.services.services-manage', $data);
+    }
+
+
+    // Service Add Garne Logic
+    
+    public function postAddService(Request $request)
+    {
+        // dd($request->all());
+        $request->validate([
+            'service_title' => 'required|unique:services,service_title',
+            'service_icon' => 'required',
+            'status' => 'required|in:active,inactive',
+            'service_description'=>'required',
+        ]);
+        
+        // dd($request->all());
+        
+        $service_title = $request->input('service_title');
+        $service_icon = $request->input('service_icon');
+        
+        
+        // dd($service_title);
+        
+        // SLug Generate Garna
+        $slug = Str::slug($service_title);
+        
+        $status = $request->input('status');
+        $service_description = $request->input('service_description');
+
+        $service = new Service;
+
+        $service->service_title = $service_title;
+        $service->service_icon = $service_icon;
+        $service->status = $status;
+        $service->slug = $slug;
+        $service->service_description = $service_description;
+
+
+        // dd($request->all());
+
+        $service->save();
+        return redirect()->back()->with('success', 'Service Added Successfully...');
+    }
+
+    
+    // Service Delete Garne Command/Logic
+    public function getDeleteService($slug){
+        $service = Service::where('slug', $slug)->where('deleted_at', null)->limit(1)->first();
+        if (is_null ($service)) {
+            return redirect()->back()->with('error', 'Service not found');
+        }
+
+        // dd($category);
+
+        $service->deleted_at = Carbon::now();
+        $service->save();
+
+        return redirect()->back()->with('success', 'Service Deleted Successfully');
+    }
+
+    public function getEditService($slug)
+    {
+        $service = Service::where('slug', $slug)->where('deleted_at', null)->limit(1)->first();
+
+        if (is_null ($service)) {
+            return redirect()->back()->with('error', 'Service not found');
+        }
+
+        $data = [
+            'service' => $service,
+        ];
+        
+
+        return view('admin.services.edit', $data);
+    }
+
+    public function postEditService(Request $request, $slug)
+    {
+
+        $service = Service::where('slug', $slug)->where('deleted_at', null)->limit(1)->first();
+
+        if (is_null ($service)) {
+            return redirect()->back()->with('error', 'Service not found');
+        }
+        
+        // dd($request->all());
+        $request->validate([
+            'service_title' => 'required|unique:services,service_title,' . $service->id, 
+            'service_icon' => 'required',
+            'status' => 'in:active,inactive',
+            'service_description'=>'required',
+            
+        ]);
+        
+        // dd($request->all());
+        
+        $service_title = $request->input('service_title');
+        $service_icon = $request->input('service_icon');
+        
+        
+        // Slug Generate gareko
+        $slug = Str::slug($service_title);
+        
+        
+        if (is_null($service)) {
+            return redirect()->back()->with('error', 'Service Not Found');
+        }
+        
+        $status = $request->input('status');
+        $service_description = $request->input('service_description');
+        
+        
+        $service->service_icon = $service_icon;
+        $service->service_title = $service_title;
+        $service->status = $status;
+        $service->slug = $slug;
+        $service->service_description = $service_description;
+        
+        
+
+        $service->save();
+        return redirect()->route('getAdminServicesManage')->with('success', 'Services Edited Successfully...');
+        
+    }
 
     
 }
