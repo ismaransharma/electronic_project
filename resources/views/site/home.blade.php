@@ -257,7 +257,7 @@
                                         alt="{{ $product->product_title }}" />
                                 </div>
                                 <div class="heart-and-cart">
-                                    <a href="">
+                                    <a>
                                         <button>
                                             <i class="fa-solid fa-cart-shopping"></i>
                                         </button>
@@ -270,7 +270,16 @@
                                         <div class="product-name">
                                             <span class="product-name-title">{{ $product->product_title }}</span>
                                             <br>
-                                            <span class="product-price">{{ $product->orginal_cost }}</span>
+                                            @if ($product->discounted_cost > 0)
+                                            <span
+                                                class="product-price">Rs.{{ $product->orginal_cost - $product->discounted_cost}}</span>
+                                            <span class="fw-bold"
+                                                style="font-size: 14px; text-decoration: line-through; padding-left: 5px;">Rs.
+                                                {{ $product->orginal_cost }}</span>
+
+                                            @else
+                                            <span class="fw-bold">Rs. {{ $product->orginal_cost }}</span>
+                                            @endif
                                             <!-- <span class="product-price">RS. {{ $product->discounted_cost }}</span> -->
                                         </div>
                                         <div class="product-description mt-2" style="height: 60px;">
