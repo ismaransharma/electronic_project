@@ -156,7 +156,9 @@
                 </a>
             </div>
             <div class="col-md-6 text-end">
-                <button class="btn last-button proceed-to-checkout">Proceed To Checkout</button>
+                <a href="{{ route('getProceedToCheckout') }}">
+                    <button class="btn last-button proceed-to-checkout">Proceed To Checkout</button>
+                </a>
             </div>
         </div>
     </div>

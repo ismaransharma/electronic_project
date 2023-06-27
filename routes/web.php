@@ -41,6 +41,8 @@ Route::get('product/{slug}', [SiteController::class, 'productPage'])->name('prod
 
 Route::get('/carts', [SiteController::class, 'getCart'])->name('getCart');
 
+Route::get('/proceed-to-checkout', [SiteController::class, 'getProceedToCheckout'])->name('getProceedToCheckout');
+
 
 
 Route::middleware('auth')->group (function (){

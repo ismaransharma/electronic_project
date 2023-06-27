@@ -276,9 +276,11 @@
                                 </a>
                             </div>
                             <div class="col-md-12 ">
-                                <button class="proceed-to-checkout-btn cart-buttons">
-                                    <h5>Proceed To Checkout</h5>
-                                </button>
+                                <a href="{{ route('getProceedToCheckout') }}">
+                                    <button class="proceed-to-checkout-btn cart-buttons">
+                                        <h5>Proceed To Checkout</h5>
+                                    </button>
+                                </a>
                             </div>
                         </div>
                     </div>

@@ -108,10 +108,15 @@ class SiteController extends Controller
 
 
     // Go To Cart
-
     public function getCart()
     {
         return view('site.go-to-cart');
+    }
+
+    // Proceed to checkout
+    public function getProceedToCheckout()
+    {
+        return view('site.proceed-to-checkout');
     }
     
 }
