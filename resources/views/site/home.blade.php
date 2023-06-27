@@ -232,6 +232,13 @@
 </section>
 <!-- Services Section Ends Here -->
 
+
+<!-- Toastr Button  -->
+
+
+
+
+
 <!-- Product item starts here -->
 <section id="product">
     <div class="container">
@@ -244,18 +251,21 @@
                 <div class="box-divider">
                     <div class="product-box-padding">
                         <div class="product-box">
+                            <div class="product-image">
+                                <div class="product-main-image">
+                                    <img src="{{ asset('uploads/product/'. $product->product_image)}}"
+                                        alt="{{ $product->product_title }}" />
+                                </div>
+                                <div class="heart-and-cart">
+                                    <a href="">
+                                        <button>
+                                            <i class="fa-solid fa-cart-shopping"></i>
+                                        </button>
+                                    </a>
+                                </div>
+                            </div>
                             <a href="{{ route('productPage', $product->slug) }}">
                                 <button class="home-product-button">
-                                    <div class="product-image">
-                                        <div class="product-main-image">
-                                            <img src="{{ asset('uploads/product/'. $product->product_image)}}"
-                                                alt="{{ $product->product_title }}">
-                                        </div>
-                                        <!-- <div class="heart-and-cart">
-                                            <span><i class="fa-regular fa-heart"></i></span>
-                                            <span><i class="fa-solid fa-cart-shopping"></i></span>
-                                        </div> -->
-                                    </div>
                                     <div class="product-details">
                                         <div class="product-name">
                                             <span class="product-name-title">{{ $product->product_title }}</span>
@@ -291,6 +301,7 @@
     </div>
 </section>
 <!-- Product item ends here -->
+
 
 
 

@@ -16,7 +16,7 @@ use App\Http\Controllers\SiteController;
 |
 */
 
-Route::get('/', [SiteController::class, 'getHome' ]); 
+Route::get('/', [SiteController::class, 'getHome' ])->name('getHome'); 
 
 Route::get('/about-us', [SiteController::class, 'getAbout']);
 
@@ -26,9 +26,6 @@ Route::get('/laptop-category', [SiteController::class, 'getLaptopCategory'])->na
 
 Route::get('products/{slug}', [SiteController::class, 'getProductsByCategory'])->name('getProductsByCategory');
 
-Route::get('/categroy-gaming-laptop', [SiteController::class, 'getGamingLaptopCategory']);
-
-Route::get('/category-budget-laptop', [SiteController::class, 'getBudgetLaptopCategory']);
 
 Route::get('/contact-us', [SiteController::class, 'getContactUs']);
 
@@ -42,6 +39,7 @@ Route::get('/home', [HomeController::class, 'index'])->name('home');
 
 Route::get('product/{slug}', [SiteController::class, 'productPage'])->name('productPage');
 
+Route::get('/carts', [SiteController::class, 'getCart'])->name('getCart');
 
 
 

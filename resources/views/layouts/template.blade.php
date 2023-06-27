@@ -12,6 +12,9 @@
     <!-- fontawesome ko css link gareko -->
     <link rel="stylesheet" href="{{ asset('site/fontawesome/all.css') }}">
 
+    <!-- toastr ko css link gareko -->
+    <link rel="stylesheet" href="{{ asset('site/toastr/toastr.css') }}">
+
     <!-- Css link gareko -->
     <link rel="stylesheet" href="{{ asset('site/css/style.css') }}">
 
@@ -242,7 +245,7 @@
         </div>
     </div> -->
     <!-- Footer Sectin Ends Here -->
-    
+
 
     <!-- Modal -->
     <div class="modal fade" id="checkCartModal" tabindex="-1" aria-labelledby="checkCartModalLabel" aria-hidden="true">
@@ -253,44 +256,40 @@
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    <form action="" method="POST" enctype="multipart/form-data">
-                        <!-- Yo csrf le chai token generate garne kam garna which is tooo muchhh useful -->
-                        @csrf
-
-                        <div class="cart-system">
-                            <div class="row">
-                                <div class="col-md-6 text-dark">
-                                    <h5>Total</h5>
-                                </div>
-                                <div class="col-md-6 text-dark text-end">
-                                    <h5>Rs.0</h5>
-                                </div>
+                    <div class="cart-system">
+                        <div class="row">
+                            <div class="col-md-6 text-dark">
+                                <h5>Total</h5>
+                            </div>
+                            <div class="col-md-6 text-dark text-end">
+                                <h5>Rs.0</h5>
                             </div>
                         </div>
-                        <div class="cart-buttons mt-2">
-                            <div class="row">
-                                <div class="col-md-12 mb-2">
+                    </div>
+                    <div class="cart-buttons mt-2">
+                        <div class="row">
+                            <div class="col-md-12 mb-2">
+                                <a href="{{ route('getCart') }}">
                                     <button class="go-to-cart-btn cart-buttons">
                                         <h5>Go To Cart</h5>
                                     </button>
-                                </div>
-                                <div class="col-md-12 ">
-                                    <button class="proceed-to-checkout-btn cart-buttons">
-                                        <h5>Proceed To Checkout</h5>
-                                    </button>
-                                </div>
+                                </a>
+                            </div>
+                            <div class="col-md-12 ">
+                                <button class="proceed-to-checkout-btn cart-buttons">
+                                    <h5>Proceed To Checkout</h5>
+                                </button>
                             </div>
                         </div>
+                    </div>
 
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                     <input type="submit" class="btn btn-primary" value="Save changes">
                 </div>
-                </form>
             </div>
         </div>
-    </div>
     </div>
 
 
@@ -310,6 +309,20 @@
 
     <!-- Javascript link gareko -->
     <script src="{{ asset('site/javascript/script.js') }}"></script>
+
+    <!-- Toastr Js -->
+
+    <script src="{{ asset('site/toastr/toastr.min.js') }}"></script>
+    <script>
+    @if(session('success'))
+    toastr.success('success!', '{{ session('
+        success ') }}');
+    @endif
+    @if(session('error'))
+    toastr.error('error!', '{{ session('
+        error ') }}');
+    @endif
+    </script>
 </body>
 
 </html>

@@ -14,9 +14,9 @@
     <link rel="dns-prefetch" href="//fonts.bunny.net">
     <link href="https://fonts.bunny.net/css?family=Nunito" rel="stylesheet">
 
-
     <!-- fontawesome ko css link gareko -->
     <link rel="stylesheet" href="{{ asset('site/fontawesome/all.css') }}">
+
 
 
 
@@ -239,6 +239,7 @@
 
     <!-- fontawesome ko js link gareko -->
     <script src="{{ asset('site/fontawesome/all.js')}}"></script>
+
 </body>
 
 </html>

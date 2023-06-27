@@ -1,11 +1,11 @@
-@import url('https://fonts.googleapis.com/css2?family=Mukta&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Mukta&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap");
 
 * {
     margin: 0px;
     padding: 0px;
     box-sizing: border-box;
-    font-family: 'Mukta', sans-serif;
+    font-family: "Mukta", sans-serif;
 }
 
 :root {
@@ -51,7 +51,6 @@ body {
     width: 100%;
 }
 
-
 /* Top header Css */
 
 #top-header {
@@ -78,7 +77,7 @@ a {
     text-decoration: none;
 }
 
-#top-header .top-header-social-icon .box{
+#top-header .top-header-social-icon .box {
     border: 2px solid var(--white);
     color: var(--white);
     margin: 0 10px;
@@ -104,25 +103,23 @@ a {
 
 /* Cart Modal Css Starts Here*/
 
-
-.cart-system{
+.cart-system {
     border-top: 1px solid gray;
     border-bottom: 1px solid gray;
     padding: 8px;
     width: 100%;
 }
 
-.cart-buttons .col-md-12{
+.cart-buttons .col-md-12 {
     text-align: center;
 }
 
-.cart-buttons .col-md-12 .cart-buttons:hover{
+.cart-buttons .col-md-12 .cart-buttons:hover {
     background-color: var(--footer-bg);
     color: var(--white);
-
 }
 
-.cart-buttons .go-to-cart-btn{
+.cart-buttons .go-to-cart-btn {
     outline: none;
     width: 95%;
     padding-top: 5px;
@@ -130,22 +127,15 @@ a {
     background-color: #fff;
 }
 
-.cart-buttons .proceed-to-checkout-btn{
+.cart-buttons .proceed-to-checkout-btn {
     outline: none;
     width: 95%;
     padding-top: 5px;
     border: 1px solid gray;
     background-color: #fff;
-    
-    
 }
-
 
 /* Cart Modal Css Ends Here*/
-
-
-
-
 
 /* Nav Css Starts From Here */
 
@@ -198,7 +188,6 @@ a {
     height: 65px;
     padding: 15px 30px;
     color: var(--top-header-bg);
-
 }
 
 .nav-link:hover {
@@ -215,7 +204,6 @@ a {
 
 /* Nav Bar Ends Here  */
 
-
 /* Slider Css starts here */
 
 #slider {
@@ -227,23 +215,43 @@ a {
     height: 83vh;
 }
 
-#slider .container #carouselExampleCaptions .carousel-inner .slider-button .carousel-control-prev {
+#slider
+    .container
+    #carouselExampleCaptions
+    .carousel-inner
+    .slider-button
+    .carousel-control-prev {
     width: 55px;
 }
 
-#slider .container #carouselExampleCaptions .carousel-inner .slider-button .carousel-control-prev-icon {
+#slider
+    .container
+    #carouselExampleCaptions
+    .carousel-inner
+    .slider-button
+    .carousel-control-prev-icon {
     height: 50px;
     width: 50px;
     outline: black;
     /* background-color: rgba(0, 0, 0, 0.3); */
 }
 
-#slider .container #carouselExampleCaptions .carousel-inner .slider-button .carousel-control-next-icon {
+#slider
+    .container
+    #carouselExampleCaptions
+    .carousel-inner
+    .slider-button
+    .carousel-control-next-icon {
     height: 50px;
     width: 50px;
 }
 
-#slider .container #carouselExampleCaptions .carousel-inner .slider-button .carousel-control-next {
+#slider
+    .container
+    #carouselExampleCaptions
+    .carousel-inner
+    .slider-button
+    .carousel-control-next {
     width: 55px;
 }
 
@@ -267,13 +275,29 @@ a {
     width: 455px;
 }
 
-#slider .container .carousel-inner .carousel-item .row .col-md-4 .slider-content .slider-image .sliders {
+#slider
+    .container
+    .carousel-inner
+    .carousel-item
+    .row
+    .col-md-4
+    .slider-content
+    .slider-image
+    .sliders {
     height: 240px;
     width: 450px;
     margin: 85px 0;
 }
 
-#slider .container .carousel-inner .carousel-item .row .col-md-4 .slider-content .slider-image .sliders3 {
+#slider
+    .container
+    .carousel-inner
+    .carousel-item
+    .row
+    .col-md-4
+    .slider-content
+    .slider-image
+    .sliders3 {
     height: 233px;
     width: 407px;
     margin: 85px 0;
@@ -301,7 +325,13 @@ a {
     font-weight: 500;
 }
 
-#slider .container .carousel-inner .slider-center .slider-content .button a:hover {
+#slider
+    .container
+    .carousel-inner
+    .slider-center
+    .slider-content
+    .button
+    a:hover {
     background-color: var(--top-header-bg);
     color: var(--white);
 }
@@ -328,7 +358,6 @@ a {
     width: 528px;
 }
 
-
 .about-button {
     background-color: var(--dec-color);
     color: var(--white);
@@ -339,9 +368,7 @@ a {
     color: var(--dec-color);
 }
 
-
 @media only screen and (max-width: 600px) {
-
     #about {
         min-height: 110vh;
     }
@@ -388,7 +415,6 @@ a {
         width: 100%;
         height: 220px;
     }
-
 }
 
 /* About Css Ends Here */
@@ -412,13 +438,11 @@ a {
     border-radius: 5px;
 }
 
-
 #services .services-box .icon {
     padding: 20px;
     border: 1px solid var(--top-header-bg);
     border-radius: 50%;
     transition: 0.5s ease-in-out;
-
 }
 
 #services .services-box:hover .icon {
@@ -451,7 +475,6 @@ a {
     padding-top: 250px;
 }
 
-
 #product .top-sale {
     padding-left: 38px;
     padding-top: 20px;
@@ -483,8 +506,6 @@ a {
     outline: none;
     background: none;
     cursor: pointer;
-
-
 }
 #product .product-box {
     min-height: 60vh;
@@ -492,25 +513,35 @@ a {
     border-radius: 5px;
     box-shadow: 1px 1px 15px #917f7f;
     margin: 0 5px;
-
 }
 
 #product .product-box .product-image {
-    height: 170px;
-    width: 100%;
-    background-color: var(--product-bg);
+    position: relative;
     text-align: center;
-
 }
 
-#product .product-box .product-image:hover {
-    opacity: 0.7;
+#product .product-box .product-image .heart-and-cart button {
+    position: absolute;
+    bottom: 48px;
+    right: 85px;
+    padding: 17px;
+    background-color: rgba(0, 0, 0, 0.09);
+    opacity: 0;
+    border: none;
+    outline: none;
+}
+
+#product .product-box .product-image:hover .heart-and-cart button {
+    opacity: 1;
+}
+
+#product .product-box .product-image:hover .product-main-image {
+    opacity: 0.2;
 }
 
 #product .product-box .product-image .product-main-image {
     padding-top: 25px;
 }
-
 
 #product .product-box .product-image img {
     height: 150px;
@@ -563,7 +594,6 @@ a {
     border-radius: 19px;
     cursor: default;
     transition: 1s;
-
 }
 
 #product .product-box .product-details .product-add-to-cart span:hover {
@@ -593,7 +623,6 @@ a {
 
     .product-box-padding {
         padding-left: 45px;
-
     }
 
     #services {
@@ -620,10 +649,8 @@ a {
     #product .top-sale {
         padding: 0;
     }
-
 }
 /* Products Css Ends Here */
-
 
 /* Category Css Starts Here */
 
@@ -658,12 +685,7 @@ a {
     background-color: #eee;
 }
 
-
-
 /* Category Css Ends Here */
-
-
-
 
 /* About Us Css Starts Here */
 
@@ -681,12 +703,9 @@ a {
 
 #about-us .about-us-header a span {
     text-decoration: underline;
-
 }
 
 /* About Us Css Ends Here */
-
-
 
 /* Our Services Css Starts Here*/
 .services-bg {
@@ -725,10 +744,8 @@ a {
     box-shadow: 1px 1px 20px #0ea781;
 }
 
-
 #container .box-padding .images {
     text-align: center;
-
 }
 
 #container .box-padding .images img {
@@ -765,10 +782,7 @@ a {
     box-shadow: 1px 1px 10px #0ea781;
 }
 
-
-
 @media only screen and (max-width: 600px) {
-
     #container {
         height: 1400px;
         background-color: var(--services-bg);
@@ -782,12 +796,9 @@ a {
     .box {
         margin: 30px 40px;
     }
-
-
 }
 
 /* Our Services Css Ends Here*/
-
 
 /* Laptop Category Css Starts Here */
 
@@ -815,7 +826,6 @@ a {
     color: var(--top-header-bg);
     cursor: pointer;
     padding-top: 4px;
-
 }
 
 #product .container .active {
@@ -843,11 +853,9 @@ a {
     border: none;
 }
 
-
 .laptop {
     background-color: var(--top-header-bg);
     color: rgb(248, 249, 250);
-
 }
 
 #product .container .top-sale {
@@ -862,17 +870,27 @@ a {
     width: 300px;
 }
 
-#gaming-laptop .product-row .product-box-padding .product-box .product-details .product-name-title {
+#gaming-laptop
+    .product-row
+    .product-box-padding
+    .product-box
+    .product-details
+    .product-name-title {
     font-size: 16px;
 }
 
-.gaming-laptop-product #gaming-laptop .product-row .product-box-padding .product-box .product-details .product-name .product-price {
+.gaming-laptop-product
+    #gaming-laptop
+    .product-row
+    .product-box-padding
+    .product-box
+    .product-details
+    .product-name
+    .product-price {
     padding-left: 140px;
 }
 
 /* Gaming Laptop Category Css Ends Here */
-
-
 
 /* Budget Laptop */
 
@@ -907,17 +925,28 @@ a {
         display: block;
     }
 
-    .gaming-laptop-product #gaming-laptop .product-row .product-box-padding .product-box .product-details .product-name .product-price {
+    .gaming-laptop-product
+        #gaming-laptop
+        .product-row
+        .product-box-padding
+        .product-box
+        .product-details
+        .product-name
+        .product-price {
         padding-left: 72px;
     }
 
-    #product .container .product-row .product-box-padding .product-box .product-details .product-price {
+    #product
+        .container
+        .product-row
+        .product-box-padding
+        .product-box
+        .product-details
+        .product-price {
         padding: 0;
         padding-left: 165px;
     }
 }
-
-
 
 /* Contact Us Css Starts Here */
 
@@ -927,7 +956,7 @@ a {
     width: 100%;
     background-color: #eee;
     text-align: center;
-    font-family: 'Poppins', sans-serif;
+    font-family: "Poppins", sans-serif;
     display: flex;
     min-height: 5vh;
     justify-content: center;
@@ -968,14 +997,11 @@ a {
 
 #map-here .map-box:hover {
     box-shadow: 1px 1px 15px #0ea781;
-
 }
-
 
 #map-here .map-box iframe.gada-electronic-map {
     margin: 2px 0;
 }
-
 
 #second-contact-us .row {
     min-height: 25vh;
@@ -1002,7 +1028,6 @@ a {
     font-size: 20px;
     margin: 15px 0;
 }
-
 
 #second-contact-us .row .col-md-4 .box h3 {
     color: #d73737;
@@ -1045,7 +1070,6 @@ a {
     padding-left: 15px;
     outline: none;
     border: 1px solid var(--top-header-bg);
-
 }
 
 #contact-form form .submit-form {
@@ -1074,17 +1098,11 @@ a {
 
 /* Contact Us Css Ends Here */
 
-
-
-
-
-
 /* Footer Css Starts Here */
 
 #footer {
     padding-top: 111px;
 }
-
 
 #footer .footer-box-padding .footer-box {
     background-color: var(--footer-bg);
@@ -1100,7 +1118,6 @@ a {
     width: 175px;
     font-weight: 400;
     margin: 5px 0;
-
 }
 
 #footer .footer-box-padding .footer-box .footer-content h5 {
@@ -1113,7 +1130,6 @@ a {
     cursor: pointer;
 }
 
-
 #footer .footer-box-padding .footer-box .footer-content h5 a:hover {
     color: var(--dec-color);
 }
@@ -1122,12 +1138,15 @@ a {
     color: var(--white);
 }
 
-#footer .footer-box-padding .footer-box .footer-content .footer-inner-box-padding {
+#footer
+    .footer-box-padding
+    .footer-box
+    .footer-content
+    .footer-inner-box-padding {
     margin: 15px 40px;
     line-height: 35px;
     width: 280px;
 }
-
 
 /* Second Footer */
 
@@ -1167,27 +1186,41 @@ h4 {
     cursor: pointer;
 }
 
-#footer .second-footer-padding .second-footer .follow-vans-padding .follow-vans h3 {
+#footer
+    .second-footer-padding
+    .second-footer
+    .follow-vans-padding
+    .follow-vans
+    h3 {
     padding-left: 13px;
 }
 
-#footer .second-footer-padding .second-footer .follow-vans-padding .follow-vans h5 .footer-social-icon {
+#footer
+    .second-footer-padding
+    .second-footer
+    .follow-vans-padding
+    .follow-vans
+    h5
+    .footer-social-icon {
     font-size: 30px;
     margin: 0 5px;
     cursor: pointer;
 }
 
-#footer .second-footer-padding .second-footer .small-offer-padding .small-offer form .email {
+#footer
+    .second-footer-padding
+    .second-footer
+    .small-offer-padding
+    .small-offer
+    form
+    .email {
     border: none;
     outline: none;
     margin: 20px 0;
     font-size: 15px;
     padding-left: 5px;
     font-family: FontAwesome;
-
 }
-
-
 
 .activePage {
     color: #fff;
@@ -1197,17 +1230,7 @@ h4 {
 
 /* Footer Css Ends Here */
 
-
-
-
-
-
-
-
-
-
 /* New Footer */
-
 
 #new-footer .new-footer-box {
     height: 400px;
@@ -1240,11 +1263,9 @@ h4 {
     font-size: 16px;
 }
 
-
 /* Footer and other media queries */
 
 @media only screen and (max-width: 600px) {
-
     #about-us .about-us-header-padding {
         padding-left: 170px;
         padding-right: 160px;
@@ -1271,7 +1292,6 @@ h4 {
 
     #footer .footer-box-padding .footer-box .footer-content h3 {
         width: 270px;
-
     }
 
     #footer .second-footer-padding {
@@ -1285,7 +1305,6 @@ h4 {
 
     #footer .second-footer-padding .second-footer .shop-name h2 {
         padding-left: 110px;
-
     }
 
     #footer .second-footer-padding .second-footer .second-box-width {
@@ -1294,7 +1313,11 @@ h4 {
         padding-left: 75px;
     }
 
-    #footer .second-footer-padding .second-footer .second-box-width .store-location {
+    #footer
+        .second-footer-padding
+        .second-footer
+        .second-box-width
+        .store-location {
         margin: 0;
         padding-left: 60px;
     }
@@ -1312,9 +1335,13 @@ h4 {
         padding-left: 90px;
     }
 
-    #footer .second-footer-padding .second-footer .small-offer-padding .small-offer form .email {
+    #footer
+        .second-footer-padding
+        .second-footer
+        .small-offer-padding
+        .small-offer
+        form
+        .email {
         margin: 10px 25px;
-
     }
-
 }

@@ -21,6 +21,11 @@
     </style>
 </head>
 
+<?php
+
+// dd($category->slug);
+
+?>
 
 <section id="upper-header">
     <div class="container">
@@ -60,8 +65,10 @@
             <div class="row">
                 <div class="col-md-5">
                     <div class="product-image">
-                        <img width="430px" src="{{ asset('uploads/product/' . $product->product_image) }}"
-                            alt="{{ $product->product_title }}">
+                        <div class="product-main-image">
+                            <img width="430px" src="{{ asset('uploads/product/' . $product->product_image) }}"
+                                alt="{{ $product->product_title }}">
+                        </div>
                     </div>
                 </div>
                 <div class="col-md-6 mt-5">
@@ -82,13 +89,31 @@
                         </div>
                     </div>
                     <div class="product-cost" style="color: var(--top-header-bg);">
-                        <p class="fw-bold"><span>Rs. {{ $product->orginal_cost }}</span></p>
+                        <span class="fw-bold">Rs. {{ $product->orginal_cost - $product->discounted_cost }}</span>
+                        <span class="fw-bold"
+                            style="font-size: 14px; padding-left: 5px; text-decoration: line-through;">Rs.
+                            {{ $product->orginal_cost }}</span>
+
+
+                        <div class="show-stock" style="color: var(--top-header-bg);">
+                            <p class="fw-bold">Stock: {{ $product->product_stock }}</p>
+                        </div>
                     </div>
-                    <div class="product-page-add-to-cart">
-                        <button class="btn btn-outline-dark cart-button">
-                            <i class="fa-solid fa-cart-shopping"></i>
-                            <span class="add-to-cart-title">Add To Cart</span>
-                        </button>
+                    <div class=" product-page-add-to-cart">
+                        <div class="row">
+                            <div class="col-md-4">
+                                <form action="">
+                                    <input type="number" name="quantity" id="quantity" min="1" max="30" value="1"
+                                        placeholder="Quantity" style="height: 45px; width: 170px; text-align: center;">
+                                </form>
+                            </div>
+                            <div class="col-md-8">
+                                <button class="btn btn-outline-dark cart-button">
+                                    <i class="fa-solid fa-cart-shopping"></i>
+                                    <span class="add-to-cart-title">Add To Cart</span>
+                                </button>
+                            </div>
+                        </div>
                     </div>
                     <hr class="text-dark fw-bold">
                     <div class="product-description text-dark">

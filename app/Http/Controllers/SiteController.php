@@ -103,5 +103,15 @@ class SiteController extends Controller
 
         return view('site.product-page', $data);
     }
+
+
+
+
+    // Go To Cart
+
+    public function getCart()
+    {
+        return view('site.go-to-cart');
+    }
     
 }

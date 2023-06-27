@@ -88,8 +88,11 @@
                                 </td>
                                 <td>15 June 2023</td>
                                 <td>
-                                    <a href="{{ route('getEditProduct', $item->slug) }}"><button
-                                            class="btn btn-success btn-sm">Edit</button></a>
+                                    <a href="{{ route('getEditProduct', $item->slug) }}">
+                                        <button class="btn btn-success btn-sm">
+                                            Edit
+                                        </button>
+                                    </a>
                                     <a href="{{ route('getDeleteProduct', $item->slug) }}"><button
                                             class="btn btn-danger btn-sm">Delete</button></a>
                                 </td>
@@ -199,7 +202,8 @@
                             <div class="form-group mb-2">
                                 <label for="">Discounted Cost*</label>
                                 <input type="number" class="form-control @error('discounted_cost') is-invalid @enderror"
-                                    value="{{ old('discounted_cost') }}" id="discounted_cost" name="discounted_cost" required />
+                                    value="{{ old('discounted_cost') }}" id="discounted_cost" name="discounted_cost"
+                                    required />
                                 @error('discounted_cost')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
@@ -255,7 +259,9 @@
 
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                            <input type="submit" class="btn btn-primary" value="Save changes">
+                            <button class="btn" id="save_product" onclick="product_added()">
+                                <input type="submit" class="btn btn-primary" value="Save changes" />
+                            </button>
                         </div>
                     </div>
                 </form>
@@ -263,5 +269,7 @@
         </div>
     </div>
 </div>
+
+
 
 @endsection
