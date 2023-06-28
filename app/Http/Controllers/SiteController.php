@@ -256,5 +256,28 @@ class SiteController extends Controller
 
 
     } 
+
+
+    // Cart delete garne logic
+
+    public function getDeleteCart($id){
+        
+        $cart_code = $this->getCartCode();
+        $cart = Cart::where('cart_code', $cart_code)->where('id', $id)->limit(1)->first();
+        if(is_null($cart)){
+            return redirect()->back()->with('error', 'Cart not found');
+        }
+
+        $product = $cart->getProductFromCart;
+        $new_stock = $product->product_stock + $cart->quantity;
+        $product->product_stock = $new_stock;
+        $product->save();
+
+        $cart->delete();
+        return redirect()->back()->with('success', 'Cart Deleted Successfully!');
+
+
+
+    }
     
 }

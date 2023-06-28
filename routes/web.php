@@ -45,7 +45,13 @@ Route::get('/cart/{slug}/direct', [SiteController::class, 'addToCartDirect'])->n
 
 Route::post('/cart/{slug}/add', [SiteController::class, 'postAddToCart'])->name('postAddToCart');
 
+Route::get('/cart/{id}/delete', [SiteController::class, 'getDeleteCart'])->name('getDeleteCart');
+
+
+
 Route::get('/proceed-to-checkout', [SiteController::class, 'getProceedToCheckout'])->name('getProceedToCheckout');
+
+
 
 
 

@@ -22,10 +22,16 @@
     .login-btn:hover {
         background: none;
     }
+
+    .cart-table {
+        width: 763px;
+    }
     </style>
 </head>
 
 <body>
+
+
 
     <div class="upper-main-header-and-nav">
         <!-- Top Header Stars Here -->
@@ -269,35 +275,85 @@
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    <div class="cart-system">
-                        <div class="row">
-                            <div class="col-md-6 text-dark">
-                                <h5>Total</h5>
+                    @if ($cart_items->count() > 0)
+                    <div class="container-fluid">
+                        <div class="cart-model-ko-main-content">
+                            <div class="cart-system">
+                                <div class="row">
+                                    <div class="col-md-6 text-dark">
+                                        <table class="table table-stripped cart-table">
+                                            <thead>
+                                                <tr>
+                                                    <th>Product Title</th>
+                                                    <th>Product Image</th>
+                                                    <th>Product Quantity</th>
+                                                    <th>Price</th>
+                                                    <th>Action</th>
+                                                </tr>
+                                            </thead>
+                                            @foreach ($cart_items as $cart)
+                                            <tbody>
+                                                <tr>
+                                                    <td class="product_title_cart">
+                                                        {{ $cart->getProductFromCart->product_title }}</td>
+                                                    <td>
+                                                        <img height="45px" width="45px"
+                                                            src="{{ asset('uploads/product/' . $cart->getProductFromCart->product_image) }}"
+                                                            alt="$cart->getProductFromCart->product_title">
+                                                    </td>
+
+                                                    <td>{{ $cart->quantity }}</td>
+                                                    <td>Rs.
+                                                        {{ $cart->getProductFromCart->orginal_cost - $cart->getProductFromCart->discounted_cost}}
+                                                    </td>
+                                                    <td>
+                                                        <a href="{{ route('getDeleteCart', $cart->id) }}">
+                                                            <button class="btn btn-danger">
+                                                                <i class="fa-solid fa-trash"></i>
+                                                            </button>
+                                                        </a>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                            @endforeach
+                                            <tfoot>
+                                                <tr>
+                                                    <td></td>
+                                                    <td></td>
+                                                    <td>Total Amount:</td>
+                                                    <td>Rs. {{ $total_amount }}</td>
+                                                </tr>
+                                            </tfoot>
+                                        </table>
+                                    </div>
+                                </div>
                             </div>
-                            <div class="col-md-6 text-dark text-end">
-                                <h5>Rs.0</h5>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="cart-buttons mt-2">
-                        <div class="row">
-                            <div class="col-md-12 mb-2">
-                                <a href="{{ route('getCart') }}">
-                                    <button class="go-to-cart-btn cart-buttons">
-                                        <h5>Go To Cart</h5>
-                                    </button>
-                                </a>
-                            </div>
-                            <div class="col-md-12 ">
-                                <a href="{{ route('getProceedToCheckout') }}">
-                                    <button class="proceed-to-checkout-btn cart-buttons">
-                                        <h5>Proceed To Checkout</h5>
-                                    </button>
-                                </a>
+                            <div class="cart-buttons mt-2">
+                                <div class="row">
+                                    <div class="col-md-12 mb-2">
+                                        <a href="{{ route('getCart') }}">
+                                            <button class="go-to-cart-btn cart-buttons">
+                                                <h5>Go To Cart</h5>
+                                            </button>
+                                        </a>
+                                    </div>
+                                    <div class="col-md-12 ">
+                                        <a href="{{ route('getProceedToCheckout') }}">
+                                            <button class="proceed-to-checkout-btn cart-buttons">
+                                                <h5>Proceed To Checkout</h5>
+                                            </button>
+                                        </a>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
 
+                    @else
+                    <div class="modal-body">
+                        <div class="alert alert-danger">No data found!</div>
+                    </div>
+                    @endif
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
