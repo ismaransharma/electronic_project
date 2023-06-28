@@ -151,7 +151,7 @@ class SiteController extends Controller
         $cart = new Cart;
 
         $cart->cart_code = $cart_code;
-        $cart->product_id = $product_id;
+        $cart->product_id = $product->id;
         $cart->quantity = $quantity;
         $cart->price = $price;
         $cart->total_price = $total_price;

@@ -130,6 +130,7 @@
                     <div class="card-body">
                         <table class="table table-stripped">
                             <tbody>
+                                @foreach ($carts as $cart)
                                 <tr>
                                     <td>Sub Total</td>
                                     <td class="text-center">Rs. 2500</td>
@@ -143,6 +144,7 @@
                                     <td>Total</td>
                                     <td class="text-center">Rs. 2500</td>
                                 </tr>
+                                @endforeach
                             </tbody>
                         </table>
                     </div>

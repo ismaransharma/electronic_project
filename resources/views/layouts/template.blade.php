@@ -25,21 +25,6 @@
     </style>
 </head>
 
-<?php
-
-$cart_code = session('cart_code');
-
-// dd($cart_code);
-
-$cart_items = \App\models\Cart::where('cart_code', 'abc')->get();
-
-if($cart_code){
-    $cart_items = \App\models\Cart::where('cart_code', $cart_code)->get();
-    $total_amount = $cart_items->sum('total_price');
-}
-
-?>
-
 <body>
 
     <div class="upper-main-header-and-nav">
@@ -260,7 +245,22 @@ if($cart_code){
     <!-- Footer Sectin Ends Here -->
 
 
-    <!-- Modal -->
+    <?php
+
+        $cart_code = session('cart_code');
+
+        // dd($cart_code);
+
+        $cart_items = \App\models\Cart::where('cart_code', 'abc')->get();
+
+        if($cart_code){
+            $cart_items = \App\models\Cart::where('cart_code', $cart_code)->get();
+            $total_amount = $cart_items->sum('total_price');
+        }
+
+    ?>
+
+    <!-- Shopping Cart Modal -->
     <div class="modal fade" id="checkCartModal" tabindex="-1" aria-labelledby="checkCartModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-lg">
             <div class="modal-content">

@@ -13,11 +13,11 @@ return new class extends Migration
     {
         Schema::create('carts', function (Blueprint $table) {
             $table->id();
-            $table->string('cart_code')->unique();
+            $table->string('cart_code');
             $table->UnsignedBigInteger('product_id');
             $table->integer('quantity')->default(1);
             $table->decimal('price');
-            $table->text('additional_information');
+            $table->decimal('total_price');
             $table->timestamps();
 
 
