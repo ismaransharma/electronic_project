@@ -233,12 +233,6 @@
 <!-- Services Section Ends Here -->
 
 
-<!-- Toastr Button  -->
-
-
-
-
-
 <!-- Product item starts here -->
 <section id="product">
     <div class="container">
@@ -257,7 +251,7 @@
                                         alt="{{ $product->product_title }}" />
                                 </div>
                                 <div class="heart-and-cart">
-                                    <a>
+                                    <a href="{{ route('addToCartDirect', $product->slug) }}">
                                         <button>
                                             <i class="fa-solid fa-cart-shopping"></i>
                                         </button>
@@ -310,8 +304,6 @@
     </div>
 </section>
 <!-- Product item ends here -->
-
-
 
 
 @endsection

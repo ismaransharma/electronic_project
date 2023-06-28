@@ -25,7 +25,20 @@
     </style>
 </head>
 
+<?php
 
+$cart_code = session('cart_code');
+
+// dd($cart_code);
+
+$cart_items = \App\models\Cart::where('cart_code', 'abc')->get();
+
+if($cart_code){
+    $cart_items = \App\models\Cart::where('cart_code', $cart_code)->get();
+    $total_amount = $cart_items->sum('total_price');
+}
+
+?>
 
 <body>
 
@@ -315,16 +328,7 @@
     <!-- Toastr Js -->
 
     <script src="{{ asset('site/toastr/toastr.min.js') }}"></script>
-    <script>
-    @if(session('success'))
-    toastr.success('success!', '{{ session('
-        success ') }}');
-    @endif
-    @if(session('error'))
-    toastr.error('error!', '{{ session('
-        error ') }}');
-    @endif
-    </script>
+
 </body>
 
 </html>

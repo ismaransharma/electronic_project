@@ -41,6 +41,10 @@ Route::get('product/{slug}', [SiteController::class, 'productPage'])->name('prod
 
 Route::get('/carts', [SiteController::class, 'getCart'])->name('getCart');
 
+Route::get('/cart/{slug}/direct', [SiteController::class, 'addToCartDirect'])->name('addToCartDirect');
+
+Route::post('/cart/{slug}/add', [SiteController::class, 'postAddToCart'])->name('postAddToCart');
+
 Route::get('/proceed-to-checkout', [SiteController::class, 'getProceedToCheckout'])->name('getProceedToCheckout');
 
 
