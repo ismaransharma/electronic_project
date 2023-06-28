@@ -164,7 +164,8 @@ class SiteController extends Controller
     
     }
 
-    public function postAddToCart(Request $request, $slug){
+    public function postAddToCart(Request $request, $slug)
+    {
         $request -> validate([
             'quantity' => 'required|integer|min:1|max:10',
         ]);

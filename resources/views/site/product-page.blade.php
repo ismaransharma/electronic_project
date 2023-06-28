@@ -101,18 +101,24 @@
                     </div>
                     <div class=" product-page-add-to-cart">
                         <div class="row">
-                            <div class="col-md-4">
-                                <form action="">
-                                    <input type="number" name="quantity" id="quantity" min="1" max="30" value="1"
-                                        placeholder="Quantity" style="height: 45px; width: 170px; text-align: center;">
-                                </form>
-                            </div>
-                            <div class="col-md-8">
-                                <button class="btn btn-outline-dark cart-button">
-                                    <i class="fa-solid fa-cart-shopping"></i>
-                                    <span class="add-to-cart-title">Add To Cart</span>
-                                </button>
-                            </div>
+                            <form action="{{ route('postAddToCart', $product->slug) }}" method="POST" class="form">
+                                @csrf
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <input type="number" name="quantity" id="quantity" min="1" max="30" value="1"
+                                            placeholder="Quantity"
+                                            style="height: 45px; width: 170px; text-align: center;">
+                                    </div>
+                                    <div class="col-md-8">
+                                        <div class="add-to-cart-button">
+                                            <button class="btn btn-outline-dark cart-button">
+                                                <i class="fa-solid fa-cart-shopping"></i>
+                                                <span>Add to Cart</span>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
                         </div>
                     </div>
                     <hr class="text-dark fw-bold">

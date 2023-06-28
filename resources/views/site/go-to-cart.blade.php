@@ -74,6 +74,22 @@
     </div>
 </section>
 
+<?php
+
+$cart_code = session('cart_code');
+
+// dd($cart_code);
+
+$cart_items = \App\models\Cart::where('cart_code', 'abc')->get();
+
+if($cart_code){
+    $cart_items = \App\models\Cart::where('cart_code', $cart_code)->get();
+    $total_amount = $cart_items->sum('total_price');
+    $quantity = $cart_items->sum('quantity');
+}
+
+?>
+
 <section id="cart-content" class="mt-5">
     <div class="container">
         <table clas="cart-table">
@@ -88,22 +104,33 @@
                 </tr>
             </thead>
             <tbody>
+                @foreach ($cart_items as $cart)
                 <tr>
-                    <td>Laptop</td>
-                    <td>Laptop.png</td>
-                    <td>Rs. 2500</td>
-                    <td>1</td>
-                    <td>Rs. 2500</td>
+                    <td>{{ $cart->getProductFromCart->product_title }}</td>
                     <td>
-                        <button class="btn btn-danger btn-sm">
-                            <i class="fa-solid fa-trash"></i>
-                        </button>
+                        <img height="45px" width="45px"
+                            src="{{ asset('uploads/product/' . $cart->getProductFromCart->product_image) }}"
+                            alt="$cart->getProductFromCart->product_title">
+                    </td>
+                    <td>{{ $cart->getProductFromCart->orginal_cost}}
+                    </td>
+                    <td>{{ $cart->quantity }}</td>
+                    <td>{{ $cart->quantity * $cart->getProductFromCart->orginal_cost - $cart->getProductFromCart->discounted_cost }}
+                    </td>
+                    <td>
+                        <a href="{{ route('getDeleteCart', $cart->id) }}">
+                            <button class="btn btn-danger btn-sm">
+                                <i class="fa-solid fa-trash"></i>
+                            </button>
+                        </a>
                     </td>
                 </tr>
+                @endforeach
             </tbody>
         </table>
     </div>
 </section>
+
 
 <section id="after-cart-content" class="mt-3 mb-5">
     <div class="container">
@@ -130,10 +157,11 @@
                     <div class="card-body">
                         <table class="table table-stripped">
                             <tbody>
-                                @foreach ($carts as $cart)
                                 <tr>
                                     <td>Sub Total</td>
-                                    <td class="text-center">Rs. 2500</td>
+                                    <td class="text-center">Rs.
+                                        {{ $quantity * $total_amount }}
+                                    </td>
 
                                 </tr>
                                 <tr>
@@ -142,9 +170,15 @@
                                 </tr>
                                 <tr>
                                     <td>Total</td>
-                                    <td class="text-center">Rs. 2500</td>
+                                    @if(is_null($cart_items))
+                                    <td class="text-center">Rs. 0</td>
+
+                                    @else
+                                    <td class="text-center">Rs. {{ $quantity * $total_amount + 100}}</td>
+                                    @endif
+
+
                                 </tr>
-                                @endforeach
                             </tbody>
                         </table>
                     </div>
