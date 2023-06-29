@@ -301,7 +301,7 @@ class HomeController extends Controller
             'stock'=>'required| integer',
             'orginal_cost'=>'required|numeric',
             'discounted_cost'=>'numeric',
-            'brand' => 'required',
+            'brand' => 'required|string',
             'product_little_description'=>'required',
             'product_full_description'=>'required',
         ]);

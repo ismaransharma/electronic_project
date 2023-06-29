@@ -382,8 +382,18 @@
     <script src="{{ asset('site/javascript/script.js') }}"></script>
 
     <!-- Toastr Js -->
-
     <script src="{{ asset('site/toastr/toastr.min.js') }}"></script>
+
+    <script>
+    @if(session('success'))
+    toastr.success('success!', '{{ session('
+        success ') }}');
+    @endif
+    @if(session('error'))
+    toastr.error('error!', '{{ session('
+        error ') }}');
+    @endif
+    </script>
 
 </body>
 

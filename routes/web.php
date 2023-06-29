@@ -49,8 +49,9 @@ Route::get('/cart/{id}/delete', [SiteController::class, 'getDeleteCart'])->name(
 
 
 
-Route::get('/proceed-to-checkout', [SiteController::class, 'getProceedToCheckout'])->name('getProceedToCheckout');
+Route::get('/checkout', [SiteController::class, 'getProceedToCheckout'])->name('getProceedToCheckout');
 
+Route::post('/checkout', [SiteController::class, 'postCheckout'])->name('postCheckout');
 
 
 

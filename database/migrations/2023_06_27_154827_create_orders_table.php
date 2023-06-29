@@ -13,12 +13,12 @@ return new class extends Migration
     {
         Schema::create('orders', function (Blueprint $table) {
             $table->id();
-            $table->string('cart_code');
+            $table->string('cart_code')->unique();
             $table->string('name');
             $table->string('mobile_number');
             $table->string('email');
             $table->string('address');
-            $table->text('addditional_information');
+            $table->text('additional_information')->nullable();
             $table->enum('payment_method', ['online', 'cod']);
             $table->enum('payment_status', ['N', 'Y'])->default('N');
             $table->decimal('payment_amount');

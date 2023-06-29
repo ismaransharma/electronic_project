@@ -26,6 +26,7 @@ class SiteController extends Controller
             'products' => Product::where('deleted_at', null)->where('status', 'active')->orderby('product_title', 'asc')->limit(3)->get(),
             
             'services' => Service::where('deleted_at', null)->where('status', 'active')->get(),
+
         
         
         ];
@@ -122,7 +123,56 @@ class SiteController extends Controller
     // Proceed to checkout
     public function getProceedToCheckout()
     {
-        return view('site.proceed-to-checkout');
+        $carts = Cart::where('cart_code', $this->getCartCode())->get();
+        $data = [
+            'carts' => $carts,
+            'cart_code' => $this->getCartCode()
+        ];
+        return view('site.proceed-to-checkout', $data);
+    }
+
+    // PostCheckout
+
+    public function postCheckout(Request $request)
+    {
+        $cart_code = $this->getCartCode();
+        $carts = Cart::where('cart_code', $cart_code)->get();
+        if (!($carts->count() > 0)) {
+            return redirect()->back()->with('error', 'No carts found to checkout');
+        }
+
+        $request->validate([
+            'name' => 'required',
+            'email' => 'required|email',
+            'address' => 'required',
+            'mobile_number' => ['required', 'regex:/^(98|97)[0-9]{8}/', 'min:10', 'max:10',],
+            'payment_method' => 'required|in:cod',
+        ]);
+
+        $name = $request->input('name');
+        $mobile_number = $request->input('mobile_number');
+        $email = $request->input('email');
+        $address = $request->input('address');
+        $additional_information = $request->input('additional_information');
+        $payment_method = $request->input('payment_method');
+
+        $payment_amount = $carts->sum('total_price') + 100;
+
+        $order = new Order;
+        $order->cart_code = $cart_code;
+        $order->name = $name;
+        $order->mobile_number = $mobile_number;
+        $order->email = $email;
+        $order->address = $address;
+        $order->additional_information = $additional_information;
+        $order->payment_method = $payment_method;
+        $order->payment_status = 'N';
+        $order->payment_amount = $payment_amount;
+
+        $order->save();
+        $request->session()->forget('cart_code');
+
+        return redirect()->route('getHome')->with('success', 'Order created Successfully');
     }
 
     // Direct add to cart logic
@@ -280,5 +330,6 @@ class SiteController extends Controller
 
 
     }
+
     
 }

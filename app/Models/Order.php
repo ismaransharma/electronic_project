@@ -17,7 +17,7 @@ class Order extends Model
         'mobile_number',
         'email',
         'address',
-        'addditional_information',
+        'additional_information',
         'payment_method',
         'payment_status',
         'payment_amount',
