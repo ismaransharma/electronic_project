@@ -116,17 +116,14 @@ class SiteController extends Controller
     }
 
 
-
-
     
 
     // Proceed to checkout
     public function getProceedToCheckout()
     {
-        $carts = Cart::where('cart_code', $this->getCartCode())->get();
+        
         $data = [
-            'carts' => $carts,
-            'cart_code' => $this->getCartCode()
+            'carts' => Cart::all(),
         ];
         return view('site.proceed-to-checkout', $data);
     }
@@ -150,20 +147,20 @@ class SiteController extends Controller
         ]);
 
         $name = $request->input('name');
-        $mobile_number = $request->input('mobile_number');
         $email = $request->input('email');
         $address = $request->input('address');
-        $additional_information = $request->input('additional_information');
+        $mobile_number = $request->input('mobile_number');
         $payment_method = $request->input('payment_method');
+        $additional_information = $request->input('additional_information');
 
         $payment_amount = $carts->sum('total_price') + 100;
 
         $order = new Order;
-        $order->cart_code = $cart_code;
         $order->name = $name;
-        $order->mobile_number = $mobile_number;
+        $order->cart_code = $cart_code;
         $order->email = $email;
         $order->address = $address;
+        $order->mobile_number = $mobile_number;
         $order->additional_information = $additional_information;
         $order->payment_method = $payment_method;
         $order->payment_status = 'N';
@@ -174,6 +171,7 @@ class SiteController extends Controller
 
         return redirect()->route('getHome')->with('success', 'Order created Successfully');
     }
+
 
     // Direct add to cart logic
 

@@ -98,15 +98,16 @@ Route::middleware('auth')->group (function (){
 
         Route::prefix('carts')->group (function (){
             Route::get('carts', [HomeController::class, 'getAdminCartsManage'])->name('getAdminCartsManage');
+            
+
         });
         
         Route::prefix('order')->group (function (){
             Route::get('order', [HomeController::class, 'getAdminOrderManage'])->name('getAdminOrderManage');
+
+            Route::get('payment/complete/{id}', [HomeController::class, 'makePaymentComplete'])->name('makePaymentComplete');
         });
         
-        Route::prefix('payment')->group (function (){
-            Route::get('payment', [HomeController::class, 'getAdminPaymentManage'])->name('getAdminPaymentManage');
-        });
         
         Route::prefix('services')->group (function (){
             Route::get('services', [HomeController::class, 'getAdminServicesManage'])->name('getAdminServicesManage');

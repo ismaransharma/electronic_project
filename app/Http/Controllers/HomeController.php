@@ -2,12 +2,15 @@
 
 namespace App\Http\Controllers;
 
+use Carbon\Carbon;
+use App\Models\Cart;
+use App\Models\Order;
 use App\Models\Product;
 use App\Models\Service;
 use App\Models\Category;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
-use Illuminate\Support\Carbon;
+
 
 class HomeController extends Controller
 {
@@ -43,8 +46,32 @@ class HomeController extends Controller
     }
 
     public function getAdminOrderManage()
+    {   
+        
+        $data = [
+            'orders' => Order::all(),
+        ];
+
+        return view('admin.order.order-manage', $data);
+    }
+
+    // Admin Panel bata Payment lai Complete / Incomplete garne logic
+    public function makePaymentComplete($id)
     {
-        return view('admin.order.order-manage');
+        $order = Order::where('id', $id)->limit(1)->first();
+        if (is_null($order)) {
+            return redirect()->back()->with('error', 'Order not found');
+        }
+
+        if ($order->payment_status == 'Y') {
+            $order->payment_status = 'N';
+            $order->save();
+        } else {
+            $order->payment_status = 'Y';
+            $order->save();
+        }
+
+        return redirect()->back()->with('success', 'Order payment status changed.');
     }
 
     public function getAdminPaymentManage()
@@ -398,7 +425,8 @@ class HomeController extends Controller
     }
     
     // Product Delete Garne Command/Logic
-    public function getDeleteProduct($slug){
+    public function getDeleteProduct($slug)
+    {
         $product = Product::where('slug', $slug)->where('deleted_at', null)->limit(1)->first();
         if (is_null ($product)) {
             return redirect()->back()->with('error', 'Product not found');

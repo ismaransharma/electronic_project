@@ -35,8 +35,17 @@
         font-weight: bold;
     }
 
+    .col-md-5 {
+        color: #000;
+    }
+
     label {
         color: #000;
+    }
+
+    img {
+        height: 100px;
+        width: 100px;
     }
     </style>
 </head>
@@ -72,6 +81,22 @@
         </div>
     </div>
 </section>
+
+<?php
+
+$cart_code = session('cart_code');
+
+// dd($cart_code);
+
+$cart_items = \App\models\Cart::where('cart_code', 'abc')->get();
+
+if($cart_code){
+    $cart_items = \App\models\Cart::where('cart_code', $cart_code)->get();
+    $total_amount = $cart_items->sum('total_cost');
+    $quantity = $cart_items->sum('quantity');
+}
+
+?>
 
 <section id="proceed-to-checkout" class="mt-5 mb-5">
     <div class="container">
@@ -167,75 +192,89 @@
                     </div>
 
                 </div>
-                <div class="col-md-6" style="padding-top: 35px;">
-                    <div class="payment-section">
-                        <div class="card">
-                            <div class="card-header">
-                                <h6>Your Orders</h6>
-                            </div>
-                            <div class="card-body">
-                                <table class="table table-stripped">
-                                    <thead>
-                                        @foreach ($carts as $cart)
-                                        <tr>
-                                            <th style="border: 1px solid #000;">
-                                                <img height="100px" width="100px"
-                                                    src="{{ asset('uploads/product/'. $cart->getProductFromCart->product_image) }}"
-                                                    alt="">
-                                            </th>
-                                            <th style="border: 1px solid #000;" class="text-center">
-                                                <h6>
-                                                    <span>Product Name: </span>
-                                                    {{ $cart->getProductFromCart->product_title }}
-                                                </h6>
-                                                <h6>
-                                                    @if($cart->getProductFromCart->brand)
-                                                    <span>Product Brand: </span>
-                                                    {{ $cart->getProductFromCart->brand }}
-
-                                                    @else
-
-                                                    @endif
-                                                </h6>
-                                                <h6>
-                                                    <span>Quantity: </span>
-                                                    {{ $cart->quantity }}
-                                                </h6>
-                                                <h6>
-                                                    <span>Price: Rs. </span>
-                                                    {{ $cart->getProductFromCart->orginal_cost - $cart->getProductFromCart->discounted_cost}}
-                                                </h6>
-                                            </th>
-                                        </tr>
-                                        @endforeach
-                                    </thead>
-                                </table>
-                                <div class="checkout-extra">
-                                    <h6>
-                                        <span>Shipping Charge: Rs. 100 (All Over Nepal)</span>
-
-                                        <h6>
-                                            <span>Total Price: Rs. {{ $carts->sum('total_price') + 100}}</span>
-
-                                        </h6>
-                                    </h6>
+                <div class="col-md-6">
+                    <div class="card">
+                        <div class="card-header">
+                            <h2>Your Orders</h2>
+                        </div>
+                        <div class="card-body">
+                            <table class="table">
+                                <tbody>
+                                    @foreach ($carts as $cart)
+                                    <tr>
+                                        <td>
+                                            <img src="{{ asset('uploads/product/' . $cart->getProductFromCart->product_image) }}"
+                                                alt="{{ $cart->getProductFromCart->product_title }}" class="img-fluid">
+                                        </td>
+                                        <td>
+                                            <p>Product:- {{ $cart->getProductFromCart->product_title }} <br>
+                                                {{ $cart->getProductFromCart->category->category_title }}<br>
+                                                Quantity:- {{ $cart->quantity }}<br>
+                                                Cost:- Rs.
+                                                {{ $cart->getProductFromCart->orginal_cost - $cart->getProductFromCart->discounted_cost }}
+                                            </p>
+                                        </td>
+                                    </tr>
+                                    @endforeach
+                                </tbody>
+                            </table>
+                            <div class="row top-bottom-border">
+                                <div class="col-md-5">Sub Total:</div>
+                                @if ($carts->sum('total_price') > 0)
+                                <div class="col-md-5 text-right cost">Rs. {{ $carts->sum('total_price') }}
                                 </div>
-                                <div class="choose-payment-method">
-                                    <label class="form-check-label">
-                                        <input type="radio" class="form-check-input" name="payment_method" id=""
-                                            value="cod" required>
 
-                                        <img height="100" width="100" src="{{ asset('site/images/cod.png') }}" alt=""
-                                            class="img-fluid">
-                                    </label>
-                                    <div class="place-order mt-3">
-                                        <div class="row">
-                                            <div class="col-md-12">
-                                                <input type="submit" class="btn w-100 btn-normal place-order-button"
-                                                    value="Place Order" />
-                                            </div>
-                                        </div>
-                                    </div>
+                                @else
+
+                                @endif
+                            </div>
+                            <div class="row top-bottom-border">
+                                <div class="col-md-5">Shipping Charge:</div>
+                                @if ($carts->sum('total_price') > 0)
+                                <div class="col-md-5 text-right cost" style="width: 176px;">Rs. 100 (All over Nepal)
+                                </div>
+                                @else
+
+                                @endif
+                            </div>
+                            <div class="row top-bottom-border">
+                                <div class="col-md-5">Grand Total:</div>
+                                <div class="col-md-5 text-right cost">
+                                    @if ($carts->sum('total_price') > 0)
+                                    Rs. {{ $carts->sum('total_price') + 100 }}
+
+                                    @else
+                                    <!-- Rs. 0 -->
+
+                                    @endif
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="form-check">
+                                <!-- <label class="form-check-label mb-2">
+                                    <input type="radio" class="form-check-input" name="payment_method" id=""
+                                        value="online" required>
+                                    <img src="{{ asset('site/image/esewa.png') }}" alt="" class="img-fluid">
+                                </label> <br> -->
+                                <label class="form-check-label">
+                                    <input type="radio" class="form-check-input" name="payment_method" id="" value="cod"
+                                        required>
+
+                                    <img src="{{ asset('site/images/cod.png') }}" alt="" class="img-fluid">
+                                </label>
+
+                                @error('payment_method')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                                @enderror
+                            </div>
+                            <div class="row model-footer">
+                                <div class="col-md-12 text-center mt-5 place-order-button">
+                                    <input type="submit" class="btn w-100 btn-normal" value="Place Order">
                                 </div>
                             </div>
                         </div>
@@ -245,7 +284,5 @@
         </form>
     </div>
 </section>
-
-
 
 @endsection

@@ -112,11 +112,11 @@ if($cart_code){
                             src="{{ asset('uploads/product/' . $cart->getProductFromCart->product_image) }}"
                             alt="$cart->getProductFromCart->product_title">
                     </td>
-                    <td>Rs. {{ $cart->getProductFromCart->orginal_cost}}
+                    <td>Rs. {{ $cart->getProductFromCart->orginal_cost - $cart->getProductFromCart->discounted_cost}}
                     </td>
                     <td>{{ $cart->quantity }}</td>
                     <td>Rs.
-                        {{ $cart->quantity * $cart->getProductFromCart->orginal_cost - $cart->getProductFromCart->discounted_cost }}
+                        {{ $cart->quantity * ($cart->getProductFromCart->orginal_cost - $cart->getProductFromCart->discounted_cost) }}
                     </td>
                     <td>
                         <a href="{{ route('getDeleteCart', $cart->id) }}">
@@ -161,7 +161,7 @@ if($cart_code){
                                 <tr>
                                     <td>Sub Total</td>
                                     <td class="text-center">Rs.
-                                        {{ $quantity * $total_amount }}
+                                        {{ $total_amount }}
                                     </td>
 
                                 </tr>

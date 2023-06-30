@@ -11,6 +11,12 @@
     </style>
 </head>
 
+<?php
+
+// dd($orders);
+
+?>
+
 <div class="container">
     <div class="row">
         <div class="col-md-12">
@@ -20,87 +26,133 @@
                         <div class="col-md-6">
                             <h5>Order</h5>
                         </div>
-                        <div class="col-md-6 text-end">
-                            <button class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#addOrderModal">Add Order</button>
-                        </div>
                     </div>
                 </div>
-                <div class="card-body">
-                    <table class="table">
-                        <thead>
-                            <tr>
-
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>
-
-                                </td>
-                            </tr>
-
-                        </tbody>
-                    </table>
-                </div>
+            </div>
+            <div class="card-body">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>S.N</th>
+                            <th>Order</th>
+                            <th>Date</th>
+                            <th>Customer Details</th>
+                            <th>Total</th>
+                            <!-- <th>Shipping Address</th> -->
+                            <th>Full Address</th>
+                            <th>Payment Status</th>
+                            <th>Payment Method</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach ($orders as $order)
+                        <tr>
+                            <td>{{ $loop->iteration }}</td>
+                            <td>{{ $order->cart_code }}</td>
+                            <td>{{ $order->created_at->format('M d, Y H:m:s') }}</td>
+                            <td>
+                                {{ $order->name }} <br>
+                                {{ $order->email }} <br>
+                                {{ $order->mobile_number }}
+                            </td>
+                            <td>Rs. {{ $order->payment_amount  }}</td>
+                            <!-- <td>Shipping Address here</td> -->
+                            <td>{{ $order->address }}</td>
+                            <td>
+                                @if ($order->payment_status == 'Y')
+                                <h6 class="fw-bold text-success">Completed</h6>
+                                @else
+                                <h6 class="fw-bold text-danger">Pending</h6>
+                                @endif
+                            </td>
+                            <td>
+                                @if ($order->payment_method == 'cod')
+                                <h6 class="fw-bold text-success">Cash on Delivery</h6>
+                                @else
+                                <h6 class=" fw-bold text-danger">Online Payment</h6>
+                                @endif
+                            </td>
+                            <td>
+                                <button class="btn btn-primary btn-sm" data-bs-toggle="modal"
+                                    data-bs-target="#view-{{ $order->cart_code }}">View</button>
+                                @if ($order->payment_method == 'cod')
+                                <br>
+                                <a href="{{ route('makePaymentComplete', $order->id) }}"
+                                    onclick="return confirm('Are you sure you want to change payment status?');">
+                                    Toggle Payment
+                                </a>
+                                @endif
+                            </td>
+                        </tr>
+                        @endforeach
+                    </tbody>
+                </table>
             </div>
         </div>
     </div>
 </div>
 
+@foreach ($orders as $order1)
+<?php
+    $carts = App\Models\Cart::where('cart_code', $order1->cart_code)->get();
+    if ($carts) {
+        $total_amount = App\Models\Cart::where('cart_code', $order1->cart_code)->sum('total_price');
+    }
+?>
 
-
-<!-- Modal -->
-<div class="modal fade" id="addOrderModal" tabindex="-1" aria-labelledby="addOrderModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-lg">
+<!-- Modal for view Order-->
+<div class="modal fade" id="view-{{ $order1->cart_code }}" tabindex="-1"
+    aria-labelledby="#view-{{ $order1->cart_code }}Label" aria-hidden="true">
+    <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h1 class="modal-title fs-5" id="addOrderModalLabel"><b>Add Order</b></h1>
+                <h5 class="modal-title">View Items - {{ $order1->cart_code }}</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <form action="">
-                    <div class="row">
-                        <div class="col-md-6">
-                            <div class="form-group mb-2">
-                                <label for="">Order Title*</label>
-                                <input type="text" name="Order_title" class="form-control" id="Order_title"
-                                    placeholder="Enter Order Title" required>
-                            </div>
-                        </div>
-                        <!-- <div class="col-md-6">
-                            <div class="form-group mb-2">
-                                <label for="">Order Image*</label>
-                                <input type="file" class="form-control" id="select_image" name="select_image" required>
-                            </div>
-                        </div>
-                        <div class="col-md-6">
-                            <div class="form-group mb-2">
-                                <label for="status">Status*</label>
-                                <select name="status" id="status" class="form-control" required>
-                                    <option value="active">Active</option>
-                                    <option value="hidden">Hidden</option>
-                                </select>
-                            </div>
-                        </div>
-                        <div class="col-md-12">
-                            <div class="form-group mb-2">
-                                <label for="">Order Description*</label>
-                                <textarea name="Order_description" class="form-control" id="Order_description"
-                                    cols="30" rows="10" required></textarea>
-                            </div>
-                        </div> -->
-
-
-
-
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                            <input type="submit" class="btn btn-primary" value="Save changes">
+                <div class="container-fluid">
+                    <table class="table">
+                        <tbody>
+                            @foreach ($carts as $cart)
+                            <tr>
+                                <td>
+                                    <img src="{{ asset('uploads/product/' . $cart->getProductFromCart->product_image) }}"
+                                        alt="{{ $cart->getProductFromCart->product_title }}" class="img-fluid"
+                                        style="height: 100px; width: 100px;">
+                                </td>
+                                <td>
+                                    <p>{{ $cart->getProductFromCart->product_title }} <br>
+                                        {{ $cart->getProductFromCart->category->category_title }} <br>
+                                        {{ $cart->getProductFromCart->orginal_cost - $cart->getProductFromCart->discounted_cost }}
+                                    </p>
+                                </td>
+                            </tr>
+                            @endforeach
+                        </tbody>
+                    </table>
+                    <div class="row top-bottom-border p-2">
+                        <div class="col-md-6">Sub Total:</div>
+                        <div class="col-md-6 text-right cost">{{ $total_amount }}
                         </div>
                     </div>
-                </form>
+                    <div class="row top-bottom-border p-2">
+                        <div class="col-md-6">Shipping Charge:</div>
+                        <div class="col-md-6 text-right cost">
+                            Rs. 100 | All Over Nepal
+                            <!-- {{ $order1->address }} -->
+                        </div>
+                    </div>
+                    <div class="row top-bottom-border p-2">
+                        <div class="col-md-6">Grand Total:</div>
+                        <div class="col-md-6 text-right cost">Rs. {{ $total_amount + 100}}</div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
 </div>
+@endforeach
+
+
 @endsection
