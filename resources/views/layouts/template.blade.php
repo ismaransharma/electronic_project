@@ -31,8 +31,6 @@
 
 <body>
 
-
-
     <div class="upper-main-header-and-nav">
         <!-- Top Header Stars Here -->
         <section id="top-header">
@@ -396,13 +394,10 @@
     <script src="{{ asset('site/toastr/toastr.min.js') }}"></script>
 
     <script>
-    @if(session('success'))
-    toastr.success('success!', '{{ session('
-        success ') }}');
-    @endif
-    @if(session('error'))
-    toastr.error('error!', '{{ session('
-        error ') }}');
+    @if(Session::has('success'))
+    toastr.success("{{ Session('success') }}");
+    @elseif(Session::has('error'))
+    toastr.error("{{ Session('error') }}");
     @endif
     </script>
 
