@@ -73,15 +73,17 @@
                                 <h6 class=" fw-bold text-danger">Online Payment</h6>
                                 @endif
                             </td>
-                            <td>
+                            <td style="width: 121px;">
                                 <button class="btn btn-primary btn-sm" data-bs-toggle="modal"
                                     data-bs-target="#view-{{ $order->cart_code }}">View</button>
                                 @if ($order->payment_method == 'cod')
                                 <br>
-                                <a href="{{ route('makePaymentComplete', $order->id) }}"
-                                    onclick="return confirm('Are you sure you want to change payment status?');">
-                                    Toggle Payment
-                                </a>
+                                <div class="toggle-payment-padding" style="padding-top: 5px;">
+                                    <a href="{{ route('makePaymentComplete', $order->id) }}"
+                                        onclick="return confirm('Are you sure you want to change payment status?');">
+                                        Toggle Payment
+                                    </a>
+                                </div>
                                 @endif
                             </td>
                         </tr>
@@ -99,6 +101,8 @@
     if ($carts) {
         $total_amount = App\Models\Cart::where('cart_code', $order1->cart_code)->sum('total_price');
     }
+
+    // dd($order1->additional_information)
 ?>
 
 <!-- Modal for view Order-->
@@ -127,6 +131,14 @@
                                         Rs.
                                         {{ $cart->getProductFromCart->orginal_cost - $cart->getProductFromCart->discounted_cost }}
                                     </p>
+                                    <div class="additional_information">
+                                        @if ($order1->additional_information)
+                                        <b>Additional Information:- {{ $order1->additional_information }}</b>
+
+                                        @else
+                                        <b>Additional Information: Null</b>
+                                        @endif
+                                    </div>
                                 </td>
                             </tr>
                             @endforeach

@@ -9,6 +9,7 @@ use App\Models\Service;
 use App\Models\Category;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Session;
 
 class SiteController extends Controller
@@ -167,6 +168,37 @@ class SiteController extends Controller
         $order->payment_amount = $payment_amount;
 
         $order->save();
+
+        // Mail Pathauni logic
+
+        $order = Order::find($order->id);
+
+        $orderItemsHTML = '<ol>';
+        foreach ($carts as $cart_items) {
+            $orderItemsHTML .= '<li><b>' . $cart_items->getProductFromCart->product_title . ': </b><span>' . $cart_items->quantity . ' * ' . $cart_items->price . '</span></li>';
+        }
+        $orderItemsHTML .= '</ol>';
+
+        $maildata = [
+            'name' => $name,
+            'email' => $email,
+            'order_code' => $cart_code,
+            'order_date' => $order->created_at->format("d M, Y H:i:s"),
+            'total_price' => $carts->sum('total_price'),
+            'shipping_charge' => 100.00,
+            'grand_total' => $order->payment_amount,
+            'order_items' => $orderItemsHTML
+        ];
+
+        Mail::send('email.order', $maildata, function ($message) use ($maildata) {
+            $message->from('boyg5729@gmail.com', 'Gada Electronics');
+            $message->sender('boyg5729@gmail.com', 'Gada Electronics');
+            $message->to($maildata['email'], $maildata['name']);
+            $message->subject('Your Order has been Successfully Placed!');
+            $message->priority(1);
+        });
+
+
         $request->session()->forget('cart_code');
 
         return redirect()->route('getHome')->with('success', 'Order created Successfully');
