@@ -46,7 +46,10 @@ class SiteController extends Controller
     }
     
     public function getLaptopCategory($slug){
-        $categories = Category::where('deleted_at', null)->where('status', 'active')->orderby('category_title', 'asc')->get();
+        $category = Category::where('slug', $slug)->where('deleted_at', null)->where('status', 'active')->get();
+        if (is_null($category)) {
+            return redirect()->back()->with('error', 'Category not found');
+        }
         
         $product = Product::where('slug', $slug)->where('deleted_at', null)->where('status', 'active')->orderby('product_title', 'asc')->get();
         if(is_null($product)){
@@ -55,7 +58,7 @@ class SiteController extends Controller
         
         // dd($categories);
         $data = [
-            'categories' => $categories,
+            'category' => $category,
             'products' => $product
         ];
 

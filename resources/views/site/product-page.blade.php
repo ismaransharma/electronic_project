@@ -135,5 +135,81 @@
     </div>
 </section>
 
+<?php $related_products = App\Models\Product::where('category_id', $product->category_id)
+        ->where('deleted_at', null)
+        ->where('status', 'active')
+        ->where('id', '!=', $product->id)
+        ->limit(4)
+        ->get(); ?>
+<section id="product" class="section">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <div class="top-sale">
+                    <h4>Related Product</h4>
+                </div>
+            </div>
+        </div>
+        <div class="row justify-content-center">
+            @foreach ($related_products as $item)
+            <div class="product-box-padding" style="padding-left: 54px;">
+                <div class="product-box">
+                    <div class="product-image">
+                        <div class="product-main-image">
+                            <img src="{{ asset('uploads/product/'. $item->product_image)}}"
+                                alt="{{ $item->product_title }}" />
+                        </div>
+                        <div class="heart-and-cart">
+                            <a href="#">
+                                <button>
+                                    <i class="fa-solid fa-cart-shopping"></i>
+                                </button>
+                            </a>
+                        </div>
+                    </div>
+                    <a href="{{ route('productPage', $item->slug) }}">
+                        <button class="home-product-button">
+                            <div class="product-details">
+                                <div class="product-name">
+                                    <span class="product-name-title">{{ $item->product_title }}</span>
+                                    <br>
+                                    @if ($item->discounted_cost > 0)
+                                    <span
+                                        class="product-price">Rs.{{ $item->orginal_cost - $item->discounted_cost}}</span>
+                                    <span class="fw-bold"
+                                        style="font-size: 14px; text-decoration: line-through; padding-left: 5px;">Rs.
+                                        {{ $item->orginal_cost }}</span>
+
+                                    @else
+                                    <span class="fw-bold">Rs. {{ $item->orginal_cost }}</span>
+                                    @endif
+                                    <!-- <span class="product-price">RS. {{ $product->discounted_cost }}</span> -->
+                                </div>
+                                <div class="product-description mt-2" style="height: 60px;">
+                                    <p>{{ Str::limit($item->product_full_description ?? 'No Title', 50)}}Read
+                                        More..</p>
+                                    <!-- <p>{{ $product->product_little_description }} Read More..</p> -->
+                                </div>
+                                <div class="product-rating">
+                                    <span><i class="fa-solid fa-star rating"></i></span>
+                                    <span><i class="fa-solid fa-star rating"></i></span>
+                                    <span><i class="fa-solid fa-star rating"></i></span>
+                                    <span><i class="fa-solid fa-star rating"></i></span>
+                                    <span><i class="fa-regular fa-star-half-stroke rating"></i></span>
+                                    <span class="rating-in-percent">4.5%</span>
+                                </div>
+                                <div class="product-add-to-cart">
+                                    <span class="btn">View Details</span>
+                                </div>
+                            </div>
+                        </button>
+                    </a>
+                </div>
+            </div>
+            @endforeach
+        </div>
+    </div>
+</section>
+
 
 @endsection

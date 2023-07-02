@@ -240,8 +240,8 @@
             <h4>Latest Products</h4>
         </div>
         <div class="product-row">
-            @foreach($products as $product)
             <div class="col-md-3">
+                @foreach($products as $product)
                 <div class="box-divider">
                     <div class="product-box-padding">
                         <div class="product-box">
