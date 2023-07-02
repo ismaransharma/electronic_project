@@ -7,6 +7,10 @@
         color: #000;
     }
 
+    .btn {
+        border: none;
+        outline: none;
+    }
 
     .place-order-button {
         border: 1px solid var(--top-header-bg);
@@ -82,20 +86,17 @@
     </div>
 </section>
 
+
 <?php
-
 $cart_code = session('cart_code');
-
 // dd($cart_code);
-
 $cart_items = \App\models\Cart::where('cart_code', 'abc')->get();
 
 if($cart_code){
     $cart_items = \App\models\Cart::where('cart_code', $cart_code)->get();
-    $total_amount = $cart_items->sum('total_cost');
+    $total_amount = $cart_items->sum('total_price');
     $quantity = $cart_items->sum('quantity');
 }
-
 ?>
 
 <section id="proceed-to-checkout" class="mt-5 mb-5">
@@ -200,7 +201,7 @@ if($cart_code){
                         <div class="card-body">
                             <table class="table">
                                 <tbody>
-                                    @foreach ($carts as $cart)
+                                    @foreach ($cart_items as $cart)
                                     <tr>
                                         <td>
                                             <img src="{{ asset('uploads/product/' . $cart->getProductFromCart->product_image) }}"
@@ -221,7 +222,7 @@ if($cart_code){
                             <div class="row top-bottom-border">
                                 <div class="col-md-5">Sub Total:</div>
                                 @if ($carts->sum('total_price') > 0)
-                                <div class="col-md-5 text-right cost">Rs. {{ $carts->sum('total_price') }}
+                                <div class="col-md-5 text-right cost">Rs. {{ $total_amount }}
                                 </div>
 
                                 @else
@@ -241,7 +242,7 @@ if($cart_code){
                                 <div class="col-md-5">Grand Total:</div>
                                 <div class="col-md-5 text-right cost">
                                     @if ($carts->sum('total_price') > 0)
-                                    Rs. {{ $carts->sum('total_price') + 100 }}
+                                    Rs. {{ $total_amount + 100 }}
 
                                     @else
                                     <!-- Rs. 0 -->

@@ -124,6 +124,7 @@
                                 <td>
                                     <p>{{ $cart->getProductFromCart->product_title }} <br>
                                         {{ $cart->getProductFromCart->category->category_title }} <br>
+                                        Rs.
                                         {{ $cart->getProductFromCart->orginal_cost - $cart->getProductFromCart->discounted_cost }}
                                     </p>
                                 </td>
