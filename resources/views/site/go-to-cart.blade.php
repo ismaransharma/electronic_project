@@ -44,6 +44,22 @@
         background-color: var(--dec-color);
 
     }
+
+    .padding-quantity {
+        padding-left: 51px;
+        display: flex;
+    }
+
+    .update-quantity {
+        background-color: #fff;
+        width: 95px;
+        text-align: center;
+        border: 1px solid #515158;
+    }
+
+    .update-button {
+        padding: 3.2px 3px;
+    }
     </style>
 </head>
 
@@ -78,7 +94,6 @@
 
 $cart_code = session('cart_code');
 
-// dd($cart_code);
 
 $cart_items = \App\models\Cart::where('cart_code', 'abc')->get();
 
@@ -107,6 +122,10 @@ if($cart_code){
                 @foreach ($cart_items as $cart)
                 <tr>
                     <td>{{ $cart->getProductFromCart->product_title }}</td>
+
+                    <?php
+                        // dd($quantity);
+                    ?>
                     <td>
                         <img height="45px" width="45px"
                             src="{{ asset('uploads/product/' . $cart->getProductFromCart->product_image) }}"
@@ -114,7 +133,20 @@ if($cart_code){
                     </td>
                     <td>Rs. {{ $cart->getProductFromCart->orginal_cost - $cart->getProductFromCart->discounted_cost}}
                     </td>
-                    <td>{{ $cart->quantity }}</td>
+                    <td class="quantity-td">
+                        <form action="{{ route('getUpdateCart', $cart->id) }}" method="POST" class="form-inline">
+                            @csrf
+                            <div class="form-group padding-quantity">
+                                <span>
+                                    <input type="number" class="form-control update-quantity" name="quantity"
+                                        id="quantiy" value="{{ $cart->quantity }}" max="30" min="1">
+                                </span>
+                                <span class="update-button">
+                                    <input type="submit" class="btn btn-success btn-sm" value="Update">
+                                </span>
+                            </div>
+                        </form>
+                    </td>
                     <td>Rs.
                         {{ $cart->quantity * ($cart->getProductFromCart->orginal_cost - $cart->getProductFromCart->discounted_cost) }}
                     </td>

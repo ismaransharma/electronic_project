@@ -302,7 +302,18 @@
                                                             alt="$cart->getProductFromCart->product_title">
                                                     </td>
 
-                                                    <td>{{ $cart->quantity }}</td>
+                                                    <td>
+                                                        <form action="{{ route('getUpdateCart', $cart->id) }}"
+                                                            method="POST" class="form-inline">
+                                                            @csrf
+                                                            <div class="form-group" style="padding-left: 20px;">
+                                                                <input type="number" class="form-control"
+                                                                    name="quantity" id="quantiy"
+                                                                    style="width:70px; text-align: center;"
+                                                                    value="{{ $cart->quantity }}" max="30" min="1">
+                                                            </div>
+                                                        </form>
+                                                    </td>
                                                     <td>Rs.
                                                         {{ $cart->getProductFromCart->orginal_cost - $cart->getProductFromCart->discounted_cost}}
                                                     </td>

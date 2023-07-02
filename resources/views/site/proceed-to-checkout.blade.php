@@ -209,7 +209,7 @@ if($cart_code){
                                         </td>
                                         <td>
                                             <p>Product:- {{ $cart->getProductFromCart->product_title }} <br>
-                                                {{ $cart->getProductFromCart->category->category_title }}<br>
+                                                Category:- {{ $cart->getProductFromCart->category->category_title }}<br>
                                                 Quantity:- {{ $cart->quantity }}<br>
                                                 Cost:- Rs.
                                                 {{ $cart->getProductFromCart->orginal_cost - $cart->getProductFromCart->discounted_cost }}

@@ -99,6 +99,7 @@ Route::middleware('auth')->group (function (){
         Route::prefix('carts')->group (function (){
             Route::get('carts', [HomeController::class, 'getAdminCartsManage'])->name('getAdminCartsManage');
             
+            Route::post('/cart/{id}/update', [SiteController::class, 'getUpdateCart'])->name('getUpdateCart');
 
         });
         
