@@ -54,6 +54,9 @@ Route::get('/checkout', [SiteController::class, 'getProceedToCheckout'])->name('
 Route::post('/checkout', [SiteController::class, 'postCheckout'])->name('postCheckout');
 
 
+// Cart update 
+Route::post('/cart/{id}/update', [SiteController::class, 'getUpdateCart'])->name('getUpdateCart');
+
 
 
 Route::middleware('auth')->group (function (){
@@ -99,7 +102,6 @@ Route::middleware('auth')->group (function (){
         Route::prefix('carts')->group (function (){
             Route::get('carts', [HomeController::class, 'getAdminCartsManage'])->name('getAdminCartsManage');
             
-            Route::post('/cart/{id}/update', [SiteController::class, 'getUpdateCart'])->name('getUpdateCart');
 
         });
         

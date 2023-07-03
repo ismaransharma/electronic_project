@@ -7,6 +7,10 @@
         height: 50px;
         width: 50px;
     }
+
+    .table a {
+        text-decoration: none;
+    }
     </style>
 </head>
 
@@ -260,7 +264,7 @@
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                             <button class="btn" id="save_product" onclick="product_added()">
-                                <input type="submit" class="btn btn-primary" value="Save changes" />
+                                <input type="submit" class="btn btn-primary" value="Add Product" />
                             </button>
                         </div>
                     </div>

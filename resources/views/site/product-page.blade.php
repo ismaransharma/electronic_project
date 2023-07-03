@@ -89,10 +89,15 @@
                         </div>
                     </div>
                     <div class="product-cost" style="color: var(--top-header-bg);">
-                        <span class="fw-bold">Rs. {{ $product->orginal_cost - $product->discounted_cost }}</span>
+                        @if ($product->discounted_cost > 0)
+                        <span class="product-price">Rs.{{ $product->orginal_cost - $product->discounted_cost}}</span>
                         <span class="fw-bold"
-                            style="font-size: 14px; padding-left: 5px; text-decoration: line-through;">Rs.
+                            style="font-size: 14px; text-decoration: line-through; padding-left: 5px;">Rs.
                             {{ $product->orginal_cost }}</span>
+
+                        @else
+                        <span class="fw-bold">Rs. {{ $product->orginal_cost }}</span>
+                        @endif
 
 
                         <div class="show-stock" style="color: var(--top-header-bg);">
@@ -140,7 +145,8 @@
         ->where('status', 'active')
         ->where('id', '!=', $product->id)
         ->limit(4)
-        ->get(); ?>
+        ->get(); 
+?>
 <section id="product" class="section">
     <div class="container">
         <div class="row">

@@ -107,7 +107,7 @@
                                 <div class="form-group mb-2">
                                     <label for="">Services Icon*</label>
                                     <input type="text" class="form-control" id="service_icon" name="service_icon"
-                                        required>
+                                        placeholder="Put icon class in class section" required>
                                 </div>
                             </div>
                             <div class="col-md-6">
@@ -132,7 +132,7 @@
 
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                <input type="submit" class="btn btn-primary" value="Save changes">
+                                <input type="submit" class="btn btn-primary" value="Add Services">
                             </div>
                         </div>
                     </form>
