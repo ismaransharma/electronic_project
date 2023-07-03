@@ -29,8 +29,6 @@ Route::get('products/{slug}', [SiteController::class, 'getProductsByCategory'])-
 
 Route::get('/contact-us', [SiteController::class, 'getContactUs']);
 
-Route::get('/test', [SiteController::class, 'test']);
-
 Route::get('/footer', [SiteController::class, 'getfooter']);
 
 Auth::routes();
